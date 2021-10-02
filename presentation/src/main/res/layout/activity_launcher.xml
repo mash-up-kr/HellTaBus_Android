@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:text="스플래쉬 화면"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
+            android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
