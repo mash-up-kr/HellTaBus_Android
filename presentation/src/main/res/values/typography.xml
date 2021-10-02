@@ -79,7 +79,7 @@
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/white</item>
-    </style>ㅂ
+    </style>
 
     <style name="Typography.Caption.White" parent="@android:style/Widget.DeviceDefault.TextView">
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_regular</item>
