@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">presentation</string>
-	<string name="default_web_client_id">"helltabus-69376 "</string>
+    <string name="default_web_client_id">"helltabus-69376 "</string>
+    <string name="exercise_summary_title">고생하셨습니다\n오늘 루틴 끝!</string>
+    <string name="exercise_total_weight_title">오늘 내가 든 무게는?</string>
+    <string name="exercise_routine_list_title">오늘 내 루틴은?</string>
+    <string name="button_share">공유</string>
+    <string name="button_save_image">이미지 저장하기</string>
 </resources>

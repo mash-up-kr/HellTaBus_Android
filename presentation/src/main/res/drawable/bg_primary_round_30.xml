@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    radius 적용시 잘 안 맞아서 임의로 20으로 수정-->
+    <corners android:radius="20dp" />
+    <solid android:color="@color/color_primary" />
+</shape>
