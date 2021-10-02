@@ -6,4 +6,7 @@
     <string name="exercise_routine_list_title">오늘 내 루틴은?</string>
     <string name="button_share">공유</string>
     <string name="button_save_image">이미지 저장하기</string>
+    <string name="button_other_exercise">다른 운동\n선택</string>
+    <string name="button_other_exercise_temp">다른 운동</string>
+    <string name="button_start_exercise">운동하러 렛츠고 ! 👉</string>
 </resources>

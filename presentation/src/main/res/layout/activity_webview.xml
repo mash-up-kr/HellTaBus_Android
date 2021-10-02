@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f8f8f8">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="560dp"
+            android:background="@drawable/img_webview_mockup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/buttonOtherExercise"
+                style="@style/Typography.Button2.White"
+                android:layout_width="92dp"
+                android:layout_height="54dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_white_stroke_primary_round_30"
+                android:gravity="center"
+                android:text="@string/button_other_exercise_temp"
+                android:textColor="@color/color_primary" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/buttonStartExcercise"
+                style="@style/Typography.Button1.White"
+                android:layout_width="212dp"
+                android:layout_height="54dp"
+                android:background="@drawable/bg_primary_round_30"
+                android:gravity="center"
+                android:text="@string/button_start_exercise"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
