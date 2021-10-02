@@ -4,6 +4,7 @@
 package com.mashup.presentation.features.login
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,7 @@ import com.google.android.gms.common.api.ApiException
 import com.mashup.presentation.R
 import com.mashup.presentation.base.BaseActivity
 import com.mashup.presentation.databinding.ActivityLoginBinding
+import com.mashup.presentation.features.ExerciseDashboardActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -55,6 +57,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                     Log.e(TAG, "firebaseAuthWithGoogle email:" + account.email)
                     Log.e(TAG, "firebaseAuthWithGoogle serverAuthCode:" + account.serverAuthCode)
                     Log.e(TAG, "firebaseAuthWithGoogle requestedScopes:" + account.requestedScopes)
+
+                    ExerciseDashboardActivity.start(this)
+
                 } catch (e: ApiException) {
                     // Google Sign In failed, update UI appropriately
                     Log.e(TAG, "Google sign in failed", e)
@@ -63,4 +68,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
         }
     }
 
+    companion object {
+
+        fun start(context: Context) {
+            context.startActivity(Intent(context, LoginActivity::class.java))
+        }
+    }
 }

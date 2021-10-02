@@ -10,7 +10,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 
 
-class GraphCustom : View {
+class CircleGraphView : View {
     constructor (context: Context) : super(context)
     constructor (context: Context, attrs: AttributeSet?) : super(context, attrs)
     constructor (context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(

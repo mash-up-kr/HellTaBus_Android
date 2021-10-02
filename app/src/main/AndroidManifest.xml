@@ -24,9 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:configChanges="orientation|screenSize"
-            android:name="com.mashup.presentation.features.ExerciseDashboardActivity" />
+            android:name="com.mashup.presentation.features.login.LoginActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name="com.mashup.presentation.features.ExerciseDashboardActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>
