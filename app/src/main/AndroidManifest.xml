@@ -34,6 +34,9 @@
         <activity
             android:name="com.mashup.presentation.features.ExerciseDashboardActivity"
             android:configChanges="orientation|screenSize" />
+        <activity
+            android:name="com.mashup.presentation.features.ExerciseSummaryActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

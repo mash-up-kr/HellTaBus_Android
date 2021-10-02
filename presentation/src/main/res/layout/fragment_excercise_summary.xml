@@ -7,16 +7,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/summaryTitle"
             style="@style/Typography.HeadLine3.White"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="84dp"
             android:layout_marginStart="30dp"
             android:lineSpacingExtra="4dp"
-            android:text="@string/exercise_summary_title"
+            android:text= "@string/exercise_summary_title"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +38,7 @@
             android:id="@+id/summaryConstraintLayout"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="26dp"
             android:background="@drawable/bg_white_round_20"
             android:padding="24dp"
             android:elevation="8dp"
@@ -64,7 +65,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/totalWeightTitle"
-                tools:text="300KG" />
+                android:text="300KG" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/totalSubscribe"
@@ -75,7 +76,7 @@
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/totalWeight"
-                tools:text="무려 돼지 한 마리를\n✨번쩍 드셨어요" />
+                android:text="무려 돼지 한 마리를\n✨번쩍 드셨어요" />
 
             <View
                 android:id="@+id/splitLine"
@@ -109,19 +110,50 @@
                 app:layout_constraintStart_toStartOf="@+id/routineListTitle"
                 app:layout_constraintTop_toBottomOf="@+id/routineListTitle">
 
-<!--                <androidx.appcompat.widget.AppCompatTextView-->
-<!--                    style="@style/Typography.SmallBody1.White"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="8dp"-->
-<!--                    android:background="@drawable/bg_light_primary_variant_1_round_14"-->
-<!--                    android:paddingStart="16dp"-->
-<!--                    android:paddingTop="5dp"-->
-<!--                    android:paddingEnd="16dp"-->
-<!--                    android:paddingBottom="5dp"-->
-<!--                    android:textColor="@color/color_primary"-->
-<!--                    tools:text="랫풀다운 3세트 | 20kg 20회" />-->
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Typography.SmallBody1.White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_light_primary_variant_1_round_14"
+                    android:paddingStart="16dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/color_primary"
+                    android:text="랫풀다운 3세트 | 20kg 20회" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Typography.SmallBody1.White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_light_primary_variant_1_round_14"
+                    android:paddingStart="16dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/color_primary"
+                    android:text="플랭크 3세트 | 20kg 20회" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Typography.SmallBody1.White"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_light_primary_variant_1_round_14"
+                    android:paddingStart="16dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/color_primary"
+                    android:text="티바로우 3세트 | 40kg 15회" />
+
             </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/horse"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,9 +162,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/summaryConstraintLayout">
+            app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/buttonShare"

@@ -10,7 +10,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/appCompatImageView"
             android:layout_width="wrap_content"
-            android:layout_height="560dp"
+            android:layout_height="520dp"
             android:background="@drawable/img_webview_mockup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

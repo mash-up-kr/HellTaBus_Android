@@ -18,7 +18,7 @@ import com.google.android.gms.common.api.ApiException
 import com.mashup.presentation.R
 import com.mashup.presentation.base.BaseActivity
 import com.mashup.presentation.databinding.ActivityLoginBinding
-import com.mashup.presentation.features.ExerciseDashboardActivity
+import com.mashup.presentation.features.WebViewActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -58,7 +58,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                     Log.e(TAG, "firebaseAuthWithGoogle serverAuthCode:" + account.serverAuthCode)
                     Log.e(TAG, "firebaseAuthWithGoogle requestedScopes:" + account.requestedScopes)
 
-                    ExerciseDashboardActivity.start(this)
+                    WebViewActivity.start(this)
 
                 } catch (e: ApiException) {
                     // Google Sign In failed, update UI appropriately

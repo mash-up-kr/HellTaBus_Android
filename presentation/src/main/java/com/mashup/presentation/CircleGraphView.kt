@@ -23,7 +23,7 @@ class CircleGraphView : View {
 
     private val linePaint = Paint()
 
-    var delayDegree = 0
+    var delayDegree = 0.0
     private val distance = 800f
     private val strokeWidth = 40f
     private val shader: Shader = LinearGradient(
@@ -112,10 +112,10 @@ class CircleGraphView : View {
     }
 
     private suspend fun cycle() {
-        for (i in 0..1000) {
-            coroutineScope {
-                delay(10)
-                delayDegree++
+        for (i in 0..540) {
+             coroutineScope {
+                delay(20)
+                delayDegree+=0.4
             }
             this.post {
                 invalidate()

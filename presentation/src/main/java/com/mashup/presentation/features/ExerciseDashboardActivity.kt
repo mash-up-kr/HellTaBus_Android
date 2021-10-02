@@ -16,6 +16,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.mashup.presentation.R
 import com.mashup.presentation.base.BaseActivity
+import com.mashup.presentation.base.BaseFragment
 import com.mashup.presentation.databinding.ActivityExerciseDashboardBinding
 import com.mashup.presentation.databinding.DialogExerciseFeedbackBinding
 import com.mashup.presentation.databinding.FragmentExcerciseSummaryBinding
@@ -23,7 +24,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ExerciseDashboardActivity : BaseActivity<ActivityExerciseDashboardBinding>(R.layout.activity_exercise_dashboard) {
+class ExerciseDashboardActivity :
+    BaseActivity<ActivityExerciseDashboardBinding>(R.layout.activity_exercise_dashboard),
+    ExerciseFeedbackDialogFragment.ExcerciseFeedbackCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +43,14 @@ class ExerciseDashboardActivity : BaseActivity<ActivityExerciseDashboardBinding>
 
         binding.tvExerciseDone.setOnClickListener {
 
-            val bottomSheet = ExcerciseFeedbackDialogFragment()
+            val bottomSheet = ExerciseFeedbackDialogFragment()
             bottomSheet.show(supportFragmentManager, "bottomSheet")
         }
+    }
+
+    override fun onButtonSummitClicked() {
+        startActivity(Intent(this, ExerciseSummaryActivity::class.java))
+        finish()
     }
 
     companion object {
@@ -54,8 +62,34 @@ class ExerciseDashboardActivity : BaseActivity<ActivityExerciseDashboardBinding>
     }
 }
 
-class ExcerciseFeedbackDialogFragment : BottomSheetDialogFragment() {
+@AndroidEntryPoint
+class ExerciseSummaryActivity: BaseActivity<FragmentExcerciseSummaryBinding>(R.layout.fragment_excercise_summary) {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding.buttonSave.setOnClickListener {
+
+            Toast.makeText(this, "이미지를 저장했어요!", Toast.LENGTH_SHORT).show()
+            WebViewActivity.start(this)
+        }
+    }
+}
+
+class ExerciseFeedbackDialogFragment : BottomSheetDialogFragment() {
+
+    interface ExcerciseFeedbackCallback {
+        fun onButtonSummitClicked()
+    }
+
     private lateinit var viewBinder: DialogExerciseFeedbackBinding
+    private var callback: ExcerciseFeedbackCallback? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        callback = context as? ExcerciseFeedbackCallback
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -72,6 +106,7 @@ class ExcerciseFeedbackDialogFragment : BottomSheetDialogFragment() {
 
         viewBinder.buttonSubmit.setOnClickListener {
             dismiss()
+            callback?.onButtonSummitClicked()
         }
     }
 }
