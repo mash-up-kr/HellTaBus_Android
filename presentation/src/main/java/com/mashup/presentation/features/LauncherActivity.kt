@@ -20,5 +20,6 @@ class LauncherActivity : BaseActivity<ActivityLauncherBinding>(R.layout.activity
         super.onCreate(savedInstanceState)
 
         LoginActivity.start(this)
+        finish()
     }
 }
