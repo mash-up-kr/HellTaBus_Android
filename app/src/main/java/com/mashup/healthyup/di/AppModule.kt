@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-    
+
     @Singleton
     @Provides
     fun provideExecutorProvider(): ExecutorProvider {
@@ -24,26 +24,26 @@ object AppModule {
             override fun main(): CoroutineDispatcher {
                 return Dispatchers.Main
             }
-            
+
             override fun io(): CoroutineDispatcher {
                 return Dispatchers.IO
             }
-    
+
             override fun default(): CoroutineDispatcher {
                 return Dispatchers.Default
             }
-    
+
             override fun unconfined(): CoroutineDispatcher {
                 return Dispatchers.Unconfined
             }
         }
     }
-    
+
     @Provides
     fun provideGetUserUseCase(
         userRepository: UserRepository,
         executorProvider: ExecutorProvider
-    ) : GetUserUseCase {
+    ): GetUserUseCase {
         return GetUserUseCase(userRepository, executorProvider.io())
     }
 
@@ -53,6 +53,6 @@ object AppModule {
     }
 
     // Logger 주입
-    
+
     // 전역 Config
 }

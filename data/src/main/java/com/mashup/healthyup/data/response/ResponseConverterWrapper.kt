@@ -4,7 +4,7 @@ import com.mashup.healthyup.data.exceptions.ApiException
 import okhttp3.ResponseBody
 import retrofit2.Converter
 
-class WrapperResponseConverter<T>(
+class ResponseConverterWrapper<T>(
     private val converter: Converter<ResponseBody, T>
 ) : Converter<ResponseBody, T> {
 

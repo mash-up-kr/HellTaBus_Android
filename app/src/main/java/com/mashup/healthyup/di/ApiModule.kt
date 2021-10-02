@@ -2,7 +2,7 @@ package com.mashup.healthyup.di
 
 import com.mashup.healthyup.core.Empty
 import com.mashup.healthyup.data.api.DumApi
-import com.mashup.healthyup.data.response.WrapperResponseConvertFactory
+import com.mashup.healthyup.data.response.ResponseConverterWrapperFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
-    
+
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
@@ -28,7 +28,7 @@ object ApiModule {
     fun provideGsonConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
-    
+
     @Provides
     @Singleton
     fun provideRetrofit(
@@ -38,7 +38,7 @@ object ApiModule {
         return Retrofit.Builder()
             .baseUrl(String.Empty)
             .client(okHttpClient)
-            .addConverterFactory(WrapperResponseConvertFactory(gsonConverterFactory))
+            .addConverterFactory(ResponseConverterWrapperFactory(gsonConverterFactory))
             .build()
     }
 

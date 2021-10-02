@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
 
 @Suppress("UNCHECKED_CAST")
-class WrapperResponseConvertFactory(
+class ResponseConverterWrapperFactory(
     private val gsonConverterFactory: GsonConverterFactory
 ) : Converter.Factory() {
 
@@ -33,6 +33,6 @@ class WrapperResponseConvertFactory(
     ): Converter<ResponseBody, *> {
         val converter: Converter<ResponseBody, *>? =
             gsonConverterFactory.responseBodyConverter(type, annotations, retrofit)
-        return WrapperResponseConverter(converter as Converter<ResponseBody, Any>)
+        return ResponseConverterWrapper(converter as Converter<ResponseBody, Any>)
     }
 }
