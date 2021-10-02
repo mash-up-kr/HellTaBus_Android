@@ -32,6 +32,8 @@ android {
 
 dependencies {
 
+    implementation project(':domain')
+
     // Android, Kotlin Libraries
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
@@ -51,14 +53,7 @@ dependencies {
     // Hilt
     implementation 'com.google.dagger:hilt-android:2.38.1'
     implementation 'androidx.hilt:hilt-common:1.0.0'
-    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
     kapt 'com.google.dagger:hilt-android-compiler:2.38.1'
-    kapt 'androidx.hilt:hilt-compiler:1.0.0'
-
-    // RxJava2
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 
     // Mockito, JUnit, kotlin test
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
