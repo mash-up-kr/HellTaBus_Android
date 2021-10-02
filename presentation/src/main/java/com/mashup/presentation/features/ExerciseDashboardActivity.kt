@@ -7,6 +7,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.mashup.presentation.R
 import com.mashup.presentation.base.BaseActivity
 import com.mashup.presentation.databinding.ActivityExerciseDashboardBinding
@@ -22,6 +24,12 @@ class ExerciseDashboardActivity : BaseActivity<ActivityExerciseDashboardBinding>
         lifecycleScope.launch {
             binding.circleGraphView.setCueList()
         }
+
+        Glide.with(this)
+            .asGif()
+            .load(R.raw.gif_exercise_1)
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .into(binding.ivExercisePose)
     }
 
     companion object {
