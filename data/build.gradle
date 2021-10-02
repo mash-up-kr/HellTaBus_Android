@@ -20,10 +20,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'javax.inject:javax.inject:1'
 
-    // RxJava2
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.20'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-
     // Retrofit, OkHttp, MockWebServer, GSON
     api 'com.squareup.retrofit2:retrofit:2.9.0'
     api 'com.squareup.okhttp3:okhttp:4.9.1'
