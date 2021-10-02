@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="VectorDrawableCompat">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_clarity_window_close_line">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="104dp"
+                android:layout_height="32dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_rectangle_stroke_r20_color_primary">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:paddingTop="8dp"
+                    android:src="@drawable/ic_exercise_pause"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tv_pause"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PAUSE"
+                    android:textAppearance="@style/Typography.Button2.White"
+                    android:textColor="@color/color_primary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_pause"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_exercise_pose"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/img_exercise"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_exercise_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_exercise_pose">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_exercise_stage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="두번째 운동"
+                android:textAppearance="@style/Typography.SmallBody1.White"
+                android:textColor="@color/color_on_background_variant_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:textAppearance="@style/Typography.SmallBody1.White" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_exercise_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="덤벨 인크라인 벤치프레스"
+                android:textAppearance="@style/Typography.HeadLine3.White"
+                android:textColor="@color/color_on_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_exercise_stage" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5kg 15회"
+                android:textAppearance="@style/Typography.Subtitle2.White"
+                android:textColor="@color/color_on_background_variant_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_exercise_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_arrow_left"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/layout_exercise_info"
+            app:layout_constraintEnd_toStartOf="@id/layout_exercise_info"
+            app:layout_constraintTop_toTopOf="@id/layout_exercise_info"
+            app:srcCompat="@drawable/ic_arrow_left" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_arrow_right"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/layout_exercise_info"
+            app:layout_constraintStart_toEndOf="@id/layout_exercise_info"
+            app:layout_constraintTop_toTopOf="@id/layout_exercise_info"
+            app:srcCompat="@drawable/ic_arrow_right" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginHorizontal="64dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_rectangle_solid_color_primary_r30"
+            android:gravity="center"
+            android:text="3세트 완료"
+            android:textAppearance="@style/Typography.Button1.White"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_exercise_info" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:background="@drawable/bg_rectangle_solid_color_variant1_top_left_right_r30"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔥10:00:04 "
+                android:layout_marginTop="16dp"
+                android:textColor="@color/color_on_background"
+                android:textAppearance="@style/Typography.Button1.White"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:background="@color/color_on_background_variant_4"
+                app:layout_constraintBottom_toBottomOf="@id/view_1"
+                app:layout_constraintStart_toStartOf="@id/view_1"
+                app:layout_constraintEnd_toEndOf="@id/view_4" />
+
+            <View
+                android:id="@+id/view_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="30dp"
+                android:background="@color/color_primary"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintDimensionRatio="w, 1:1"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/view_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/color_primary"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintDimensionRatio="w, 1:1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/view_1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/view_3"/>
+
+            <View
+                android:id="@+id/view_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/color_primary"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintDimensionRatio="w, 1:1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/view_4"
+                app:layout_constraintStart_toEndOf="@id/view_2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="30dp"
+                android:background="@color/color_primary"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintDimensionRatio="w, 1:1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/view_3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
