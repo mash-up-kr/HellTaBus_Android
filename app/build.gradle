@@ -56,6 +56,7 @@ dependencies {
     implementation project(':presentation')
     implementation project(':domain')
     implementation project(':data')
+    implementation project(':core')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"

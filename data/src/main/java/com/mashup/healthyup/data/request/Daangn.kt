@@ -1,12 +1,14 @@
 package com.mashup.healthyup.data.request
 
+import com.mashup.healthyup.core.Empty
+
 data class Daangn(
     val id: Long
 ) {
     operator fun invoke(): DaangnDto {
         return DaangnDto(
             id = id.toString(),
-            name = ""
+            name = String.Empty
         )
     }
 }

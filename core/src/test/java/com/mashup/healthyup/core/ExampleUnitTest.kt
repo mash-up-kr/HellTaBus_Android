@@ -1,4 +1,4 @@
-package com.mashup.healthyup
+package com.mashup.healthyup.core
 
 import org.junit.Test
 

@@ -1,5 +1,6 @@
 package com.mashup.healthyup.di
 
+import com.mashup.healthyup.core.Empty
 import com.mashup.healthyup.data.api.DumApi
 import dagger.Module
 import dagger.Provides
@@ -25,7 +26,7 @@ object ApiModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(String.Empty)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

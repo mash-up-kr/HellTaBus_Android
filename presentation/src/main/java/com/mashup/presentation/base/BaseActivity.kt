@@ -1,7 +1,7 @@
 /*
  * Created by Leo on 2021. 09. 26 ..
  */
-package com.mashup.presentation
+package com.mashup.presentation.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
