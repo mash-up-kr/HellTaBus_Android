@@ -3,11 +3,12 @@ package com.mashup.presentation
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlin.math.cos
+import kotlin.math.sin
 
 
 class CircleGraphView : View {
@@ -19,6 +20,8 @@ class CircleGraphView : View {
 
     private val paint = Paint()
     private val paintLine = Paint()
+
+    private val linePaint = Paint()
 
     var delayDegree = 0
     private val distance = 800f
@@ -51,6 +54,10 @@ class CircleGraphView : View {
         imagePaint = Paint()
         imagePaint!!.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_OVER)
 
+
+        linePaint.isAntiAlias = true
+        linePaint.color = Color.WHITE
+        linePaint.strokeWidth = 50F
     }
 
 
@@ -60,10 +67,17 @@ class CircleGraphView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
         drawSubtitle(canvas)
     }
 
+
+    private fun getTargetX(degree: Int, r: Int): Float {
+        return (cos(Math.toRadians(degree.toDouble())) * r).toFloat()
+    }
+
+    private fun getTargetY(degree: Int, r: Int): Float {
+        return (sin(Math.toRadians(degree.toDouble())) * r).toFloat()
+    }
 
     private fun drawSubtitle(canvas: Canvas) {
         val width = (distance * 2).toInt()
@@ -89,6 +103,12 @@ class CircleGraphView : View {
         maskCanvas.drawBitmap(mMask, 0f, 0f, maskPaint)
         maskCanvas.drawBitmap(mImage, 0f, 0f, imagePaint) // Notice the imagePaint instead of null
         canvas.restore()
+
+        //circle
+        for (i in 3..5) {
+            canvas.drawCircle(getTargetX(70*i, radius)+radius+32, getTargetY(70*i, radius)
+                + radius+30, 20f, linePaint)
+        }
     }
 
     private suspend fun cycle() {
