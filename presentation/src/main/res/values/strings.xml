@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">presentation</string>
+	<string name="default_web_client_id">"helltabus-69376 "</string>
 </resources>
