@@ -32,7 +32,8 @@ object ApiModule {
     }
 
     @Provides
-    private fun provideLoggingInterceptor(): HttpLoggingInterceptor {
+    @Singleton
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return interceptor
