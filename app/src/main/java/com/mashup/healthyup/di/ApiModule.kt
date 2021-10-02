@@ -2,6 +2,7 @@ package com.mashup.healthyup.di
 
 import com.mashup.healthyup.core.Empty
 import com.mashup.healthyup.data.api.DumApi
+import com.mashup.healthyup.data.response.WrapperResponseConvertFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,14 +22,23 @@ object ApiModule {
         return OkHttpClient.Builder()
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideGsonConverterFactory(): GsonConverterFactory {
+        return GsonConverterFactory.create()
+    }
     
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(
+        okHttpClient: OkHttpClient,
+        gsonConverterFactory: GsonConverterFactory
+    ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(String.Empty)
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(WrapperResponseConvertFactory(gsonConverterFactory))
             .build()
     }
 
