@@ -2,8 +2,9 @@ package com.mashup.healthyup.data.repository
 
 import com.mashup.healthyup.data.api.DumApi
 import com.mashup.healthyup.data.request.Daangn
-import com.helltabus.domain.entity.User
-import com.helltabus.domain.repository.UserRepository
+import com.mashup.healthyup.domain.entity.User
+import com.mashup.healthyup.domain.repository.UserRepository
+import com.mashup.healthyup.domain.Result
 import javax.inject.Inject
 
 class UserDumRepositoryImpl @Inject constructor(

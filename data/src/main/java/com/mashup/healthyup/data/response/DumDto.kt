@@ -1,6 +1,6 @@
 package com.mashup.healthyup.data.response
 
-import com.helltabus.domain.entity.User
+import com.mashup.healthyup.domain.entity.User
 
 data class DumDto(
     val id: Long?,
