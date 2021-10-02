@@ -1,3 +1,4 @@
 rootProject.name = "HealthyUp"
 include ':app'
 include ':presentation'
+include ':data'
