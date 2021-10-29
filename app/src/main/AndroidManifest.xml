@@ -17,16 +17,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthyUp"
         android:name=".HelltabusApplication">
-        <activity android:name="com.mashup.presentation.features.LauncherActivity">
+        <activity android:name="com.mashup.healthyup.features.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.mashup.presentation.features.login.LoginActivity">
-        </activity>
+        <activity android:name="com.mashup.healthyup.features.login.LoginActivity"></activity>
     </application>
 
 </manifest>
