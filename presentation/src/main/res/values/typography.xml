@@ -8,6 +8,7 @@
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
@@ -22,6 +23,7 @@
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
@@ -43,6 +45,7 @@
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
@@ -64,6 +67,7 @@
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
@@ -78,6 +82,7 @@
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
@@ -92,6 +97,7 @@
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
