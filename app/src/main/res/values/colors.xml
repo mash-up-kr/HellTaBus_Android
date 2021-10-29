@@ -21,6 +21,7 @@
 	<color name="color_background">#E5E5E5</color>
 	<color name="color_on_error">#FFFFFF</color>
 	<color name="color_error">#B00020</color>
+	<color name="color_line_r">#F6F6F6</color>
 	<color name="color_line">#EAEAEA</color>
 	<color name="color_disable">#AAAAAA</color>
 
