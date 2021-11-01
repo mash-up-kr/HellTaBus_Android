@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="NewApi">
+
+	<style name="Typography" parent="@android:style/Widget.DeviceDefault.TextView" />
+
+	<style name="Typography.HeadLine1.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">26sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.HeadLine2.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">22sp</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.HeadLine3.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">22sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.Subtitle1.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.Subtitle2.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.Button1.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.Button2.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.Body1.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_regular</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.Body2.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.SmallBody1.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_regular</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.SmallBody2.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.Caption.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_regular</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">12sp</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+	<style name="Typography.Caption2.White" parent="@android:style/Widget.DeviceDefault.TextView">
+		<item name="android:fontFamily">@font/spoqa_han_sans_neo_bold</item>
+		<item name="android:includeFontPadding">false</item>
+		<item name="android:textSize">12sp</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@android:color/white</item>
+	</style>
+
+</resources>
