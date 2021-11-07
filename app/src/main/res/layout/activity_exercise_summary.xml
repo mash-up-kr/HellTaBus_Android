@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".features.ExerciseSummaryActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="314dp"
+        android:background="@drawable/bg_primary_vertical_gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/buttonClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_close"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/summaryTitle"
+        style="@style/Typography.HeadLine3.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/exercise_summary_title"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/summarySubscribe"
+        style="@style/Typography.Subtitle2.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="이번주 3회차 | 2021.05.12 10:30"
+        android:textColor="@color/white_70"
+        app:layout_constraintStart_toStartOf="@+id/summaryTitle"
+        app:layout_constraintTop_toBottomOf="@id/summaryTitle" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/summaryConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_white_half_round_30"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/summarySubscribe">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalWeightTitle"
+            style="@style/Typography.SmallBody1.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/exercise_total_weight_title"
+            android:textColor="@color/color_on_surface"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="🐼"
+            android:textColor="#78909C"
+            android:textSize="80sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/totalWeightTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalSubscribe1"
+            style="@style/Typography.HeadLine3.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/exercise_total_weight_subscribe_1"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/totalWeightTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalSubscribe2"
+            style="@style/Typography.HeadLine3.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:text="팬더 한 마리를"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/totalSubscribe1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalSubscribe3"
+            style="@style/Typography.HeadLine3.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/exercise_total_weight_subscribe_3"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/totalSubscribe2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalWeight"
+            style="@style/Typography.Body1.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="팬더 = 100KG"
+            android:textColor="@color/color_on_background_variant_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/totalSubscribe3" />
+
+        <View
+            android:id="@+id/splitLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="12dp"
+            android:background="@color/color_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/totalWeight" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/routineListTitle"
+            style="@style/Typography.SmallBody1.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/exercise_routine_list_title"
+            android:textColor="@color/color_on_surface"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splitLine" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/routineListSubscribe1"
+            style="@style/Typography.HeadLine3.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="하체/어깨를"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/routineListTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/routineListSubscribe2"
+            style="@style/Typography.HeadLine3.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/exercise_routine_list_subscribe_2"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/routineListSubscribe1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sampleRoutineList1"
+            style="@style/Typography.SmallBody1.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_light_primary_variant_1_round_14"
+            android:paddingStart="10dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="4dp"
+            android:text="랫풀다운 3세트 | 20kg 20회"
+            android:textColor="@color/color_on_background_variant_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/routineListSubscribe2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sampleRoutineList2"
+            style="@style/Typography.SmallBody1.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_light_primary_variant_1_round_14"
+            android:paddingStart="10dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="4dp"
+            android:text="풀업 4세트 | 10kg 20회"
+            android:textColor="@color/color_on_background_variant_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sampleRoutineList1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/sampleRoutineList3"
+            style="@style/Typography.SmallBody1.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_light_primary_variant_1_round_14"
+            android:paddingStart="10dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="4dp"
+            android:text="티바로우 3세트 | 40kg 15회"
+            android:textColor="@color/color_on_background_variant_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sampleRoutineList2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/buttonShare"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_share"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonSaveImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/buttonSaveImage" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/buttonSaveImage"
+            style="@style/Typography.Subtitle1.White"
+            android:layout_width="268dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/bg_rectangle_solid_color_primary_r30"
+            android:gravity="center"
+            android:text="@string/button_save_image"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
