@@ -14,11 +14,35 @@
       },
       "oauth_client": [
         {
-          "client_id": "383297131309-0t7m6kkicgshiplngj9qbn0h850ml0t4.apps.googleusercontent.com",
+          "client_id": "383297131309-9i8ela3d7rvri54bmq2ub8ms6ql1t13o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mashup.healthyup",
+            "certificate_hash": "30214c709549a9d9fdd4c16208f04339ef4a4f48"
+          }
+        },
+        {
+          "client_id": "383297131309-ffu3hjifhnr2i6u4bceudkq444e29t6u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mashup.healthyup",
+            "certificate_hash": "ac7a3f50ffcbceacffdfc9e3688a1cd0d6a388ad"
+          }
+        },
+        {
+          "client_id": "383297131309-fnpcv51k2spu1temgi1f8s1qrlbptsnb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.mashup.healthyup",
             "certificate_hash": "f91475d4e5c37b9c3a7e646a2e616ec1940e818d"
+          }
+        },
+        {
+          "client_id": "383297131309-v2dk5ba7nedn7rsrs39vtn149jg4vu6o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mashup.healthyup",
+            "certificate_hash": "a7c21e5607f8a5b70d920fa99f1eb487ca968f83"
           }
         },
         {
@@ -35,7 +59,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "383297131309-upvoqilh8n0ihsi2rjcoedgthnq18v40.apps.googleusercontent.com",
+              "client_id": "383297131309-1sjph4ma4g0d8qr6qnmb2accd0c6qipi.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
