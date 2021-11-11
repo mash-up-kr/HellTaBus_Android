@@ -20,6 +20,7 @@
 			<ImageView
 				android:id="@+id/ivCardRademillGradient"
 				android:layout_width="305dp"
+				android:layout_marginTop="-30dp"
 				android:layout_height="match_parent"
 				android:layout_marginStart="150dp"
 				android:fitsSystemWindows="true"
@@ -44,72 +45,72 @@
 
 			<com.google.android.material.appbar.CollapsingToolbarLayout
 				android:layout_width="match_parent"
-				android:layout_height="151dp"
+				android:layout_height="154dp"
 				android:fitsSystemWindows="true"
-				app:collapsedTitleTextAppearance="@style/Widget.App.Toolbar"
+				app:collapsedTitleGravity="center"
+				app:collapsedTitleTextAppearance="@style/ToolbarTextAppearance"
+				app:contentScrim="@color/exercise_top"
+				app:expandedTitleMarginStart="116dp"
+				app:expandedTitleTextAppearance="@style/ExpandedToolbarTextAppearance"
 				app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+
+				<androidx.appcompat.widget.LinearLayoutCompat
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="29dp"
+					android:layout_marginTop="40dp"
+					android:orientation="vertical">
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/summaryTitle"
+						style="@style/Typography.HeadLine3.White"
+						android:layout_width="wrap_content"
+						android:layout_height="60dp"
+						android:gravity="center|start"
+						android:textColor="@color/white"
+						android:lineSpacingExtra="4dp"
+						android:textSize="22dp"
+						android:text="@string/exercise_summary_title"
+						app:layout_collapseMode="parallax" />
+
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/summarySubscribe"
+						style="@style/Typography.Subtitle2.White"
+						android:layout_width="86dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="8dp"
+						android:layout_marginBottom="12dp"
+						android:gravity="center|start"
+						android:text="이번주 3회차 |"
+						android:textColor="@color/white_70"
+						android:textSize="14dp"
+						app:layout_collapseMode="parallax" />
+				</androidx.appcompat.widget.LinearLayoutCompat>
 
 				<com.google.android.material.appbar.MaterialToolbar
 					android:id="@+id/toolbar"
 					android:layout_width="match_parent"
 					android:layout_height="?attr/actionBarSize"
 					android:background="@color/empty"
-					app:title="23123123123123123"
-					style="@style/Widget.App.Toolbar"
-					app:titleTextAppearance="@style/ToolbarTextAppearance" />
+					app:title="2021.05.12 10:30">
 
-				<androidx.constraintlayout.widget.ConstraintLayout
-					android:layout_width="match_parent"
-					android:layout_height="314dp"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent">
+				</com.google.android.material.appbar.MaterialToolbar>
 
-					<androidx.appcompat.widget.AppCompatTextView
-						android:id="@+id/summaryTitle"
-						style="@style/Typography.HeadLine3.White"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginStart="30dp"
-						android:layout_marginTop="40dp"
-						android:lineSpacingExtra="4dp"
-						android:text="@string/exercise_summary_title"
-						android:textColor="@color/white"
-						app:layout_collapseMode="parallax"
-						app:layout_collapseParallaxMultiplier="1"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toTopOf="parent" />
-
-					<androidx.appcompat.widget.AppCompatTextView
-						android:id="@+id/summarySubscribe"
-						style="@style/Typography.Subtitle2.White"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="8dp"
-						android:text="이번주 3회차 | 2021.05.12 10:30"
-						android:textColor="@color/white_70"
-						app:layout_collapseMode="pin"
-						app:layout_collapseParallaxMultiplier="1"
-						app:layout_constraintStart_toStartOf="@+id/summaryTitle"
-						app:layout_constraintTop_toBottomOf="@id/summaryTitle" />
-
-					<androidx.appcompat.widget.AppCompatTextView
-						android:id="@+id/buttonClose"
-						android:layout_width="40dp"
-						android:layout_height="40dp"
-						android:layout_marginTop="8dp"
-						android:layout_marginEnd="16dp"
-						android:background="@drawable/ic_close"
-						app:layout_collapseMode="parallax"
-						app:layout_collapseParallaxMultiplier="1"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintTop_toTopOf="parent" />
-				</androidx.constraintlayout.widget.ConstraintLayout>
 			</com.google.android.material.appbar.CollapsingToolbarLayout>
 
 		</com.google.android.material.appbar.AppBarLayout>
 
+
+		<androidx.appcompat.widget.AppCompatTextView
+			android:id="@+id/buttonClose"
+			android:layout_width="40dp"
+			android:layout_height="wrap_content"
+			android:layout_gravity="end"
+			android:layout_marginTop="8dp"
+			android:layout_marginEnd="16dp"
+			android:background="@drawable/ic_close" />
 
 		<androidx.core.widget.NestedScrollView
 			android:layout_width="match_parent"
