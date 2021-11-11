@@ -45,7 +45,7 @@
 
 			<com.google.android.material.appbar.CollapsingToolbarLayout
 				android:layout_width="match_parent"
-				android:layout_height="154dp"
+				android:layout_height="153dp"
 				android:fitsSystemWindows="true"
 				app:collapsedTitleGravity="center"
 				app:collapsedTitleTextAppearance="@style/ToolbarTextAppearance"
