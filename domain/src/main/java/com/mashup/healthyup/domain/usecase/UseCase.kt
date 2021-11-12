@@ -4,7 +4,6 @@
 package com.mashup.healthyup.domain.usecase
 
 import com.mashup.healthyup.domain.NoParamsException
-import com.mashup.healthyup.domain.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
@@ -13,29 +12,27 @@ interface UseCase
 abstract class ParameterizedUseCase<in Params, R>(
     private val dispatcher: CoroutineDispatcher
 ) : UseCase {
-    protected abstract suspend fun execute(params: Params): Result<R>
+
+    protected abstract suspend fun execute(params: Params): R
     
     suspend operator fun invoke(params: Params) : Result<R> {
-        return try {
+        return kotlin.runCatching {
             withContext(dispatcher) {
                 execute(params)
             }
-        } catch (e: Exception) {
-            Result.Error(e)
         }
     }
 }
 
 abstract class NoParamsUseCase<R>(private val dispatcher: CoroutineDispatcher) : UseCase {
-    protected  abstract suspend fun execute(): Result<R>
+
+    protected  abstract suspend fun execute(): R
     
     suspend operator fun invoke() : Result<R> {
-        return try {
+        return kotlin.runCatching {
             withContext(dispatcher) {
                 execute()
             }
-        } catch (e: Exception) {
-            Result.Error(e)
         }
     }
 }
