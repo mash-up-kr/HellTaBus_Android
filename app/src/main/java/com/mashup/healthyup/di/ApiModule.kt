@@ -26,10 +26,10 @@ object ApiModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
-        val b = OkHttpClient.Builder()
-        b.addInterceptor(HeaderInterceptor(Config.access_key)).build()
-        b.addInterceptor(interceptor)
-        return b.build()
+        val okHttpBuilder = OkHttpClient.Builder()
+        okHttpBuilder.addInterceptor(HeaderInterceptor(Config.access_key)).build()
+        okHttpBuilder.addInterceptor(interceptor)
+        return okHttpBuilder.build()
     }
 
     @Provides
