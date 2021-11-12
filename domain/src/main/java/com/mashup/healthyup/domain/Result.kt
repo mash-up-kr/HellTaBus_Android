@@ -3,6 +3,7 @@
  */
 package com.mashup.healthyup.domain
 
+// TODO : kotlin.Result 를 사용할 수는 없을까? runCatching 을 쓰는 방법으로 ..
 sealed class Result<out R> {
     object Loading : Result<Nothing>()
     data class Success<out T>(val data: T) : Result<T>()

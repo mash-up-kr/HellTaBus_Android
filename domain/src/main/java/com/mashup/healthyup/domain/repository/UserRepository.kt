@@ -7,6 +7,9 @@ import com.mashup.healthyup.domain.Result
 import com.mashup.healthyup.domain.entity.User
 
 interface UserRepository : Repository {
-    suspend fun getUser(userId: Long): Result<User>
-    suspend fun postUser(userId: Long): Result<User>
+    suspend fun register()
+    suspend fun signIn()
+    suspend fun getCurrentUser(): Result<User>
+    suspend fun patchBaseInformation(user: User): Result<User>
+    suspend fun update(user: User): Result<User>
 }
