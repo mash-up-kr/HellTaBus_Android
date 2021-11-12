@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+	</data>
+
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/color_primary_variant3"
+		tools:context=".features.ExerciseSummaryActivity">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="346dp">
+
+			<ImageView
+				android:id="@+id/ivCardRademillGradient"
+				android:layout_width="305dp"
+				android:layout_marginTop="-30dp"
+				android:layout_height="match_parent"
+				android:layout_marginStart="150dp"
+				android:fitsSystemWindows="true"
+				android:scaleType="fitStart"
+				android:src="@drawable/bg_card_rademill" />
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:background="@drawable/bg_primary_vertical_gradient" />
+
+		</FrameLayout>
+
+		<com.google.android.material.appbar.AppBarLayout
+			android:id="@+id/app_bar_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/empty"
+			android:fitsSystemWindows="true"
+			android:theme="@style/Theme.HealthyUp"
+			app:elevation="0dp">
+
+			<com.google.android.material.appbar.CollapsingToolbarLayout
+				android:layout_width="match_parent"
+				android:layout_height="153dp"
+				android:fitsSystemWindows="true"
+				app:collapsedTitleGravity="center"
+				app:collapsedTitleTextAppearance="@style/ToolbarTextAppearance"
+				app:contentScrim="@color/exercise_top"
+				app:expandedTitleMarginStart="116dp"
+				app:expandedTitleTextAppearance="@style/ExpandedToolbarTextAppearance"
+				app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+				<androidx.appcompat.widget.LinearLayoutCompat
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="29dp"
+					android:layout_marginTop="40dp"
+					android:orientation="vertical">
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/summaryTitle"
+						style="@style/Typography.HeadLine3.White"
+						android:layout_width="wrap_content"
+						android:layout_height="60dp"
+						android:gravity="center|start"
+						android:textColor="@color/white"
+						android:lineSpacingExtra="4dp"
+						android:textSize="22dp"
+						android:text="@string/exercise_summary_title"
+						app:layout_collapseMode="parallax" />
+
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/summarySubscribe"
+						style="@style/Typography.Subtitle2.White"
+						android:layout_width="86dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="8dp"
+						android:layout_marginBottom="12dp"
+						android:gravity="center|start"
+						android:text="이번주 3회차 |"
+						android:textColor="@color/white_70"
+						android:textSize="14dp"
+						app:layout_collapseMode="parallax" />
+				</androidx.appcompat.widget.LinearLayoutCompat>
+
+				<com.google.android.material.appbar.MaterialToolbar
+					android:id="@+id/toolbar"
+					android:layout_width="match_parent"
+					android:layout_height="?attr/actionBarSize"
+					android:background="@color/empty"
+					app:title="2021.05.12 10:30">
+
+				</com.google.android.material.appbar.MaterialToolbar>
+
+			</com.google.android.material.appbar.CollapsingToolbarLayout>
+
+		</com.google.android.material.appbar.AppBarLayout>
+
+
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/buttonClose"
+			android:layout_width="40dp"
+			android:layout_height="wrap_content"
+			android:layout_gravity="end"
+			android:layout_marginTop="8dp"
+			android:layout_marginEnd="16dp"
+			android:src="@drawable/ic_close" />
+
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/bg_white_half_round_30"
+			app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/summaryConstraintLayout"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:padding="24dp">
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/totalWeightTitle"
+					style="@style/Typography.SmallBody1.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:text="@string/exercise_total_weight_title"
+					android:textColor="@color/color_on_surface"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/emoji"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp"
+					android:layout_marginEnd="24dp"
+					android:text="🐼"
+					android:textColor="#78909C"
+					android:textSize="80sp"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/totalWeightTitle" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/totalSubscribe1"
+					style="@style/Typography.HeadLine3.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="10dp"
+					android:text="@string/exercise_total_weight_subscribe_1"
+					android:textColor="@color/black"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/totalWeightTitle" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/totalSubscribe2"
+					style="@style/Typography.HeadLine3.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="4dp"
+					android:text="팬더 한 마리를"
+					android:textColor="@color/black"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/totalSubscribe1" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/totalSubscribe3"
+					style="@style/Typography.HeadLine3.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="4dp"
+					android:text="@string/exercise_total_weight_subscribe_3"
+					android:textColor="@color/black"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/totalSubscribe2" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/totalWeight"
+					style="@style/Typography.Body1.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="8dp"
+					android:text="팬더 = 100KG"
+					android:textColor="@color/color_on_background_variant_1"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/totalSubscribe3" />
+
+				<View
+					android:id="@+id/splitLine"
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="32dp"
+					android:layout_marginEnd="12dp"
+					android:background="@color/color_background"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@id/totalWeight" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/routineListTitle"
+					style="@style/Typography.SmallBody1.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="24dp"
+					android:text="@string/exercise_routine_list_title"
+					android:textColor="@color/color_on_surface"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/splitLine" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/routineListSubscribe1"
+					style="@style/Typography.HeadLine3.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="8dp"
+					android:text="하체/어깨를"
+					android:textColor="@color/black"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/routineListTitle" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/routineListSubscribe2"
+					style="@style/Typography.HeadLine3.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="4dp"
+					android:text="@string/exercise_routine_list_subscribe_2"
+					android:textColor="@color/black"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/routineListSubscribe1" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/sampleRoutineList1"
+					style="@style/Typography.SmallBody1.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="8dp"
+					android:background="@drawable/bg_light_primary_variant_1_round_14"
+					android:paddingStart="10dp"
+					android:paddingTop="4dp"
+					android:paddingEnd="10dp"
+					android:paddingBottom="4dp"
+					android:text="랫풀다운 3세트 | 20kg 20회"
+					android:textColor="@color/color_on_background_variant_2"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/routineListSubscribe2" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/sampleRoutineList2"
+					style="@style/Typography.SmallBody1.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="4dp"
+					android:background="@drawable/bg_light_primary_variant_1_round_14"
+					android:paddingStart="10dp"
+					android:paddingTop="4dp"
+					android:paddingEnd="10dp"
+					android:paddingBottom="4dp"
+					android:text="풀업 4세트 | 10kg 20회"
+					android:textColor="@color/color_on_background_variant_2"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/sampleRoutineList1" />
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:id="@+id/sampleRoutineList3"
+					style="@style/Typography.SmallBody1.White"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginTop="4dp"
+					android:background="@drawable/bg_light_primary_variant_1_round_14"
+					android:paddingStart="10dp"
+					android:paddingTop="4dp"
+					android:paddingEnd="10dp"
+					android:paddingBottom="4dp"
+					android:text="티바로우 3세트 | 40kg 15회"
+					android:textColor="@color/color_on_background_variant_2"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/sampleRoutineList2" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.core.widget.NestedScrollView>
+
+		<androidx.appcompat.widget.LinearLayoutCompat
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="bottom"
+			android:layout_marginStart="24dp"
+			android:layout_marginEnd="16dp"
+			android:layout_marginBottom="16dp">
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/buttonShare"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:background="@drawable/ic_share"
+				android:gravity="center" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/buttonSaveImage"
+				style="@style/Typography.Subtitle1.White"
+				android:layout_width="match_parent"
+				android:layout_height="54dp"
+				android:layout_marginStart="12dp"
+				android:background="@drawable/bg_rectangle_solid_color_primary_r30"
+				android:gravity="center"
+				android:text="@string/button_save_image"
+				android:textAlignment="center" />
+
+		</androidx.appcompat.widget.LinearLayoutCompat>
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
