@@ -4,10 +4,9 @@ import android.os.Handler
 import android.util.Log
 import android.webkit.JavascriptInterface
 import com.google.gson.JsonObject
-import org.json.JSONObject
 
 /** WebView 에 올라온 URL 의 JavaScript 와 통신하는 부분 **/
-class JavaScriptInterface(private val webView: HealthyUpWebView?) : JavaScriptInterfaceCallback {
+class JavaScriptInterface(private val webView: HealthyUpWebView) : JavaScriptInterfaceCallback {
 
     private val TAG = javaClass.simpleName
     private val handler = Handler()
@@ -17,7 +16,7 @@ class JavaScriptInterface(private val webView: HealthyUpWebView?) : JavaScriptIn
         val loadUrlStr = "javascript:healthyup.event(\'$extra\')"
         Log.d(TAG, "loadUrlMsg: $loadUrlStr")
         try {
-            webView?.loadUrl(loadUrlStr) ?: Log.d(TAG, "WebView is destroyed!")
+            webView.loadUrl(loadUrlStr)
         } catch (e: Exception) {
             Log.e(TAG, "Uncaught Reference Error: " + e.message)
         }

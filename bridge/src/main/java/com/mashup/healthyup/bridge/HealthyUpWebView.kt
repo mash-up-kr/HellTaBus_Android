@@ -10,10 +10,9 @@ import android.webkit.WebView
 /** WebView Customizing **/
 class HealthyUpWebView : WebView {
 
-    var javaScriptInterface: JavaScriptInterface? = null
+    val javaScriptInterface: JavaScriptInterface = JavaScriptInterface(this)
         get() {
-            field = JavaScriptInterface(this)
-            addJavascriptInterface(field!!, "healthyup_native_api")
+            addJavascriptInterface(field, "healthyup_native_api")
             clearCache(true)
             requestFocus()
             return field
@@ -61,7 +60,6 @@ class HealthyUpWebView : WebView {
         settings.useWideViewPort = true
         settings.loadWithOverviewMode = true
         settings.mediaPlaybackRequiresUserGesture = false
-        javaScriptInterface = JavaScriptInterface(this)
 
         setBackgroundColor(Color.argb(1, 0, 0, 0))
     }
