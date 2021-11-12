@@ -3,6 +3,7 @@ package com.mashup.healthyup.di
 import com.mashup.healthyup.Config
 import com.mashup.healthyup.Config.BASE_URL
 import com.mashup.healthyup.data.api.ExerciseApi
+import com.mashup.healthyup.data.api.ExerciseHistoryApi
 import com.mashup.healthyup.data.response.wrapper.ResponseConverterWrapperFactory
 import dagger.Module
 import dagger.Provides
@@ -75,5 +76,11 @@ object ApiModule {
     @Singleton
     fun provideExerciseApi(retrofit: Retrofit): ExerciseApi {
         return retrofit.create(ExerciseApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideExerciseHistoryApi(retrofit: Retrofit): ExerciseHistoryApi {
+        return retrofit.create(ExerciseHistoryApi::class.java)
     }
 }
