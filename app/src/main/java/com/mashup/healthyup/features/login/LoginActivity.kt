@@ -12,12 +12,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.mashup.healthyup.R
+import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivityLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginActivity :
-    com.mashup.healthyup.base.BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
+class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
     private val viewModel by viewModels<LoginViewModel>()
     private var resultLauncher: ActivityResultLauncher<Intent>? = null
