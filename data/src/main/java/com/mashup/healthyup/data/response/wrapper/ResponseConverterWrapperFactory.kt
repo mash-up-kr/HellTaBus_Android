@@ -1,4 +1,4 @@
-package com.mashup.healthyup.data.response
+package com.mashup.healthyup.data.response.wrapper
 
 import okhttp3.RequestBody
 import okhttp3.ResponseBody

@@ -2,8 +2,8 @@ package com.mashup.healthyup.di
 
 import com.mashup.healthyup.Config
 import com.mashup.healthyup.Config.BASE_URL
-import com.mashup.healthyup.data.api.DumApi
-import com.mashup.healthyup.data.response.ResponseConverterWrapperFactory
+import com.mashup.healthyup.data.api.ExerciseApi
+import com.mashup.healthyup.data.response.wrapper.ResponseConverterWrapperFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -73,7 +73,7 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideDumApi(retrofit: Retrofit): DumApi {
-        return retrofit.create(DumApi::class.java)
+    fun provideExerciseApi(retrofit: Retrofit): ExerciseApi {
+        return retrofit.create(ExerciseApi::class.java)
     }
 }

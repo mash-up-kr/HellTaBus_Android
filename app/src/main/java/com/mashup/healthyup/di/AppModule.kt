@@ -1,8 +1,6 @@
 package com.mashup.healthyup.di
 
 import com.mashup.healthyup.ExecutorProvider
-import com.mashup.healthyup.data.api.DumApi
-import com.mashup.healthyup.data.repository.UserDumRepositoryImpl
 import com.mashup.healthyup.domain.repository.UserRepository
 import com.mashup.healthyup.domain.usecase.GetUserUseCase
 import dagger.Module
@@ -45,11 +43,6 @@ object AppModule {
         executorProvider: ExecutorProvider
     ): GetUserUseCase {
         return GetUserUseCase(userRepository, executorProvider.io())
-    }
-
-    @Provides
-    fun provideUserRepository(api: DumApi): UserRepository {
-        return UserDumRepositoryImpl(api)
     }
 
     // Logger 주입
