@@ -20,15 +20,13 @@ class LoginViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            kotlin.runCatching {
-                usecase.invoke()
-            }.onSuccess { result ->
-                val user = result.getOrThrow()
-                // TODO: user 객체 사용
-
-            }.onFailure { error ->
-                error.message
-            }
+            usecase.invoke()
+                .onSuccess { user ->
+                    // TODO: user 객체 사용
+                }
+                .onFailure { error ->
+                    // TODO: 에러 처리
+                }
         }
     }
 

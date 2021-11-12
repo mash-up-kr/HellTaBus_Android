@@ -26,7 +26,7 @@ abstract class ParameterizedUseCase<in Params, R>(
 
 abstract class NoParamsUseCase<R>(private val dispatcher: CoroutineDispatcher) : UseCase {
 
-    protected  abstract suspend fun execute(): R
+    protected abstract suspend fun execute(): R
     
     suspend operator fun invoke() : Result<R> {
         return kotlin.runCatching {
