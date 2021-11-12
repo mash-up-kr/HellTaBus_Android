@@ -5,9 +5,8 @@ package com.mashup.healthyup.data.api
 
 import com.mashup.healthyup.data.request.PostExerciseRequest
 import com.mashup.healthyup.data.response.exercise.GetExerciseResponse
+import com.mashup.healthyup.data.response.exercise.ExerciseResponse
 import com.mashup.healthyup.data.response.exercise.GetExerciseSuggestionResponse
-import com.mashup.healthyup.data.response.exercise.PatchExerciseResponse
-import com.mashup.healthyup.data.response.exercise.PostExerciseResponse
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
@@ -18,7 +17,7 @@ import retrofit2.http.Query
 interface ExerciseApi {
 
     @POST("exercise")
-    suspend fun postExercise(request: PostExerciseRequest): PostExerciseResponse
+    suspend fun postExercise(request: PostExerciseRequest): ExerciseResponse
 
     @GET("exercise")
     suspend fun getExercise(
@@ -28,7 +27,7 @@ interface ExerciseApi {
     @PATCH("exercise/{id}")
     suspend fun patchExercise(
         @Path("id") id: Long
-    ): PatchExerciseResponse
+    ): ExerciseResponse
 
     @DELETE("exercise/{id}")
     suspend fun deleteExercise(
