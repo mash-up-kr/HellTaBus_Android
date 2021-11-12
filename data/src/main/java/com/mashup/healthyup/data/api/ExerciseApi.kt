@@ -4,10 +4,10 @@
 package com.mashup.healthyup.data.api
 
 import com.mashup.healthyup.data.request.PostExerciseRequest
-import com.mashup.healthyup.data.response.GetExerciseResponse
-import com.mashup.healthyup.data.response.GetExerciseSuggestionResponse
-import com.mashup.healthyup.data.response.PatchExerciseResponse
-import com.mashup.healthyup.data.response.PostExerciseResponse
+import com.mashup.healthyup.data.response.exercise.GetExerciseResponse
+import com.mashup.healthyup.data.response.exercise.GetExerciseSuggestionResponse
+import com.mashup.healthyup.data.response.exercise.PatchExerciseResponse
+import com.mashup.healthyup.data.response.exercise.PostExerciseResponse
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
