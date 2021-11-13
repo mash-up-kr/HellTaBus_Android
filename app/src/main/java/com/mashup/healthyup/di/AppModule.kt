@@ -3,6 +3,7 @@ package com.mashup.healthyup.di
 import com.mashup.healthyup.ExecutorProvider
 import com.mashup.healthyup.data.repository.ExerciseHistoryRepositoryImpl
 import com.mashup.healthyup.data.repository.ExerciseRepositoryImpl
+import com.mashup.healthyup.data.repository.UserRepositoryImpl
 import com.mashup.healthyup.domain.repository.ExerciseHistoryRepository
 import com.mashup.healthyup.domain.repository.ExerciseRepository
 import com.mashup.healthyup.domain.repository.UserRepository
@@ -27,6 +28,9 @@ abstract class AppModule {
     abstract fun bindExerciseHistoryRepository(
         repository: ExerciseHistoryRepositoryImpl
     ): ExerciseHistoryRepository
+
+    @Binds
+    abstract fun bindUserRepository(repository: UserRepositoryImpl): UserRepository
 
     companion object {
 

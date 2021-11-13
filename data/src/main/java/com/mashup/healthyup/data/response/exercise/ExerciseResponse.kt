@@ -6,6 +6,6 @@ package com.mashup.healthyup.data.response.exercise
 import com.mashup.healthyup.data.response.BaseResponse
 import com.mashup.healthyup.domain.entity.Exercise
 
-data class PostExerciseResponse(
+data class ExerciseResponse(
     override val data: Exercise?
 ) : BaseResponse<Exercise>()
