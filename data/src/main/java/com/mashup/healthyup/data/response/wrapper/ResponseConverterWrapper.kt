@@ -1,6 +1,7 @@
-package com.mashup.healthyup.data.response
+package com.mashup.healthyup.data.response.wrapper
 
 import com.mashup.healthyup.data.exceptions.ApiException
+import com.mashup.healthyup.data.response.BaseResponse
 import okhttp3.ResponseBody
 import retrofit2.Converter
 

@@ -2,8 +2,10 @@ package com.mashup.healthyup.di
 
 import com.mashup.healthyup.Config
 import com.mashup.healthyup.Config.BASE_URL
-import com.mashup.healthyup.data.api.DumApi
-import com.mashup.healthyup.data.response.ResponseConverterWrapperFactory
+import com.mashup.healthyup.data.api.ExerciseApi
+import com.mashup.healthyup.data.api.ExerciseHistoryApi
+import com.mashup.healthyup.data.api.UserApi
+import com.mashup.healthyup.data.response.wrapper.ResponseConverterWrapperFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,10 +27,10 @@ object ApiModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
-        val b = OkHttpClient.Builder()
-        b.addInterceptor(HeaderInterceptor(Config.access_key)).build()
-        b.addInterceptor(interceptor)
-        return b.build()
+        val okHttpBuilder = OkHttpClient.Builder()
+        okHttpBuilder.addInterceptor(HeaderInterceptor(Config.access_key)).build()
+        okHttpBuilder.addInterceptor(interceptor)
+        return okHttpBuilder.build()
     }
 
     @Provides
@@ -73,7 +75,19 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideDumApi(retrofit: Retrofit): DumApi {
-        return retrofit.create(DumApi::class.java)
+    fun provideExerciseApi(retrofit: Retrofit): ExerciseApi {
+        return retrofit.create(ExerciseApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideExerciseHistoryApi(retrofit: Retrofit): ExerciseHistoryApi {
+        return retrofit.create(ExerciseHistoryApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserApi(retrofit: Retrofit): UserApi {
+        return retrofit.create(UserApi::class.java)
     }
 }
