@@ -1,96 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-	<data />
+    <data />
 
-	<androidx.constraintlayout.widget.ConstraintLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:background="@drawable/bg_white_round_30"
-		android:paddingTop="40dp"
-		app:behavior_hideable="true"
-		app:layout_behavior="@string/bottom_sheet_behavior">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_round_30"
+        android:paddingTop="40dp"
+        app:behavior_hideable="true"
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/feedbackTitle"
-			style="@style/Typography.HeadLine3.White"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="24dp"
-			android:textColor="@color/color_on_background_variant_1"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
-			tools:text="두번째 운동" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/feedbackTitle"
+            style="@style/Typography.HeadLine3.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textColor="@color/color_on_background_variant_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="두번째 운동" />
 
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/feedbackSubscribe"
-			style="@style/Typography.HeadLine3.White"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="4dp"
-			android:lineSpacingExtra="4dp"
-			android:textColor="@color/color_on_background_variant_1"
-			app:layout_constraintStart_toStartOf="@+id/feedbackTitle"
-			app:layout_constraintTop_toBottomOf="@+id/feedbackTitle"
-			tools:text="덤벨 인크라인 벤치프레스는\n어땠나요?" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/feedbackSubscribe"
+            style="@style/Typography.HeadLine3.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:lineSpacingExtra="4dp"
+            android:textColor="@color/color_on_background_variant_1"
+            app:layout_constraintStart_toStartOf="@+id/feedbackTitle"
+            app:layout_constraintTop_toBottomOf="@+id/feedbackTitle"
+            tools:text="덤벨 인크라인 벤치프레스는\n어땠나요?" />
 
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/buttonEasy"
-			style="@style/Typography.Subtitle1.White"
-			android:layout_width="230dp"
-			android:layout_height="50dp"
-			android:layout_marginTop="28dp"
-			android:background="@drawable/bg_variant_4_round_25"
-			android:gravity="center"
-			android:textColor="@color/color_on_background_variant_1"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/feedbackSubscribe"
-			tools:text="쉬웠어요" />
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/feedbackSubscribe">
 
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/buttonNormal"
-			style="@style/Typography.Subtitle1.White"
-			android:layout_width="230dp"
-			android:layout_height="50dp"
-			android:layout_marginTop="8dp"
-			android:background="@drawable/bg_variant_4_round_25"
-			android:gravity="center"
-			android:textColor="@color/color_on_background_variant_1"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/buttonEasy"
-			tools:text="적당했어요" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="230dp"
+                android:layout_height="50dp"
+                android:background="@drawable/selector_radio_button"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/exercise_feedback_easy"
+                android:textAppearance="@style/Typography.Subtitle1.White"
+                android:textColor="@drawable/selector_radio_text" />
 
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/buttonHard"
-			style="@style/Typography.Subtitle1.White"
-			android:layout_width="230dp"
-			android:layout_height="50dp"
-			android:layout_marginTop="8dp"
-			android:background="@drawable/bg_variant_4_round_25"
-			android:gravity="center"
-			android:textColor="@color/color_on_background_variant_1"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/buttonNormal"
-			tools:text="어려웠어요" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="230dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/selector_radio_button"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/exercise_feedback_normal"
+                android:textAppearance="@style/Typography.Subtitle1.White"
+                android:textColor="@drawable/selector_radio_text" />
 
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/buttonSubmit"
-			style="@style/Typography.Button1.White"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="40dp"
-			android:height="54dp"
-			android:background="@color/color_disable"
-			android:gravity="center"
-			android:textColor="@color/white"
-			app:layout_constraintTop_toBottomOf="@+id/buttonHard"
-			tools:text="확인" />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="230dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/selector_radio_button"
+                android:button="@null"
+                android:text="@string/exercise_feedback_hard"
+                android:textAlignment="center"
+                android:textAppearance="@style/Typography.Subtitle1.White"
+                android:textColor="@drawable/selector_radio_text"
+                tools:checked="true"
+                tools:textStyle="bold" />
+        </RadioGroup>
 
-	</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonSubmit"
+            style="@style/Typography.Button1.White"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:height="54dp"
+            android:background="@drawable/selector_button"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            tools:enabled="true" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
