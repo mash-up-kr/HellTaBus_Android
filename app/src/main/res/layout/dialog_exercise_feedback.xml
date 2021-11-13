@@ -47,17 +47,16 @@
             app:layout_constraintTop_toBottomOf="@+id/feedbackSubscribe">
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                style="@style/Typography.Subtitle1.White"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
                 android:background="@drawable/selector_radio_button"
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/exercise_feedback_easy"
+                android:textAppearance="@style/Typography.Subtitle1.White"
                 android:textColor="@drawable/selector_radio_text" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                style="@style/Typography.Subtitle1.White"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
@@ -65,10 +64,10 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/exercise_feedback_normal"
+                android:textAppearance="@style/Typography.Subtitle1.White"
                 android:textColor="@drawable/selector_radio_text" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                style="@style/Typography.Subtitle1.White"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
@@ -76,6 +75,7 @@
                 android:button="@null"
                 android:text="@string/exercise_feedback_hard"
                 android:textAlignment="center"
+                android:textAppearance="@style/Typography.Subtitle1.White"
                 android:textColor="@drawable/selector_radio_text"
                 tools:checked="true"
                 tools:textStyle="bold" />
