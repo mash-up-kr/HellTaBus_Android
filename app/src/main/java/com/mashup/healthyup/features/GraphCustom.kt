@@ -53,14 +53,8 @@ class GraphCustom : View {
 
     }
 
-
-    override fun onMeasure(widthwidthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(width, heightMeasureSpec)
-    }
-
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
         drawSubtitle(canvas)
     }
 

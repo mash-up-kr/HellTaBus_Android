@@ -18,17 +18,16 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.HealthyUp">
-        <activity
-            android:name=".features.ExerciseSummaryActivity"
-            android:exported="true">
+
+        <activity android:name=".features.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".features.LauncherActivity">
-
-        </activity>
+        <activity
+            android:name=".features.ExerciseSummaryActivity"
+            android:exported="true" />
         <activity android:name=".features.login.LoginActivity" />
     </application>
 

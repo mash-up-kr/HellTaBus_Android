@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_close_color_background">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="24dp">
+
+                <TextView
+                    android:id="@+id/tv_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="다음"
+                    android:textAppearance="@style/Typography.Subtitle2.White"
+                    android:textColor="@color/color_on_background_variant_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_current_exercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="벤치프레스"
+                    android:textAppearance="@style/Typography.Body2.White"
+                    android:textColor="@color/color_on_background_variant_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_next"
+                    tools:text="벤치프레스" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.mashup.healthyup.features.GraphCustom
+            android:id="@+id/graph_view"
+            android:layout_width="match_parent"
+            android:layout_height="312dp"
+            android:layout_marginHorizontal="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/iv_audio_wave"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            app:layout_constraintBottom_toBottomOf="@id/graph_view"
+            app:layout_constraintEnd_toEndOf="@id/graph_view"
+            app:layout_constraintStart_toStartOf="@id/graph_view"
+            app:layout_constraintTop_toTopOf="@id/graph_view"
+            app:lottie_fileName="lottie_audio_wave.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/tv_exercise_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-8dp"
+            android:textAppearance="@style/Typography.SmallBody1.White"
+            android:textColor="@color/color_on_background_variant_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/graph_view"
+            tools:text="첫번째 운동" />
+
+        <TextView
+            android:id="@+id/tv_exercise_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/Typography.HeadLine3.White"
+            android:textColor="@color/color_on_background_variant_1"
+            app:layout_constraintEnd_toEndOf="@id/tv_exercise_index"
+            app:layout_constraintStart_toStartOf="@id/tv_exercise_index"
+            app:layout_constraintTop_toBottomOf="@id/tv_exercise_index"
+            tools:text="덤벨 인클라인 벤치프레스" />
+
+        <TextView
+            android:id="@+id/tv_exercise_weight_and_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/Typography.Subtitle2.White"
+            android:textColor="@color/color_on_background_variant_1"
+            app:layout_constraintEnd_toEndOf="@id/tv_exercise_title"
+            app:layout_constraintStart_toStartOf="@id/tv_exercise_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_exercise_title"
+            tools:text="5kg 15회" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_pause"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_variant4_r27"
+            android:padding="14dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_exercise_weight_and_count"
+            app:srcCompat="@drawable/ic_pause" />
+
+        <TextView
+            android:id="@+id/tv_confirm_stage"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/bg_primary_r30"
+            android:gravity="center"
+            android:text="설명 스킵"
+            android:textAppearance="@style/Typography.Body2.White"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_pause"
+            app:layout_constraintTop_toTopOf="@id/iv_pause"
+            tools:text="설명 스킵" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/color_primary_variant1"
+            android:layout_marginTop="74dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_confirm_stage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:text="2021.11.14"
+                android:textAppearance="@style/Typography.Caption.White"
+                android:textColor="@color/color_on_background"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="2021.11.14" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:textAppearance="@style/Typography.Caption.White"
+                android:textColor="@color/color_on_background"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="🔥 00:00:00" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
