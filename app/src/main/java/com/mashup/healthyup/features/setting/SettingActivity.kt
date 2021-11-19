@@ -1,4 +1,4 @@
-package com.mashup.healthyup.features
+package com.mashup.healthyup.features.setting
 
 import android.os.Bundle
 import com.mashup.healthyup.R
