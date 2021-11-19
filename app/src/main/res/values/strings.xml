@@ -32,4 +32,14 @@
     <string name="setting_subtitle_terms_of_use">이용 약관</string>
     <string name="setting_subtitle_privacy_statement">개인정보 취급 방침</string>
     <string name="setting_subtitle_opensource">오픈 소스 이용 약관</string>
+
+    <!-- ChangeCoachVoiceActivity -->
+    <string name="change_coach_title_1">어떤</string>
+    <string name="change_coach_title_2">&#160;오디오 코치</string>
+    <string name="change_coach_title_3">와</string>
+    <string name="change_coach_title_4">함께 운동하고 싶으세요?</string>
+    <string name="change_coach_sub_title">목소리를 들어보면 선택이 더 쉬울거예요!</string>
+    <string name="change_coach_voice_case_1">교관같이 무서운 헬스 코치</string>
+    <string name="change_coach_voice_case_2">편안하게 운동을 도와주는 코치</string>
+    <string name="change_coach_voice_case_3">운동을 잘 아는 잼민이 코치</string>
 </resources>
