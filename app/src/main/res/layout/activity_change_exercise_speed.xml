@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_background"
+        android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/appbar"
+            layout="@layout/layout_appbar_back_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/coachVoiceTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="55dp"
+            android:text="@string/change_exercise_speed_title_1"
+            android:textAppearance="@style/Typography.HeadLine3.White"
+            android:textColor="@color/color_primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar" />
+
+        <TextView
+            android:id="@+id/coachVoiceTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_exercise_speed_title_2"
+            android:textAppearance="@style/Typography.HeadLine2.White"
+            android:textColor="@color/color_on_background"
+            app:layout_constraintStart_toEndOf="@+id/coachVoiceTitle1"
+            app:layout_constraintTop_toTopOf="@+id/coachVoiceTitle1" />
+
+        <TextView
+            android:id="@+id/coachVoiceTitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/change_exercise_speed_title_3"
+            android:textAppearance="@style/Typography.HeadLine2.White"
+            android:textColor="@color/color_on_background"
+            app:layout_constraintStart_toStartOf="@+id/coachVoiceTitle1"
+            app:layout_constraintTop_toBottomOf="@+id/coachVoiceTitle1" />
+
+        <TextView
+            android:id="@+id/coachVoiceSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/change_speed_sub_title"
+            android:textAppearance="@style/Typography.SmallBody1.White"
+            android:textColor="@color/color_on_background_variant_2"
+            app:layout_constraintStart_toStartOf="@+id/coachVoiceTitle4"
+            app:layout_constraintTop_toBottomOf="@+id/coachVoiceTitle4" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coachVoiceSubTitle">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/selector_setting_radio_button"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/exercise_speed_slow"
+                android:textAppearance="@style/Typography.Body2.White"
+                android:textColor="@drawable/selector_setting_radio_text" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_setting_radio_button"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/exercise_speed_normal"
+                android:textAppearance="@style/Typography.Body2.White"
+                android:textColor="@drawable/selector_setting_radio_text" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_setting_radio_button"
+                android:button="@null"
+                android:text="@string/exercise_speed_fast"
+                android:textAlignment="center"
+                android:textAppearance="@style/Typography.Body2.White"
+                android:textColor="@drawable/selector_setting_radio_text"
+                tools:checked="true"
+                tools:textStyle="bold" />
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="230dp"
+            android:layout_height="54dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/selector_save_button"
+            android:button="@null"
+            android:text="@string/save"
+            android:textAppearance="@style/Typography.Button1.White"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

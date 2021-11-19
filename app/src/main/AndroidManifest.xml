@@ -19,9 +19,6 @@
         android:theme="@style/Theme.HealthyUp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".features.setting.ChangeCoachVoiceActivity"
-            android:exported="true" />
-        <activity
             android:name=".features.setting.SettingActivity"
             android:exported="true">
             <intent-filter>
@@ -30,9 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".features.ExerciseSummaryActivity"
-            android:exported="true"></activity>
+        <activity android:name=".features.setting.ChangeCoachVoiceActivity" />
+        <activity android:name=".features.setting.ChangeExerciseSpeedActivity" />
+        <activity android:name=".features.ExerciseSummaryActivity" />
         <activity android:name=".features.LauncherActivity" />
         <activity android:name=".features.login.LoginActivity" />
     </application>

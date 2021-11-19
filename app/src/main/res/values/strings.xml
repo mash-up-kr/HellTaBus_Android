@@ -42,4 +42,13 @@
     <string name="change_coach_voice_case_1">교관같이 무서운 헬스 코치</string>
     <string name="change_coach_voice_case_2">편안하게 운동을 도와주는 코치</string>
     <string name="change_coach_voice_case_3">운동을 잘 아는 잼민이 코치</string>
+
+    <!-- ChangeExerciseSpeedActivity -->
+    <string name="change_exercise_speed_title_1">어떤 속도</string>
+    <string name="change_exercise_speed_title_2">로</string>
+    <string name="change_exercise_speed_title_3">운동하길 원하시나요?</string>
+    <string name="change_speed_sub_title">운동 경험이 적을수록 천천히 해보세요</string>
+    <string name="exercise_speed_slow">천천히</string>
+    <string name="exercise_speed_normal">보통</string>
+    <string name="exercise_speed_fast">빠르게</string>
 </resources>
