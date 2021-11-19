@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
+import com.mashup.healthyup.bridge.JavaScriptInterface
 import com.mashup.healthyup.databinding.ActivityLauncherBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
