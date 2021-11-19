@@ -15,4 +15,20 @@
     <string name="exercise_feedback_easy">쉬웠어요</string>
     <string name="exercise_feedback_normal">적당했어요</string>
     <string name="exercise_feedback_hard">어려웠어요</string>
+
+    <!-- SettingActivity -->
+    <string name="setting_title_my_info">내 정보</string>
+    <string name="setting_subtitle_change_profile">프로필 변경</string>
+    <string name="setting_title_split_setting">분할 설정</string>
+    <string name="setting_title_exercise_audio_setting">운동 오디오 설정</string>
+    <string name="setting_subtitle_change_coach_voice">코치 목소리 변경</string>
+    <string name="setting_subtitle_change_exercise_speed">운동 속도 변경</string>
+    <string name="setting_subtitle_change_exercise_explanation_length">운동 설명 길이 변경</string>
+    <string name="setting_title_voc">고객 문의</string>
+    <string name="setting_subtitle_send_email">문의 메일 보내기</string>
+    <string name="setting_title_app_info">앱 정보</string>
+    <string name="setting_subtitle_version_info">버전 정보</string>
+    <string name="setting_subtitle_terms_of_use">이용 약관</string>
+    <string name="setting_subtitle_privacy_statement">개인정보 취급 방침</string>
+    <string name="setting_subtitle_opensource">오픈 소스 이용 약관</string>
 </resources>
