@@ -146,7 +146,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/changeCoachVoiceButton" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/changeExerciseExplanationSpeedButton"
+                    android:id="@+id/changeExplanationLengthButton"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:background="@drawable/layer_button"
@@ -172,7 +172,7 @@
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="@color/color_on_background"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/changeExerciseExplanationSpeedButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/changeExplanationLengthButton" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/sendEmailButton"

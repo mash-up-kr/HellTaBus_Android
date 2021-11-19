@@ -51,4 +51,12 @@
     <string name="exercise_speed_slow">천천히</string>
     <string name="exercise_speed_normal">보통</string>
     <string name="exercise_speed_fast">빠르게</string>
+
+    <!-- ChangeExplanationLength -->
+    <string name="change_explanation_length_title_1">운동에 대한 설명</string>
+    <string name="change_explanation_length_title_2">을</string>
+    <string name="change_explanation_length_title_3">자세히 듣고 싶으신가요?</string>
+    <string name="change_explanation_length_sub_title">오디오 코치가 하는 설명의 길이가 달라져요</string>
+    <string name="change_explanation_length_yes">네, 차근차근 설명해주세요</string>
+    <string name="change_explanation_length_no">아니요, 자세한 설명은 안 들을래요</string>
 </resources>

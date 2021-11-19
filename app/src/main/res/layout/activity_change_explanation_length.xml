@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -23,58 +22,49 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/coachVoiceTitle1"
+            android:id="@+id/explanationLengthTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="55dp"
-            android:text="@string/change_coach_title_1"
+            android:text="@string/change_explanation_length_title_1"
             android:textAppearance="@style/Typography.HeadLine2.White"
-            android:textColor="@color/color_on_background"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
         <TextView
-            android:id="@+id/coachVoiceTitle2"
+            android:id="@+id/explanationLengthTitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/change_coach_title_2"
+            android:text="@string/change_explanation_length_title_2"
             android:textAppearance="@style/Typography.HeadLine3.White"
             android:textColor="@color/color_primary"
-            app:layout_constraintStart_toEndOf="@+id/coachVoiceTitle1"
-            app:layout_constraintTop_toTopOf="@+id/coachVoiceTitle1" />
+            app:layout_constraintStart_toEndOf="@+id/explanationLengthTitle1"
+            app:layout_constraintTop_toTopOf="@+id/explanationLengthTitle1" />
 
         <TextView
-            android:id="@+id/coachVoiceTitle3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/change_coach_title_3"
-            android:textAppearance="@style/Typography.HeadLine2.White"
-            android:textColor="@color/color_on_background"
-            app:layout_constraintStart_toEndOf="@+id/coachVoiceTitle2"
-            app:layout_constraintTop_toTopOf="@+id/coachVoiceTitle2" />
-
-        <TextView
-            android:id="@+id/coachVoiceTitle4"
+            android:id="@+id/explanationLengthTitle3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/change_coach_title_4"
+            android:text="@string/change_explanation_length_title_3"
             android:textAppearance="@style/Typography.HeadLine2.White"
             android:textColor="@color/color_on_background"
-            app:layout_constraintStart_toStartOf="@+id/coachVoiceTitle1"
-            app:layout_constraintTop_toBottomOf="@+id/coachVoiceTitle1" />
+            app:layout_constraintStart_toStartOf="@+id/explanationLengthTitle1"
+            app:layout_constraintTop_toBottomOf="@+id/explanationLengthTitle1" />
 
         <TextView
-            android:id="@+id/coachVoiceSubTitle"
+            android:id="@+id/explanationLengthSubTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/change_coach_sub_title"
             android:textAppearance="@style/Typography.SmallBody1.White"
             android:textColor="@color/color_on_background_variant_2"
-            app:layout_constraintStart_toStartOf="@+id/coachVoiceTitle4"
-            app:layout_constraintTop_toBottomOf="@+id/coachVoiceTitle4" />
+            app:layout_constraintStart_toStartOf="@+id/explanationLengthTitle1"
+            app:layout_constraintTop_toBottomOf="@+id/explanationLengthTitle3" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -86,7 +76,7 @@
             android:paddingEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/coachVoiceSubTitle">
+            app:layout_constraintTop_toBottomOf="@+id/explanationLengthSubTitle">
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioButton1"
@@ -95,9 +85,10 @@
                 android:background="@drawable/selector_setting_radio_button"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/change_coach_voice_case_1"
+                android:text="@string/change_explanation_length_yes"
                 android:textAppearance="@style/Typography.Body2.White"
-                android:textColor="@drawable/selector_setting_radio_text" />
+                android:textColor="@drawable/selector_setting_radio_text"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioButton2"
@@ -107,23 +98,10 @@
                 android:background="@drawable/selector_setting_radio_button"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/change_coach_voice_case_2"
-                android:textAppearance="@style/Typography.Body2.White"
-                android:textColor="@drawable/selector_setting_radio_text" />
-
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/selector_setting_radio_button"
-                android:button="@null"
-                android:text="@string/change_coach_voice_case_3"
-                android:textAlignment="center"
+                android:text="@string/change_explanation_length_no"
                 android:textAppearance="@style/Typography.Body2.White"
                 android:textColor="@drawable/selector_setting_radio_text"
-                tools:checked="true"
-                tools:textStyle="bold" />
+                android:textStyle="bold" />
         </RadioGroup>
 
         <androidx.appcompat.widget.AppCompatButton

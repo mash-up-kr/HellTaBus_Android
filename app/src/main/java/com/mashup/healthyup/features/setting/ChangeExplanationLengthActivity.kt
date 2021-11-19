@@ -4,19 +4,19 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
-import com.mashup.healthyup.databinding.ActivityChangeCoachVoiceBinding
+import com.mashup.healthyup.databinding.ActivityChangeExplanationLengthBinding
 
-class ChangeCoachVoiceActivity :
-    BaseActivity<ActivityChangeCoachVoiceBinding>(R.layout.activity_change_coach_voice) {
+class ChangeExplanationLengthActivity :
+    BaseActivity<ActivityChangeExplanationLengthBinding>(R.layout.activity_change_explanation_length) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun initViews() {
         super.initViews()
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_change_coach_voice)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_change_explanation_length)
         with(binding) {
-            radioGroup.check(binding.radioButton1.id)
+            radioGroup.check(binding.radioButton2.id)
             saveButton.isEnabled = false
         }
     }

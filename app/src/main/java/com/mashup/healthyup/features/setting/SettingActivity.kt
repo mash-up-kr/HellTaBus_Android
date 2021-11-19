@@ -1,6 +1,8 @@
 package com.mashup.healthyup.features.setting
 
+import android.content.Intent
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivitySettingBinding
@@ -10,6 +12,38 @@ import dagger.hilt.android.AndroidEntryPoint
 class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_setting) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setting)
+    }
+
+    override fun initViews() {
+        super.initViews()
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_setting)
+    }
+
+    override fun initListeners() {
+        super.initListeners()
+        binding.changeCoachVoiceButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    ChangeCoachVoiceActivity::class.java
+                ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            )
+        }
+        binding.changeExerciseSpeedButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    ChangeExerciseSpeedActivity::class.java
+                ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            )
+        }
+        binding.changeExplanationLengthButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    ChangeExplanationLengthActivity::class.java
+                ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            )
+        }
     }
 }
