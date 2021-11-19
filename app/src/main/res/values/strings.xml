@@ -1,6 +1,7 @@
 <resources>
     <!-- Common -->
     <string name="confirm">확인</string>
+    <string name="save">저장</string>
 
     <!-- ExerciseSummary -->
     <string name="exercise_summary_title">고생하셨습니다\n오늘 루틴 끝!</string>
