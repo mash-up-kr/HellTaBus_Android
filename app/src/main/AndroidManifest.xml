@@ -27,6 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".features.setting.ChangeProfileActivity" />
         <activity android:name=".features.setting.ChangeCoachVoiceActivity" />
         <activity android:name=".features.setting.ChangeExerciseSpeedActivity" />
         <activity android:name=".features.setting.ChangeExplanationLengthActivity" />

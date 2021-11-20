@@ -21,6 +21,14 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
 
     override fun initListeners() {
         super.initListeners()
+        binding.changeProfileButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    this,
+                    ChangeProfileActivity::class.java
+                ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            )
+        }
         binding.changeCoachVoiceButton.setOnClickListener {
             startActivity(
                 Intent(
