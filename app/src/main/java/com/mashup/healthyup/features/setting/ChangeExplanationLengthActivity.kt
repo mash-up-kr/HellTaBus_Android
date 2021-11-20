@@ -16,14 +16,14 @@ class ChangeExplanationLengthActivity :
         super.initViews()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_change_explanation_length)
         with(binding) {
-            radioGroup.check(binding.radioButton2.id)
-            saveButton.isEnabled = false
+            radioGroup.check(binding.btnRadio1.id)
+            btnSave.isEnabled = false
         }
     }
 
     override fun initListeners() {
         super.initListeners()
-        binding.appbar.backButton.setOnClickListener {
+        binding.appbar.btnBack.setOnClickListener {
             finish()
         }
     }

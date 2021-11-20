@@ -19,7 +19,7 @@ class ChangeProfileActivity :
 
     override fun initListeners() {
         super.initListeners()
-        binding.appbar.backButton.setOnClickListener {
+        binding.appbar.btnBack.setOnClickListener {
             finish()
         }
     }

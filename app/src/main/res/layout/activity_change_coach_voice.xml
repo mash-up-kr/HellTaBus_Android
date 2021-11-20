@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/coachVoiceTitle1"
+            android:id="@+id/tv_coach_voice_title_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -35,49 +35,49 @@
             app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
         <TextView
-            android:id="@+id/coachVoiceTitle2"
+            android:id="@+id/tv_coach_voice_title_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/change_coach_title_2"
             android:textAppearance="@style/Typography.HeadLine3.White"
             android:textColor="@color/color_primary"
-            app:layout_constraintStart_toEndOf="@+id/coachVoiceTitle1"
-            app:layout_constraintTop_toTopOf="@+id/coachVoiceTitle1" />
+            app:layout_constraintStart_toEndOf="@+id/tv_coach_voice_title_1"
+            app:layout_constraintTop_toTopOf="@+id/tv_coach_voice_title_1" />
 
         <TextView
-            android:id="@+id/coachVoiceTitle3"
+            android:id="@+id/tv_coach_voice_title_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/change_coach_title_3"
             android:textAppearance="@style/Typography.HeadLine2.White"
             android:textColor="@color/color_on_background"
-            app:layout_constraintStart_toEndOf="@+id/coachVoiceTitle2"
-            app:layout_constraintTop_toTopOf="@+id/coachVoiceTitle2" />
+            app:layout_constraintStart_toEndOf="@+id/tv_coach_voice_title_2"
+            app:layout_constraintTop_toTopOf="@+id/tv_coach_voice_title_2" />
 
         <TextView
-            android:id="@+id/coachVoiceTitle4"
+            android:id="@+id/tv_coach_voice_title_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/change_coach_title_4"
             android:textAppearance="@style/Typography.HeadLine2.White"
             android:textColor="@color/color_on_background"
-            app:layout_constraintStart_toStartOf="@+id/coachVoiceTitle1"
-            app:layout_constraintTop_toBottomOf="@+id/coachVoiceTitle1" />
+            app:layout_constraintStart_toStartOf="@+id/tv_coach_voice_title_1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_coach_voice_title_1" />
 
         <TextView
-            android:id="@+id/coachVoiceSubTitle"
+            android:id="@+id/tv_coach_voice_sub_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/change_coach_sub_title"
             android:textAppearance="@style/Typography.SmallBody1.White"
             android:textColor="@color/color_on_background_variant_2"
-            app:layout_constraintStart_toStartOf="@+id/coachVoiceTitle4"
-            app:layout_constraintTop_toBottomOf="@+id/coachVoiceTitle4" />
+            app:layout_constraintStart_toStartOf="@+id/tv_coach_voice_title_4"
+            app:layout_constraintTop_toBottomOf="@+id/tv_coach_voice_title_4" />
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/radio_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -86,10 +86,10 @@
             android:paddingEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/coachVoiceSubTitle">
+            app:layout_constraintTop_toBottomOf="@+id/tv_coach_voice_sub_title">
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radioButton1"
+                android:id="@+id/btn_radio_1"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:background="@drawable/selector_setting_radio_button"
@@ -100,7 +100,7 @@
                 android:textColor="@drawable/selector_setting_radio_text" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/btn_radio_2"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginTop="10dp"
@@ -112,7 +112,7 @@
                 android:textColor="@drawable/selector_setting_radio_text" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/btn_radio_3"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginTop="10dp"
@@ -127,7 +127,7 @@
         </RadioGroup>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/saveButton"
+            android:id="@+id/btn_save"
             android:layout_width="230dp"
             android:layout_height="54dp"
             android:layout_marginBottom="40dp"

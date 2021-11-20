@@ -40,7 +40,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/appbar">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/myInfoTextView"
+                    android:id="@+id/tv_my_info_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -51,7 +51,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/changeProfileButton"
+                    android:id="@+id/btn_chagne_profile"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_marginTop="7dp"
@@ -66,10 +66,10 @@
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/myInfoTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_my_info_title" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/splitSettingTextView"
+                    android:id="@+id/tv_split_setting_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -78,10 +78,10 @@
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="@color/color_on_background"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/changeProfileButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_chagne_profile" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/splitSettingButton"
+                    android:id="@+id/btn_split_setting"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_marginTop="7dp"
@@ -96,10 +96,10 @@
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/splitSettingTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_split_setting_title" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/exerciseAudioSettingTextView"
+                    android:id="@+id/tv_exercise_audio_setting_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -108,10 +108,10 @@
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="@color/color_on_background"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/splitSettingButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_split_setting" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/changeCoachVoiceButton"
+                    android:id="@+id/btn_change_coach_voice"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_marginTop="7dp"
@@ -126,10 +126,10 @@
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/exerciseAudioSettingTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_exercise_audio_setting_title" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/changeExerciseSpeedButton"
+                    android:id="@+id/btn_change_exercise_speed"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:background="@drawable/layer_button"
@@ -143,10 +143,10 @@
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/changeCoachVoiceButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_change_coach_voice" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/changeExplanationLengthButton"
+                    android:id="@+id/btn_change_explanation_length"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:background="@drawable/layer_button"
@@ -160,10 +160,10 @@
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/changeExerciseSpeedButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_change_exercise_speed" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/vocTextView"
+                    android:id="@+id/tv_voc_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -172,10 +172,10 @@
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="@color/color_on_background"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/changeExplanationLengthButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_change_explanation_length" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/sendEmailButton"
+                    android:id="@+id/btn_send_email"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_marginTop="7dp"
@@ -190,10 +190,10 @@
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/vocTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_voc_title" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/appInfoTextView"
+                    android:id="@+id/tv_app_info_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -202,10 +202,10 @@
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
                     android:textColor="@color/color_on_background"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sendEmailButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_send_email" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/versionInfoView"
+                    android:id="@+id/view_version_info"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:layout_marginTop="7dp"
@@ -213,7 +213,7 @@
                     android:orientation="horizontal"
                     android:paddingStart="24dp"
                     android:paddingEnd="17dp"
-                    app:layout_constraintTop_toBottomOf="@+id/appInfoTextView">
+                    app:layout_constraintTop_toBottomOf="@+id/tv_app_info_title">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -229,7 +229,7 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/versionTextView"
+                        android:id="@+id/tv_version"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -239,7 +239,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/termOfUseButton"
+                    android:id="@+id/btn_term_of_use"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:background="@drawable/layer_button"
@@ -253,10 +253,10 @@
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/versionInfoView" />
+                    app:layout_constraintTop_toBottomOf="@+id/view_version_info" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/privacyStatementButton"
+                    android:id="@+id/btn_privacy_statement"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:background="@drawable/layer_button"
@@ -270,10 +270,10 @@
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/termOfUseButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_term_of_use" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/openSourceButton"
+                    android:id="@+id/btn_open_source"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
                     android:background="@drawable/layer_button"
@@ -287,7 +287,7 @@
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/privacyStatementButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_privacy_statement" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

@@ -21,7 +21,7 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
 
     override fun initListeners() {
         super.initListeners()
-        binding.changeProfileButton.setOnClickListener {
+        binding.btnChagneProfile.setOnClickListener {
             startActivity(
                 Intent(
                     this,
@@ -29,7 +29,7 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
                 ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             )
         }
-        binding.changeCoachVoiceButton.setOnClickListener {
+        binding.btnChangeCoachVoice.setOnClickListener {
             startActivity(
                 Intent(
                     this,
@@ -37,7 +37,7 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
                 ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             )
         }
-        binding.changeExerciseSpeedButton.setOnClickListener {
+        binding.btnChangeExerciseSpeed.setOnClickListener {
             startActivity(
                 Intent(
                     this,
@@ -45,7 +45,7 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
                 ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             )
         }
-        binding.changeExplanationLengthButton.setOnClickListener {
+        binding.btnChangeExplanationLength.setOnClickListener {
             startActivity(
                 Intent(
                     this,
