@@ -15,6 +15,7 @@ abstract class BaseActivity<B : ViewDataBinding>(private val layoutId: Int) : Ap
         binding.lifecycleOwner = this
         initViews()
         initObserves()
+        initListeners()
     }
 
     open fun initViews() {
@@ -22,6 +23,10 @@ abstract class BaseActivity<B : ViewDataBinding>(private val layoutId: Int) : Ap
     }
 
     open fun initObserves() {
+        /* explicitly empty */
+    }
+
+    open fun initListeners() {
         /* explicitly empty */
     }
 }
