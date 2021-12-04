@@ -26,7 +26,7 @@ object WebAPIController {
             FunctionName.GET_SERVER_TOKEN -> {
                 extra.addProperty(
                     "accessToken",
-                    "Bearer ${preference.get("token", "")}"
+                    "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoibGVvLmxlZUBkYWFuZ24uY29tIiwiaWF0IjoxNjM4NjQ5NjA3LCJleHAiOjE2NDcyODk2MDcsImlzcyI6ImhlbGx0YWJ1cyJ9.X5EKKAeXocZIQCz_MKF3_O5del0c5cQLLBe3NOx6jZWf4FcI2d5mto9Zs3bfJATrp3kNbBcEoOK8c0rC3NrXsg"
                 )
                 returnMsg = makeReturnMsg(200, "Success", extra, transactionId)
             }
@@ -34,6 +34,9 @@ object WebAPIController {
                 if (options != null) {
                     if (options.has("target")) {
                         requestData.addProperty("target", options.get("target").asString)
+                    }
+                    if (options.has("loadUrl")) {
+                        requestData.addProperty("loadUrl", options.get("loadUrl").asString)
                     }
                     if (options.has("exerciseList")) {
                         requestData.addProperty(
