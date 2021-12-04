@@ -1,4 +1,4 @@
-package com.mashup.healthyup.features
+package com.mashup.healthyup.features.launcher
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivityLauncherBinding
-import com.mashup.healthyup.features.LauncherViewModel.Action.StartLogin
+import com.mashup.healthyup.features.launcher.LauncherViewModel.Action.StartLogin
 import com.mashup.healthyup.features.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect

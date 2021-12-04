@@ -11,7 +11,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:background="@color/color_primary_variant3"
-		tools:context=".features.ExerciseSummaryActivity">
+		tools:context=".features.summary.ExerciseSummaryActivity">
 
 		<FrameLayout
 			android:layout_width="match_parent"

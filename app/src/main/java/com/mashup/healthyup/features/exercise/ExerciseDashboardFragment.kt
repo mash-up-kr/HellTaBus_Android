@@ -17,7 +17,7 @@ import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseFragment
 import com.mashup.healthyup.databinding.ActivityExerciseDashboardBinding
 import com.mashup.healthyup.databinding.LayoutProgressBinding
-import com.mashup.healthyup.features.LauncherViewModel
+import com.mashup.healthyup.features.launcher.LauncherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

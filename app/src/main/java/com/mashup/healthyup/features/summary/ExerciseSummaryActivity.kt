@@ -1,4 +1,4 @@
-package com.mashup.healthyup.features
+package com.mashup.healthyup.features.summary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

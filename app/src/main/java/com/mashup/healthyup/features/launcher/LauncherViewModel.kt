@@ -1,4 +1,4 @@
-package com.mashup.healthyup.features
+package com.mashup.healthyup.features.launcher
 
 import androidx.lifecycle.viewModelScope
 import com.mashup.healthyup.base.BaseViewModel
