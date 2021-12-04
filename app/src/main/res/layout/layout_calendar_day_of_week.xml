@@ -3,14 +3,14 @@
 
 	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="30dp"
 		android:orientation="horizontal"
 		android:weightSum="7">
 
 		<androidx.appcompat.widget.AppCompatTextView
 			style="@style/Typography.SmallBody2.White"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:layout_gravity="center"
 			android:layout_weight="1"
 			android:gravity="center"
@@ -30,7 +30,7 @@
 		<androidx.appcompat.widget.AppCompatTextView
 			style="@style/Typography.SmallBody2.White"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:layout_gravity="center"
 			android:layout_weight="1"
 			android:gravity="center"
@@ -40,7 +40,7 @@
 		<androidx.appcompat.widget.AppCompatTextView
 			style="@style/Typography.SmallBody2.White"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:layout_gravity="center"
 			android:layout_weight="1"
 			android:gravity="center"
@@ -50,7 +50,7 @@
 		<androidx.appcompat.widget.AppCompatTextView
 			style="@style/Typography.SmallBody2.White"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:layout_gravity="center"
 			android:layout_weight="1"
 			android:gravity="center"
@@ -60,7 +60,7 @@
 		<androidx.appcompat.widget.AppCompatTextView
 			style="@style/Typography.SmallBody2.White"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:layout_gravity="center"
 			android:layout_weight="1"
 			android:gravity="center"
@@ -70,7 +70,7 @@
 		<androidx.appcompat.widget.AppCompatTextView
 			style="@style/Typography.SmallBody2.White"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:layout_gravity="center"
 			android:layout_weight="1"
 			android:gravity="center"

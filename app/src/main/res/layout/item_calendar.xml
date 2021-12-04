@@ -8,7 +8,7 @@
 
 		<variable
 			name="model"
-			type="com.mashup.healthyup.features.history.ItemCalenderModel" />
+			type="com.mashup.healthyup.features.history.model.HistoryItem" />
 	</data>
 
 	<LinearLayout

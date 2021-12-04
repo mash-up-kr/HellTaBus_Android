@@ -19,9 +19,8 @@
         android:hardwareAccelerated="true"
         android:theme="@style/Theme.HealthyUp"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".features.launcher.LauncherActivity">
-
+        <activity android:name=".features.launcher.LauncherActivity"/>
+        <activity android:name=".features.history.HistoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -39,4 +39,6 @@
 	<color name="color_item_calender_3">#5484FF</color>
 	<color name="color_item_calender_4">#30F496</color>
 	<color name="color_item_calender_5">#FFB186</color>
+
+	<color name="color_item_calender_week">#BCC1CD</color>
 </resources>

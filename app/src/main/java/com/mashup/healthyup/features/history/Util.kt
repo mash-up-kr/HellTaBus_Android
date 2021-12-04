@@ -17,10 +17,8 @@ object BindingAdapters {
     @JvmStatic
     @BindingAdapter("imageTint")
     fun setImageTint(view: ImageView, id: Int?) {
-        Log.e("12312", id.toString())
-        id?.let {
+        if (id != 0 && id !=null) {
             view.setColorFilter(view.context.getColor(id), PorterDuff.Mode.SRC_ATOP)
-            view
         }
     }
 

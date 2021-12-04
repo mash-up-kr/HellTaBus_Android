@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.healthyup.R
 import com.mashup.healthyup.databinding.ItemCalendarBinding
+import com.mashup.healthyup.features.history.model.ExerciseModel
+import com.mashup.healthyup.features.history.model.HistoryItem
 import java.util.*
 
 class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
 
     private var dateList: ArrayList<Int> = arrayListOf()
-    private var items: List<ItemCalenderModel> = listOf()
+    private var items: List<HistoryItem> = listOf()
     lateinit var defineCalendar: DefineCalendar
     lateinit var date: Calendar
 
@@ -35,16 +37,16 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>
         private val binding: ItemCalendarBinding? =
             androidx.databinding.DataBindingUtil.bind(itemView)
 
-        fun bind(item: ItemCalenderModel) {
+        fun bind(item: HistoryItem) {
             binding?.model = item
 
             binding?.tvCalenderDays?.let {
                 if (position !in firstDateIndex..lastDateIndex) {
                     it.setTextColor(it.context.getColor(R.color.color_on_background_variant_3))
+                } else {
+                    it.setTextColor(it.context.getColor(R.color.color_on_background_variant_1))
                 }
-                //TODO : 고민: bind 해줄 때 5개원 변경할지 bind 된 midel 에서 처리할지
             }
-
         }
     }
 
@@ -52,11 +54,11 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>
         val item = items.toMutableList()
         item.forEachIndexed { index, model ->
             if (index in firstDateIndex..lastDateIndex) {
-                item[index] = ItemCalenderModel(
-                    model.day, exerciseList.lastOrNull {
-                        it.day == model.day
-                    }?.status
-                )
+                exerciseList.lastOrNull { it.day == model.day }?.let {
+                    item[index] = HistoryItem(
+                        it.day, it.dayOfWeek, it.part, it.subtitle, it.status
+                    )
+                }
             }
         }
         items = item
@@ -69,7 +71,7 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>
         defineCalendar.initBaseCalendar()
         this.dateList = defineCalendar.dateList
         this.items = dateList.map {
-            ItemCalenderModel(it, null)
+            HistoryItem(it, "", "", "", null)
         }
         firstDateIndex = defineCalendar.prevTail
         lastDateIndex = dateList.size - defineCalendar.nextHead - 1
