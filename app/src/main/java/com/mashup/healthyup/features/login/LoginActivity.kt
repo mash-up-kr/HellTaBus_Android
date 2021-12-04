@@ -7,6 +7,9 @@ import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -14,23 +17,24 @@ import com.google.android.gms.common.api.ApiException
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivityLoginBinding
+import com.mashup.healthyup.features.login.LoginViewModel.Action.ClickLogin
+import com.mashup.healthyup.features.login.LoginViewModel.Action.TokenSaved
+import com.mashup.healthyup.features.web.HealthyUpWebViewActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login) {
 
     private val viewModel by viewModels<LoginViewModel>()
     private val resultLauncher: ActivityResultLauncher<Intent> =
-        registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
                 try {
                     val account = task.getResult(ApiException::class.java)
-                    Log.e(TAG, "firebaseAuthWithGoogle idToken:" + account.idToken)
-
-                    // TODO : idToken을 preference에 저장하고, webview getServerToken에서 전달해야함.
+                    viewModel.doOnGoogleLoginSuccess(account.idToken)
                 } catch (e: ApiException) {
                     Log.e(TAG, "Google sign in failed", e)
                 }
@@ -51,9 +55,24 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
 
         binding.viewModel = viewModel
 
-        viewModel.onClickLogin.observe(this) {
-            val intent = googleSignInClient.signInIntent
-            resultLauncher.launch(intent)
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.channelFlow.collect { action ->
+                    when (action) {
+                        ClickLogin -> {
+                            val intent = googleSignInClient.signInIntent
+                            resultLauncher.launch(intent)
+                        }
+                        is TokenSaved -> {
+                            startWebViewActivity()
+                        }
+                    }
+                }
+            }
         }
+    }
+
+    private fun startWebViewActivity() {
+        HealthyUpWebViewActivity.start(this)
     }
 }

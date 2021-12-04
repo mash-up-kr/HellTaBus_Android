@@ -7,7 +7,7 @@ import android.content.SharedPreferences
 
 interface WebPreference {
     val preference: SharedPreferences
-    operator fun <T : Any> set(key: String, value: T?)
-    fun getInt(key: String, defaultValue: Int): Int
-    fun getString(key: String, defaultValue: String): String
+    fun <T : Any> apply(key: String, value: T?)
+    fun <T : Any> commit(key: String, value: T?)
+    fun <T : Any> get(key: String, defaultValue: T): T
 }

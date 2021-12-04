@@ -2,6 +2,7 @@ package com.mashup.healthyup.di
 
 import android.content.Context
 import com.google.gson.Gson
+import com.mashup.healthyup.BuildConfig
 import com.mashup.healthyup.ExecutorProvider
 import com.mashup.healthyup.bridge.WebPreference
 import com.mashup.healthyup.data.repository.ExerciseHistoryRepositoryImpl
@@ -72,7 +73,7 @@ abstract class AppModule {
         @Singleton
         @Provides
         fun provideWebPreference(@ApplicationContext context: Context): WebPreference {
-            return WebPreferenceImpl(context)
+            return WebPreferenceImpl(context, BuildConfig.APPLICATION_ID)
         }
     }
 }

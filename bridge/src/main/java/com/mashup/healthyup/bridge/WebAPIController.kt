@@ -26,7 +26,7 @@ object WebAPIController {
             FunctionName.GET_SERVER_TOKEN -> {
                 extra.addProperty(
                     "serverToken",
-                    "Bearer ${preference.getString("token", "")}"
+                    "Bearer ${preference.get("token", "")}"
                 )
                 returnMsg = makeReturnMsg(200, "Success", extra, transactionId)
             }

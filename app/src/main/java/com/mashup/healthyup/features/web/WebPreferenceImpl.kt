@@ -3,58 +3,63 @@
  */
 package com.mashup.healthyup.features.web
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Parcelable
-import com.google.gson.Gson
 import com.mashup.healthyup.bridge.WebPreference
 
-class WebPreferenceImpl constructor(private val applicationContext: Context) : WebPreference {
+class WebPreferenceImpl constructor(
+    private val applicationContext: Context,
+    private val applicationId: String
+) : WebPreference {
 
     override val preference: SharedPreferences
-        get() = applicationContext.getSharedPreferences("", Context.MODE_PRIVATE)
+        get() = applicationContext.getSharedPreferences("$applicationId.pref", Context.MODE_PRIVATE)
 
-    private val editor: SharedPreferences.Editor
-        get() = preference.edit()
-
-    private val gson: Gson by lazy { Gson() }
-
-    override fun <T : Any> set(key: String, value: T?) {
+    override fun <T : Any> apply(key: String, value: T?) {
         when (value) {
-            is String? -> edit { it.putString(key, value) }
-            is Int -> edit { it.putInt(key, value) }
-            is Boolean -> edit { it.putBoolean(key, value) }
-            is Float -> edit { it.putFloat(key, value) }
-            is Long -> edit { it.putLong(key, value) }
-            is Parcelable -> edit { it.putString(key, gson.toJson(value)) }
+            is String? -> apply { it.putString(key, value) }
+            is Int -> apply { it.putInt(key, value) }
+            is Boolean -> apply { it.putBoolean(key, value) }
+            is Float -> apply { it.putFloat(key, value) }
+            is Long -> apply { it.putLong(key, value) }
             else -> throw UnsupportedOperationException("Not yet implemented")
         }
     }
 
-    override fun getInt(key: String, defaultValue: Int): Int {
-        return preference.getInt(key, defaultValue)
+    override fun <T : Any> commit(key: String, value: T?) {
+        return when (value) {
+            is String? -> commit { it.putString(key, value) }
+            is Int -> commit { it.putInt(key, value) }
+            is Boolean -> commit { it.putBoolean(key, value) }
+            is Float -> commit { it.putFloat(key, value) }
+            is Long -> commit { it.putLong(key, value) }
+            else -> throw UnsupportedOperationException("Not yet implemented")
+        }
     }
 
-    override fun getString(key: String, defaultValue: String): String {
-        return preference.getString(key, defaultValue) ?: defaultValue
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : Any> get(key: String, defaultValue: T): T {
+        return when (defaultValue) {
+            is String -> preference.getString(key, defaultValue) as T
+            is Int -> preference.getInt(key, defaultValue) as T
+            is Boolean -> preference.getBoolean(key, defaultValue) as T
+            is Float -> preference.getFloat(key, defaultValue) as T
+            is Long -> preference.getLong(key, defaultValue) as T
+            else -> throw UnsupportedOperationException("Not yet implemented")
+        }
     }
 
-//    private inline fun <reified T : Any> getInternals(key: String, defaultValue: T?): T? {
-//        return when (T::class) {
-//            String::class -> preference.getString(key, defaultValue as? String) as T?
-//            Int::class -> preference.getInt(key, defaultValue as? Int ?: -1) as T?
-//            Boolean::class -> preference.getBoolean(key, defaultValue as? Boolean ?: false) as T?
-//            Float::class -> preference.getFloat(key, defaultValue as? Float ?: -1f) as T?
-//            Long::class -> preference.getLong(key, defaultValue as? Long ?: -1) as T?
-//            else -> {
-//                val stringValue = preference.getString(key, null)
-//                stringValue?.let { getGson().fromJson(it, T::class.java) }
-//            }
-//        }
-//    }
-
-    private inline fun edit(operation: (SharedPreferences.Editor) -> Unit) {
+    private inline fun apply(operation: (SharedPreferences.Editor) -> Unit) {
+        val editor = preference.edit()
         operation(editor)
         editor.apply()
+    }
+
+    @SuppressLint("ApplySharedPref")
+    private inline fun commit(operation: (SharedPreferences.Editor) -> Unit) {
+        val editor = preference.edit()
+        operation(editor)
+        editor.commit()
     }
 }

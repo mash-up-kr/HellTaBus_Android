@@ -1,36 +1,37 @@
 package com.mashup.healthyup.features.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mashup.healthyup.base.BaseViewModel
-import com.mashup.healthyup.base.Event
-import com.mashup.healthyup.domain.usecase.GetUserUseCase
+import com.mashup.healthyup.bridge.WebPreference
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val usecase: GetUserUseCase
+    private val webPreference: WebPreference
 ) : BaseViewModel() {
 
-    private val _onClickLogin = MutableLiveData<Event<Unit>>()
-    val onClickLogin: LiveData<Event<Unit>> = _onClickLogin
+    sealed class Action {
+        object ClickLogin : Action()
+        data class TokenSaved(val idToken: String?) : Action()
+    }
 
-    init {
+    private val channel = Channel<Action>(Channel.BUFFERED)
+    val channelFlow: Flow<Action>
+        get() = channel.receiveAsFlow()
+
+    fun doOnGoogleLoginSuccess(idToken: String?) {
         viewModelScope.launch {
-            usecase.invoke()
-                .onSuccess { user ->
-                    // TODO: user 객체 사용
-                }
-                .onFailure { error ->
-                    // TODO: 에러 처리
-                }
+            webPreference.apply("token", idToken)
+            channel.trySend(Action.TokenSaved(idToken))
         }
     }
 
     fun onClickLogin() {
-        _onClickLogin.value = Event(Unit)
+        channel.trySend(Action.ClickLogin)
     }
 }
