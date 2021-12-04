@@ -4,6 +4,7 @@ object WebConstants {
     const val FUNCTION_NAME = "functionName"
 
     object Target {
+        const val HOME = "home"
         const val SETTING = "setting"
         const val HISTORY = "history"
         const val EXERCISE = "exercise"

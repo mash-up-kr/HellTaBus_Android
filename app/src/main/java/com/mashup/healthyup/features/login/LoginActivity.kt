@@ -73,6 +73,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     }
 
     private fun startWebViewActivity() {
-        HealthyUpWebViewActivity.start(this)
+        HealthyUpWebViewActivity.start(
+            context = this,
+            loadUrl = "https://helltabus-dev.netlify.app/survey"
+        )
     }
 }

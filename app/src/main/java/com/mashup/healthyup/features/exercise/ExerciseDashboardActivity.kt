@@ -24,14 +24,16 @@ class ExerciseDashboardActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding.viewModel = viewModel
 
         lifecycleScope.launchWhenStarted {
+            // TODO: 홈(웹뷰) 에서 넘겨받은 운동정보 리스트를 가지고, Graph 설정
             binding.graphView.setCueList()
         }
     }
 
     override fun initViews() {
-        // TODO : layout_progress 동적으로 addView
+        // TODO : TODO: 홈(웹뷰) 에서 넘겨받은 운동정보 리스트를 가지고, 필요한 만큼 layout_progress 동적으로 addView
         addProgressViews()
     }
 

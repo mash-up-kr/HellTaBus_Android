@@ -9,11 +9,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.gson.JsonObject
+import com.mashup.healthyup.Key
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.bridge.WebAPIController
 import com.mashup.healthyup.bridge.WebAPIController.FunctionName
 import com.mashup.healthyup.bridge.WebPreference
+import com.mashup.healthyup.core.Empty
 import com.mashup.healthyup.databinding.ActivityHealthyUpWebViewBinding
 import com.mashup.healthyup.features.exercise.ExerciseDashboardActivity
 import com.mashup.healthyup.features.setting.SettingActivity
@@ -31,11 +33,16 @@ class HealthyUpWebViewActivity :
 
     private val viewModel by viewModels<HealthyUpWebViewViewModel>()
 
+    private val loadUrl by lazy {
+        intent?.getStringExtra(Key.LOAD_URL) ?: String.Empty
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
         binding.healthyUpWebView.setJavaScriptInterface(webPreference)
-        binding.healthyUpWebView.loadUrl("https://helltabus-dev.netlify.app/survey")
+        binding.healthyUpWebView.loadUrl(loadUrl)
+        //binding.healthyUpWebView.loadUrl("https://helltabus-dev.netlify.app/survey")
         observeWebRequest()
     }
 
@@ -60,6 +67,13 @@ class HealthyUpWebViewActivity :
             }
             WebConstants.Target.HISTORY -> {
                 // TODO: 히스토리 (달력 화면) 으로 이동
+            }
+            WebConstants.Target.HOME -> {
+                // TODO: 웹에서 내려온, home url, access token, 만료시간을 파싱해서 처리
+                val loadUrl = options.get("loadUrl").asString
+                start(this, loadUrl) {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                }
             }
             WebConstants.Target.EXERCISE -> {
                 // TODO: 웹으로부터 받은 데이터 저장 추가 필요
@@ -88,6 +102,12 @@ class HealthyUpWebViewActivity :
 
         fun start(context: Context, action: Intent.() -> Unit = {}) {
             val intent = Intent(context, HealthyUpWebViewActivity::class.java).apply(action)
+            context.startActivity(intent)
+        }
+
+        fun start(context: Context, loadUrl: String, action: Intent.() -> Unit = {}) {
+            val intent = Intent(context, HealthyUpWebViewActivity::class.java).apply(action)
+            intent.putExtra(Key.LOAD_URL, loadUrl)
             context.startActivity(intent)
         }
     }
