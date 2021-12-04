@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="item_calender_circle">8dp</dimen>
+	<dimen name="item_calender_circle_margin_left">-3dp</dimen>
+	<item name="item_calender_circle_padding" type="dimen" format="float">0.5dp</item>
+</resources>

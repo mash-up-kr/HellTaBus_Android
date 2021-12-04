@@ -21,6 +21,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".features.launcher.LauncherActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
