@@ -26,7 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".features.login.LoginActivity" />
         <activity android:name=".features.setting.ChangeProfileActivity" />
         <activity android:name=".features.setting.ChangeCoachVoiceActivity" />
@@ -35,6 +34,7 @@
         <activity android:name=".features.summary.ExerciseSummaryActivity" />
         <activity android:name=".features.setting.SettingActivity" />
         <activity android:name=".features.web.HealthyUpWebViewActivity" />
+
     </application>
 
 </manifest>
