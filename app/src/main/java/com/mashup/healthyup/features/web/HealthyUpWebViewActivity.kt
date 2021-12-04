@@ -37,7 +37,6 @@ class HealthyUpWebViewActivity :
         binding.viewModel = viewModel
         binding.healthyUpWebView.setJavaScriptInterface(webPreference)
         binding.healthyUpWebView.loadUrl("https://helltabus-dev.netlify.app/survey")
-        //binding.healthyUpWebView.loadUrl("http://172.30.1.6:3000/test/custom")
         observeWebRequest()
     }
 
@@ -45,7 +44,7 @@ class HealthyUpWebViewActivity :
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 WebAPIController.channelFlow.collect { jsonObject ->
-                    when (jsonObject.get("functionName").asString) {
+                    when (jsonObject.get(WebConstants.FUNCTION_NAME).asString) {
                         FunctionName.START_ACTIVITY -> startActivityFromWeb(jsonObject)
                     }
                 }
@@ -55,7 +54,7 @@ class HealthyUpWebViewActivity :
 
     private fun startActivityFromWeb(options: JsonObject) {
         when (options.get("target").asString) {
-            "setting" -> {
+            WebConstants.Target.SETTING -> {
                 startActivity(
                     Intent(
                         this@HealthyUpWebViewActivity,
@@ -63,7 +62,7 @@ class HealthyUpWebViewActivity :
                     ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 )
             }
-            "history" -> {
+            WebConstants.Target.HISTORY -> {
                 startActivity(
                     Intent(
                         this@HealthyUpWebViewActivity,
@@ -71,7 +70,7 @@ class HealthyUpWebViewActivity :
                     ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 )
             }
-            "exercise" -> {
+            WebConstants.Target.EXERCISE -> {
                 // TODO: 웹으로부터 받은 데이터 저장 추가 필요
                 val exerciseArray = options.get("exerciseList").asJsonPrimitive
                 Log.d("HealthyUpWebViewActivity", "exerciseArray: $exerciseArray")
