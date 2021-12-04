@@ -31,6 +31,7 @@
         <activity android:name=".features.setting.ChangeCoachVoiceActivity" />
         <activity android:name=".features.setting.ChangeExerciseSpeedActivity" />
         <activity android:name=".features.setting.ChangeExplanationLengthActivity" />
+        <activity android:name=".Exe" />
         <activity android:name=".features.summary.ExerciseSummaryActivity" />
         <activity android:name=".features.setting.SettingActivity" />
         <activity android:name=".features.web.HealthyUpWebViewActivity" />

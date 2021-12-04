@@ -3,34 +3,29 @@
  */
 package com.mashup.healthyup.features.exercise
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.core.os.bundleOf
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
+import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.mashup.healthyup.Key
 import com.mashup.healthyup.R
-import com.mashup.healthyup.base.BaseFragment
+import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivityExerciseDashboardBinding
 import com.mashup.healthyup.databinding.LayoutProgressBinding
-import com.mashup.healthyup.features.launcher.LauncherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ExerciseDashboardFragment :
-    BaseFragment<ActivityExerciseDashboardBinding>(R.layout.activity_exercise_dashboard) {
+class ExerciseDashboardActivity :
+    BaseActivity<ActivityExerciseDashboardBinding>(R.layout.activity_exercise_dashboard) {
 
-    private val launcherViewModel by activityViewModels<LauncherViewModel>()
     private val viewModel by viewModels<ExerciseDashboardViewModel>()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+        lifecycleScope.launchWhenStarted {
             binding.graphView.setCueList()
         }
     }
@@ -48,19 +43,20 @@ class ExerciseDashboardFragment :
         params.weight = 1f
 
         listOf(0, 1, 2).forEach { _ ->
-            val progressView = LayoutProgressBinding.inflate(LayoutInflater.from(context)).root
+            val progressView = LayoutProgressBinding.inflate(layoutInflater).root
             binding.layoutProgress.addView(progressView, params)
         }
     }
 
     companion object {
 
-        fun newInstance(exerciseId: Long): ExerciseDashboardFragment {
-            return ExerciseDashboardFragment().apply {
-                arguments = bundleOf(
-                    Key.EXERCISE_ID to exerciseId
-                )
-            }
+        fun intent(context: Context): Intent {
+            return Intent(context, ExerciseDashboardActivity::class.java)
+        }
+
+        fun start(context: Context, action: Intent.() -> Unit = {}) {
+            val intent = Intent(context, ExerciseDashboardActivity::class.java).apply(action)
+            context.startActivity(intent)
         }
     }
 }

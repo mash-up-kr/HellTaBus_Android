@@ -15,9 +15,8 @@ import com.mashup.healthyup.bridge.WebAPIController
 import com.mashup.healthyup.bridge.WebAPIController.FunctionName
 import com.mashup.healthyup.bridge.WebPreference
 import com.mashup.healthyup.databinding.ActivityHealthyUpWebViewBinding
-import com.mashup.healthyup.features.launcher.LauncherActivity
+import com.mashup.healthyup.features.exercise.ExerciseDashboardActivity
 import com.mashup.healthyup.features.setting.SettingActivity
-import com.mashup.healthyup.features.summary.ExerciseSummaryActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -55,31 +54,20 @@ class HealthyUpWebViewActivity :
     private fun startActivityFromWeb(options: JsonObject) {
         when (options.get("target").asString) {
             WebConstants.Target.SETTING -> {
-                startActivity(
-                    Intent(
-                        this@HealthyUpWebViewActivity,
-                        SettingActivity::class.java
-                    ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                )
+                SettingActivity.start(this) {
+                    flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+                }
             }
             WebConstants.Target.HISTORY -> {
-                startActivity(
-                    Intent(
-                        this@HealthyUpWebViewActivity,
-                        LauncherActivity::class.java
-                    ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                )
+                // TODO: 히스토리 (달력 화면) 으로 이동
             }
             WebConstants.Target.EXERCISE -> {
                 // TODO: 웹으로부터 받은 데이터 저장 추가 필요
                 val exerciseArray = options.get("exerciseList").asJsonPrimitive
                 Log.d("HealthyUpWebViewActivity", "exerciseArray: $exerciseArray")
-                startActivity(
-                    Intent(
-                        this@HealthyUpWebViewActivity,
-                        ExerciseSummaryActivity::class.java
-                    ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                )
+                ExerciseDashboardActivity.start(this) {
+                    flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+                }
             }
         }
     }
