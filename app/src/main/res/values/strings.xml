@@ -1,7 +1,62 @@
 <resources>
-	<string name="exercise_summary_title">고생하셨습니다\n오늘 루틴 끝!</string>
-	<string name="exercise_total_weight_title">오늘 내가 든 무게는?</string>
-	<string name="exercise_routine_list_title">오늘 내 루틴은?</string>
-	<string name="button_share">공유</string>
-	<string name="button_save_image">이미지 저장하기</string>
+    <!-- Common -->
+    <string name="confirm">확인</string>
+    <string name="save">저장</string>
+
+    <!-- ExerciseSummary -->
+    <string name="exercise_summary_title">고생하셨습니다\n오늘 루틴 끝!</string>
+    <string name="exercise_total_weight_title">오늘 내가 든 무게는?</string>
+    <string name="exercise_total_weight_subscribe_1">무려</string>
+    <string name="exercise_total_weight_subscribe_3">번쩍 드셨어요✨</string>
+    <string name="exercise_routine_list_title">오늘 내 루틴은?</string>
+    <string name="exercise_routine_list_subscribe_2">열심히 운동했어요💪</string>
+    <string name="button_save_image">이미지 저장하기</string>
+
+    <!-- ExerciseFeedbackButtonSheet -->
+    <string name="exercise_feedback_easy">쉬웠어요</string>
+    <string name="exercise_feedback_normal">적당했어요</string>
+    <string name="exercise_feedback_hard">어려웠어요</string>
+
+    <!-- SettingActivity -->
+    <string name="setting_title_my_info">내 정보</string>
+    <string name="setting_subtitle_change_profile">프로필 변경</string>
+    <string name="setting_title_split_setting">분할 설정</string>
+    <string name="setting_title_exercise_audio_setting">운동 오디오 설정</string>
+    <string name="setting_subtitle_change_coach_voice">코치 목소리 변경</string>
+    <string name="setting_subtitle_change_exercise_speed">운동 속도 변경</string>
+    <string name="setting_subtitle_change_exercise_explanation_length">운동 설명 길이 변경</string>
+    <string name="setting_title_voc">고객 문의</string>
+    <string name="setting_subtitle_send_email">문의 메일 보내기</string>
+    <string name="setting_title_app_info">앱 정보</string>
+    <string name="setting_subtitle_version_info">버전 정보</string>
+    <string name="setting_subtitle_terms_of_use">이용 약관</string>
+    <string name="setting_subtitle_privacy_statement">개인정보 취급 방침</string>
+    <string name="setting_subtitle_opensource">오픈 소스 이용 약관</string>
+
+    <!-- ChangeCoachVoiceActivity -->
+    <string name="change_coach_title_1">어떤</string>
+    <string name="change_coach_title_2">&#160;오디오 코치</string>
+    <string name="change_coach_title_3">와</string>
+    <string name="change_coach_title_4">함께 운동하고 싶으세요?</string>
+    <string name="change_coach_sub_title">목소리를 들어보면 선택이 더 쉬울거예요!</string>
+    <string name="change_coach_voice_case_1">교관같이 무서운 헬스 코치</string>
+    <string name="change_coach_voice_case_2">편안하게 운동을 도와주는 코치</string>
+    <string name="change_coach_voice_case_3">운동을 잘 아는 잼민이 코치</string>
+
+    <!-- ChangeExerciseSpeedActivity -->
+    <string name="change_exercise_speed_title_1">어떤 속도</string>
+    <string name="change_exercise_speed_title_2">로</string>
+    <string name="change_exercise_speed_title_3">운동하길 원하시나요?</string>
+    <string name="change_speed_sub_title">운동 경험이 적을수록 천천히 해보세요</string>
+    <string name="exercise_speed_slow">천천히</string>
+    <string name="exercise_speed_normal">보통</string>
+    <string name="exercise_speed_fast">빠르게</string>
+
+    <!-- ChangeExplanationLength -->
+    <string name="change_explanation_length_title_1">운동에 대한 설명</string>
+    <string name="change_explanation_length_title_2">을</string>
+    <string name="change_explanation_length_title_3">자세히 듣고 싶으신가요?</string>
+    <string name="change_explanation_length_sub_title">오디오 코치가 하는 설명의 길이가 달라져요</string>
+    <string name="change_explanation_length_yes">네, 차근차근 설명해주세요</string>
+    <string name="change_explanation_length_no">아니요, 자세한 설명은 안 들을래요</string>
 </resources>

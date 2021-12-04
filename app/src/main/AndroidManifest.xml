@@ -10,21 +10,32 @@
         android:maxSdkVersion="28" />
 
     <application
+        android:name=".HelltabusApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthyUp"
-        android:name=".HelltabusApplication">
-        <activity android:name="com.mashup.healthyup.features.LauncherActivity">
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".features.launcher.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.mashup.healthyup.features.login.LoginActivity"></activity>
+        <activity android:name=".features.login.LoginActivity" />
+        <activity android:name=".features.setting.ChangeProfileActivity" />
+        <activity android:name=".features.setting.ChangeCoachVoiceActivity" />
+        <activity android:name=".features.setting.ChangeExerciseSpeedActivity" />
+        <activity android:name=".features.setting.ChangeExplanationLengthActivity" />
+        <activity android:name=".Exe" />
+        <activity android:name=".features.summary.ExerciseSummaryActivity" />
+        <activity android:name=".features.setting.SettingActivity" />
+        <activity android:name=".features.web.HealthyUpWebViewActivity" />
+
     </application>
 
 </manifest>

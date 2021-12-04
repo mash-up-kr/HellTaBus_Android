@@ -68,14 +68,10 @@ class GraphCustom : View {
         paintCirclePoint.strokeWidth = 50F
     }
 
-
-    override fun onMeasure(widthwidthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(width, heightMeasureSpec)
-    }
-
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         drawProgressLine(canvas)
+        drawSubtitle(canvas)
     }
 
     private fun getTargetX(degree: Float, r: Int): Float {

@@ -27,6 +27,7 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Fr
 
         initViews()
         initObserves()
+        initListeners()
     }
 
     open fun initViews() {
@@ -34,6 +35,10 @@ abstract class BaseFragment<T : ViewDataBinding>(private val layoutId: Int) : Fr
     }
 
     open fun initObserves() {
+        /* explicitly empty */
+    }
+
+    open fun initListeners() {
         /* explicitly empty */
     }
 }
