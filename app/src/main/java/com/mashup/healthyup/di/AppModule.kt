@@ -1,6 +1,9 @@
 package com.mashup.healthyup.di
 
+import android.content.Context
+import com.google.gson.Gson
 import com.mashup.healthyup.ExecutorProvider
+import com.mashup.healthyup.bridge.WebPreference
 import com.mashup.healthyup.data.repository.ExerciseHistoryRepositoryImpl
 import com.mashup.healthyup.data.repository.ExerciseRepositoryImpl
 import com.mashup.healthyup.data.repository.UserRepositoryImpl
@@ -8,10 +11,12 @@ import com.mashup.healthyup.domain.repository.ExerciseHistoryRepository
 import com.mashup.healthyup.domain.repository.ExerciseRepository
 import com.mashup.healthyup.domain.repository.UserRepository
 import com.mashup.healthyup.domain.usecase.GetUserUseCase
+import com.mashup.healthyup.features.web.WebPreferenceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -62,6 +67,12 @@ abstract class AppModule {
             executorProvider: ExecutorProvider
         ): GetUserUseCase {
             return GetUserUseCase(userRepository, executorProvider.io())
+        }
+
+        @Singleton
+        @Provides
+        fun provideWebPreference(@ApplicationContext context: Context): WebPreference {
+            return WebPreferenceImpl(context)
         }
     }
 }

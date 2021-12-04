@@ -15,7 +15,8 @@ object WebAPIController {
         functionName: String,
         options: JsonObject?,
         transactionId: String,
-        jsInterface: JavaScriptInterface
+        jsInterface: JavaScriptInterface,
+        preference: WebPreference
     ) {
         val requestData = JsonObject()
         val extra = JsonObject()
@@ -25,7 +26,7 @@ object WebAPIController {
             FunctionName.GET_SERVER_TOKEN -> {
                 extra.addProperty(
                     "serverToken",
-                    "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJTYW5naGVlIiwiaWF0IjoxNjM2NTU5Mzk5LCJleHAiOjE2NjgwOTUzOTgsImF1ZCI6Ind3dy5leGFtcGxlLmNvbSIsInN1YiI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJ1c2VySWQiOiIxIiwiRW1haWwiOiJ0ZXN0QHRlc3QuY29tIn0.bPS8-InJf3eNcFQ3iZ_KwQrnYijRdZrN9gMkh8aLEsoEPBhEpSL8AmyTVnzEWND-YDyCaUUBx6v_0EIASz6gmA"
+                    "Bearer ${preference.getString("token", "")}"
                 )
                 returnMsg = makeReturnMsg(200, "Success", extra, transactionId)
             }

@@ -4,19 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
-import android.webkit.WebSettings
 import android.webkit.WebView
 
 /** WebView Customizing **/
 class HealthyUpWebView : WebView {
-
-    val javaScriptInterface: JavaScriptInterface = JavaScriptInterface(this)
-        get() {
-            addJavascriptInterface(field, "healthyup_native_api")
-            clearCache(true)
-            requestFocus()
-            return field
-        }
 
     constructor(context: Context) : super(context) {
         initHealthyUpWebView()
@@ -50,6 +41,13 @@ class HealthyUpWebView : WebView {
         clearCache(true)
         setWebContentsDebuggingEnabled(false)
         super.destroy()
+    }
+
+    fun setJavaScriptInterface(preference: WebPreference) {
+        val javaScriptInterface = JavaScriptInterface(this, preference)
+        addJavascriptInterface(javaScriptInterface, "healthyup_native_api")
+        clearCache(true)
+        requestFocus()
     }
 
     @SuppressLint("SetJavaScriptEnabled")

@@ -14,6 +14,7 @@ import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.bridge.JavaScriptInterface
 import com.mashup.healthyup.bridge.WebAPIController
 import com.mashup.healthyup.bridge.WebAPIController.FunctionName
+import com.mashup.healthyup.bridge.WebPreference
 import com.mashup.healthyup.databinding.ActivityHealthyUpWebViewBinding
 import com.mashup.healthyup.features.launcher.LauncherActivity
 import com.mashup.healthyup.features.setting.SettingActivity
@@ -21,20 +22,21 @@ import com.mashup.healthyup.features.summary.ExerciseSummaryActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HealthyUpWebViewActivity :
     BaseActivity<ActivityHealthyUpWebViewBinding>(R.layout.activity_healthy_up_web_view) {
 
-    private val javaScriptInterface: JavaScriptInterface
-        get() = binding.healthyUpWebView.javaScriptInterface
+    @Inject
+    lateinit var webPreference: WebPreference
 
     private val viewModel by viewModels<HealthyUpWebViewViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.viewModel = viewModel
+        binding.healthyUpWebView.setJavaScriptInterface(webPreference)
         binding.healthyUpWebView.loadUrl("https://helltabus-dev.netlify.app/survey")
         //binding.healthyUpWebView.loadUrl("http://172.30.1.6:3000/test/custom")
         observeWebRequest()

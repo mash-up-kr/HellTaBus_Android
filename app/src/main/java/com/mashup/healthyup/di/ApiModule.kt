@@ -53,7 +53,6 @@ object ApiModule {
         }
     }
 
-
     @Provides
     @Singleton
     fun provideGsonConverterFactory(): GsonConverterFactory {

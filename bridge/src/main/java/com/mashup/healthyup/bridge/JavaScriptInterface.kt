@@ -8,7 +8,10 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 
 /** WebView 에 올라온 URL 의 JavaScript 와 통신하는 부분 **/
-class JavaScriptInterface(private val webView: HealthyUpWebView) : JavaScriptInterfaceCallback {
+class JavaScriptInterface(
+    private val webView: HealthyUpWebView,
+    private val preference: WebPreference
+) : JavaScriptInterfaceCallback {
 
     private val TAG = javaClass.simpleName
     private val handler = Handler()
@@ -30,7 +33,7 @@ class JavaScriptInterface(private val webView: HealthyUpWebView) : JavaScriptInt
         val options = JsonParser.parseString(_options).asJsonObject
         Log.d(TAG, "[Web Call] API full name: $funcName / options: $_options / transactionId: $transactionId")
         handler.post {
-            WebAPIController.requestAPI(funcName, options, transactionId, this)
+            WebAPIController.requestAPI(funcName, options, transactionId, this, preference)
         }
     }
 
