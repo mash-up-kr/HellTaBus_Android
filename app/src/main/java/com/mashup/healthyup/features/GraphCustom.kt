@@ -71,7 +71,6 @@ class GraphCustom : View {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         drawProgressLine(canvas)
-        drawSubtitle(canvas)
     }
 
     private fun getTargetX(degree: Float, r: Int): Float {
