@@ -19,7 +19,7 @@
         android:theme="@style/Theme.HealthyUp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".features.setting.SettingActivity"
+            android:name=".features.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,8 @@
         <activity android:name=".features.setting.ChangeExplanationLengthActivity" />
         <activity android:name=".features.ExerciseSummaryActivity" />
         <activity android:name=".features.LauncherActivity" />
-        <activity android:name=".features.login.LoginActivity" />
+<!--        <activity android:name=".features.login.LoginActivity" />-->
+        <activity android:name=".features.setting.SettingActivity" />
     </application>
 
 </manifest>
