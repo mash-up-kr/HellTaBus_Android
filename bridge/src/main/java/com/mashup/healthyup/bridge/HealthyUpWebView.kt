@@ -10,11 +10,11 @@ import android.webkit.WebView
 class HealthyUpWebView : WebView {
 
     constructor(context: Context) : super(context) {
-        initHealthyUpWebView()
+        init()
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        initHealthyUpWebView()
+        init()
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -22,16 +22,7 @@ class HealthyUpWebView : WebView {
         attrs,
         defStyleAttr
     ) {
-        initHealthyUpWebView()
-    }
-
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
-        initHealthyUpWebView()
+        init()
     }
 
     override fun destroy() {
@@ -51,7 +42,7 @@ class HealthyUpWebView : WebView {
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    private fun initHealthyUpWebView() {
+    private fun init() {
         webChromeClient = HealthyUpWebChromeClient()
         setWebContentsDebuggingEnabled(true)
         settings.javaScriptEnabled = true

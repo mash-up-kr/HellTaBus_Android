@@ -11,7 +11,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.gson.JsonObject
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
-import com.mashup.healthyup.bridge.JavaScriptInterface
 import com.mashup.healthyup.bridge.WebAPIController
 import com.mashup.healthyup.bridge.WebAPIController.FunctionName
 import com.mashup.healthyup.bridge.WebPreference
@@ -83,6 +82,14 @@ class HealthyUpWebViewActivity :
                     ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                 )
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (binding.healthyUpWebView.canGoBack()) {
+            binding.healthyUpWebView.goBack()
+        } else {
+            super.onBackPressed()
         }
     }
 
