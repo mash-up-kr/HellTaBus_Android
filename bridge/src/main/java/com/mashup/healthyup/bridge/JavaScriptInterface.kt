@@ -33,7 +33,7 @@ class JavaScriptInterface(
         val options = JsonParser.parseString(_options).asJsonObject
         Log.d(TAG, "[Web Call] API full name: $funcName / options: $_options / transactionId: $transactionId")
         handler.post {
-            WebAPIController.requestAPI(funcName, options, transactionId, this, preference)
+            WebAPIController.requestAPI(funcName, options, transactionId, preference)
         }
     }
 

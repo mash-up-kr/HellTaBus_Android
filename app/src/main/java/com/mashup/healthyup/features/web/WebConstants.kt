@@ -8,5 +8,7 @@ object WebConstants {
         const val SETTING = "setting"
         const val HISTORY = "history"
         const val EXERCISE = "exercise"
+        const val ANDROID = "android"
+        const val WEB = "web"
     }
 }

@@ -39,6 +39,7 @@ class HealthyUpWebView : WebView {
     fun setJavaScriptInterface(preference: WebPreference) {
         val javaScriptInterface = JavaScriptInterface(this, preference)
         addJavascriptInterface(javaScriptInterface, "healthyup_native_api")
+        WebAPIController.jsInterface = javaScriptInterface
         clearCache(true)
         requestFocus()
     }

@@ -19,6 +19,7 @@ import com.mashup.healthyup.core.Empty
 import com.mashup.healthyup.databinding.ActivityHealthyUpWebViewBinding
 import com.mashup.healthyup.features.exercise.ExerciseDashboardActivity
 import com.mashup.healthyup.features.setting.SettingActivity
+import com.mashup.healthyup.features.web.WebConstants.Target
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -52,6 +53,9 @@ class HealthyUpWebViewActivity :
                 WebAPIController.channelFlow.collect { jsonObject ->
                     when (jsonObject.get(WebConstants.FUNCTION_NAME).asString) {
                         FunctionName.START_ACTIVITY -> startActivityFromWeb(jsonObject)
+                        FunctionName.SET_BACK_BUTTON_RECEIVE -> {
+                            binding.viewModel?.backButtonReceiveTarget = jsonObject.get("target").asString
+                        }
                     }
                 }
             }
@@ -60,22 +64,22 @@ class HealthyUpWebViewActivity :
 
     private fun startActivityFromWeb(options: JsonObject) {
         when (options.get("target").asString) {
-            WebConstants.Target.SETTING -> {
+            Target.SETTING -> {
                 SettingActivity.start(this) {
                     flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
                 }
             }
-            WebConstants.Target.HISTORY -> {
+            Target.HISTORY -> {
                 // TODO: 히스토리 (달력 화면) 으로 이동
             }
-            WebConstants.Target.HOME -> {
+            Target.HOME -> {
                 // TODO: 웹에서 내려온, home url, access token, 만료시간을 파싱해서 처리
                 val loadUrl = options.get("loadUrl").asString
                 start(this, loadUrl) {
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 }
             }
-            WebConstants.Target.EXERCISE -> {
+            Target.EXERCISE -> {
                 // TODO: 웹으로부터 받은 데이터 저장 추가 필요
                 val exerciseArray = options.get("exerciseList").asJsonPrimitive
                 Log.d("HealthyUpWebViewActivity", "exerciseArray: $exerciseArray")
@@ -87,10 +91,17 @@ class HealthyUpWebViewActivity :
     }
 
     override fun onBackPressed() {
-        if (binding.healthyUpWebView.canGoBack()) {
-            binding.healthyUpWebView.goBack()
-        } else {
-            super.onBackPressed()
+        when (binding.viewModel?.backButtonReceiveTarget) {
+            Target.ANDROID -> {
+                if (binding.healthyUpWebView.canGoBack()) {
+                    binding.healthyUpWebView.goBack()
+                } else {
+                    super.onBackPressed()
+                }
+            }
+            Target.WEB -> {
+                WebAPIController.sendNativeEvent(FunctionName.ON_BACK_BUTTON_PRESSED, null)
+            }
         }
     }
 

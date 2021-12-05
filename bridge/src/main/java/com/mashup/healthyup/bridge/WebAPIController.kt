@@ -11,11 +11,15 @@ object WebAPIController {
     val channelFlow: Flow<JsonObject>
         get() = channel.receiveAsFlow()
 
+    internal lateinit var jsInterface: JavaScriptInterface
+
+    private const val CALLBACK_EVENT = "CALLBACK_EVENT"
+    private const val BACK_BUTTON_EVENT = "BACK_BUTTON_EVENT"
+
     internal fun requestAPI(
         functionName: String,
         options: JsonObject?,
         transactionId: String,
-        jsInterface: JavaScriptInterface,
         preference: WebPreference
     ) {
         val requestData = JsonObject()
@@ -28,7 +32,7 @@ object WebAPIController {
                     "accessToken",
                     "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoibGVvLmxlZUBkYWFuZ24uY29tIiwiaWF0IjoxNjM4NjQ5NjA3LCJleHAiOjE2NDcyODk2MDcsImlzcyI6ImhlbGx0YWJ1cyJ9.X5EKKAeXocZIQCz_MKF3_O5del0c5cQLLBe3NOx6jZWf4FcI2d5mto9Zs3bfJATrp3kNbBcEoOK8c0rC3NrXsg"
                 )
-                returnMsg = makeReturnMsg(200, "Success", extra, transactionId)
+                returnMsg = makeReturnMsg(200, resultMsg = "Success", extra, transactionId = transactionId)
             }
             FunctionName.START_ACTIVITY -> {
                 if (options != null) {
@@ -45,29 +49,51 @@ object WebAPIController {
                         )
                     }
                 }
-                returnMsg = makeReturnMsg(200, "Request Success", extra, transactionId)
+                returnMsg = makeReturnMsg(resultMsg = "Request Success", extra = extra, transactionId = transactionId)
+            }
+            FunctionName.SET_BACK_BUTTON_RECEIVE -> {
+                if (options != null) {
+                    if (options.has("target")) {
+                        requestData.addProperty("target", options.get("target").asString)
+                    }
+                }
+                returnMsg = makeReturnMsg(resultMsg = "Request Success", extra = extra, transactionId = transactionId)
             }
         }
         channel.trySend(requestData)
         jsInterface.onJavaScriptResponse(returnMsg)
     }
 
+    fun sendNativeEvent(functionName: String, extra: JsonObject?) {
+        var returnMsg = JsonObject()
+        when (functionName) {
+            FunctionName.ON_BACK_BUTTON_PRESSED -> {
+                returnMsg = makeReturnMsg(eventType = BACK_BUTTON_EVENT)
+            }
+        }
+        jsInterface.onJavaScriptResponse(returnMsg)
+    }
+
     object FunctionName {
         const val GET_SERVER_TOKEN = "getServerToken"
         const val START_ACTIVITY = "startActivity"
+        const val SET_BACK_BUTTON_RECEIVE = "setBackButtonReceive"
+        const val ON_BACK_BUTTON_PRESSED = "onBackButtonPressed"
     }
 
     /** Web 에게 전달할 callback 생성 **/
     private fun makeReturnMsg(
-        resultCode: Int,
-        resultMsg: String,
-        extra: JsonObject,
-        transactionId: String
+        resultCode: Int? = 200,
+        resultMsg: String? = "Success",
+        extra: JsonObject? = null,
+        eventType: String? = CALLBACK_EVENT,
+        transactionId: String? = ""
     ): JsonObject {
         return JsonObject().apply {
             addProperty("result_cd", resultCode)
             addProperty("result_msg", resultMsg)
             add("extra", extra)
+            addProperty("eventType", eventType)
             addProperty("transactionId", transactionId)
         }
     }
