@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.view.View
+import android.webkit.WebSettings
 import android.webkit.WebView
 
 /** WebView Customizing **/
@@ -45,11 +47,29 @@ class HealthyUpWebView : WebView {
     private fun init() {
         webChromeClient = HealthyUpWebChromeClient()
         setWebContentsDebuggingEnabled(true)
-        settings.javaScriptEnabled = true
-        settings.useWideViewPort = true
-        settings.loadWithOverviewMode = true
-        settings.mediaPlaybackRequiresUserGesture = false
-
+        applySettings()
         setBackgroundColor(Color.argb(1, 0, 0, 0))
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    @Suppress("deprecation")
+    private fun applySettings() {
+        settings.apply {
+            javaScriptEnabled = true
+            javaScriptCanOpenWindowsAutomatically = true
+            useWideViewPort = true
+            domStorageEnabled = true
+            loadWithOverviewMode = true
+            mediaPlaybackRequiresUserGesture = false
+            allowFileAccess = true
+            allowContentAccess = true
+            allowFileAccessFromFileURLs = true
+            allowUniversalAccessFromFileURLs = true
+
+            // https://stackoverflow.com/questions/7422427/android-webview-slow
+            setRenderPriority(WebSettings.RenderPriority.HIGH)
+            setLayerType(View.LAYER_TYPE_HARDWARE, null)
+            cacheMode = WebSettings.LOAD_NO_CACHE
+        }
     }
 }

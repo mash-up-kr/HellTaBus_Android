@@ -16,6 +16,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/Theme.HealthyUp"
         android:usesCleartextTraffic="true">
         <activity
@@ -31,7 +32,6 @@
         <activity android:name=".features.setting.ChangeCoachVoiceActivity" />
         <activity android:name=".features.setting.ChangeExerciseSpeedActivity" />
         <activity android:name=".features.setting.ChangeExplanationLengthActivity" />
-        <activity android:name=".Exe" />
         <activity android:name=".features.summary.ExerciseSummaryActivity" />
         <activity android:name=".features.setting.SettingActivity" />
         <activity android:name=".features.web.HealthyUpWebViewActivity" />
