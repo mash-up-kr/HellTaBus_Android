@@ -12,7 +12,7 @@ class ResponseConverterWrapper<T>(
     override fun convert(value: ResponseBody): T? {
         val response = converter.convert(value)
         if (response is BaseResponse<*>) {
-            when (response.status) {
+            when (response.code) {
                 in 200..299 -> {
                     return response
                 }

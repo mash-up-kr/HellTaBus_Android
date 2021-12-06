@@ -1,8 +1,11 @@
 package com.mashup.healthyup.features.login
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.mashup.healthyup.base.BaseViewModel
 import com.mashup.healthyup.bridge.WebPreference
+import com.mashup.healthyup.domain.entity.AccessToken
+import com.mashup.healthyup.domain.usecase.GetUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -12,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val webPreference: WebPreference
+    private val webPreference: WebPreference,
+    private val userUseCase: GetUserUseCase,
 ) : BaseViewModel() {
 
     sealed class Action {
@@ -26,9 +30,15 @@ class LoginViewModel @Inject constructor(
 
     fun doOnGoogleLoginSuccess(idToken: String?) {
         viewModelScope.launch {
-            webPreference.apply("token", idToken)
+            //getSignIn(idToken).isPatched  값이 0이면 회원가입페이지로 1일경우 홈으
+            val accessToken = getSignIn(idToken)?.accessToken ?: ""
+            webPreference.apply("token", accessToken)
             channel.trySend(Action.TokenSaved(idToken))
         }
+    }
+
+    private suspend fun getSignIn(idToken: String?): AccessToken? {
+        return userUseCase.signIn(idToken ?: "")
     }
 
     fun onClickLogin() {
