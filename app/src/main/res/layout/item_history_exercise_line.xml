@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="model"
+			type="com.mashup.healthyup.features.history.model.HistoryExerciseItem" />
+	</data>
+
+	<androidx.appcompat.widget.LinearLayoutCompat
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/history_calender_item_height"
+		android:orientation="horizontal">
+
+		<ImageView
+			imageTint="@{model.getColorId()}"
+			android:layout_width="@dimen/history_calender_circle"
+			android:layout_height="@dimen/history_calender_circle"
+			android:layout_gravity="center"
+			android:background="@drawable/bg_item_calender_circle"
+			android:layout_marginEnd="@dimen/history_calender_circle_margin_end"
+			android:src="@drawable/ic_circle" />
+
+		<androidx.appcompat.widget.AppCompatTextView
+			style="@style/Typography.Body1.White"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:text="@{model.getColorText()}"
+			android:textColor="@color/color_on_background_variant_1" />
+	</androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

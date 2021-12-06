@@ -3,10 +3,8 @@
 	android:height="40dp"
 	android:viewportWidth="40"
 	android:viewportHeight="40">
-	<path
-		android:fillColor="#ffffff"
-		android:pathData="M40,40l-40,-0l-0,-40l40,-0z" />
-	<path
+
+<path
 		android:fillColor="#00000000"
 		android:pathData="M25,32L13,20L25,8"
 		android:strokeWidth="4"

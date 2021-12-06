@@ -18,6 +18,7 @@ import com.mashup.healthyup.bridge.WebPreference
 import com.mashup.healthyup.core.Empty
 import com.mashup.healthyup.databinding.ActivityHealthyUpWebViewBinding
 import com.mashup.healthyup.features.exercise.ExerciseDashboardActivity
+import com.mashup.healthyup.features.history.HistoryActivity
 import com.mashup.healthyup.features.setting.SettingActivity
 import com.mashup.healthyup.features.web.WebConstants.Target
 import dagger.hilt.android.AndroidEntryPoint
@@ -70,7 +71,9 @@ class HealthyUpWebViewActivity :
                 }
             }
             Target.HISTORY -> {
-                // TODO: 히스토리 (달력 화면) 으로 이동
+                HistoryActivity.start(this) {
+                    flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+                }
             }
             Target.HOME -> {
                 // TODO: 웹에서 내려온, home url, access token, 만료시간을 파싱해서 처리
