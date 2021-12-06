@@ -1,4 +1,4 @@
-package com.mashup.healthyup.features.history
+package com.mashup.healthyup.features.history.adapter
 
 import java.util.*
 

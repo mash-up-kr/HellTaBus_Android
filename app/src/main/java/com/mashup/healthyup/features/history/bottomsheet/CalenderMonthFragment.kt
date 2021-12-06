@@ -35,7 +35,6 @@ class MonthFragment : BaseFragment<FragmentHistoryMonthBinding>(R.layout.fragmen
         fun newInstance() = MonthFragment()
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = viewModel

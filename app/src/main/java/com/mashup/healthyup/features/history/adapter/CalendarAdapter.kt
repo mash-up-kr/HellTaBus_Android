@@ -1,4 +1,4 @@
-package com.mashup.healthyup.features.history
+package com.mashup.healthyup.features.history.adapter
 
 import android.view.LayoutInflater
 import android.view.View

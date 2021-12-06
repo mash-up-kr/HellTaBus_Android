@@ -1,10 +1,13 @@
 package com.mashup.healthyup.features.history
 
-import android.os.Bundle
+import android.content.Context
+import android.content.Intent
 import androidx.activity.viewModels
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivityHistoryBinding
+import com.mashup.healthyup.features.history.adapter.CalendarAdapter
+import com.mashup.healthyup.features.history.adapter.HistoryAdapter
 import com.mashup.healthyup.features.history.bottomsheet.MonthFragment
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,7 +24,6 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
             })
         }
     }
-
     private val historyAdapter by lazy {
         HistoryAdapter().apply {
             setOnItemClickListener(object : HistoryAdapter.OnItemClickListener {
@@ -31,11 +33,15 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+    override fun initViews() {
         binding.viewModel = viewModel
         initRecyclerView()
         initCalender()
+    }
+
+    override fun initObserves() {
+        super.initObserves()
         viewModel.exerciseList.observe(this) {
             historyAdapter.replaceAll(it)
             calendarAdapter.setWriteDayList(it)
@@ -44,6 +50,11 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         viewModel.onClickMonth.observe(this) {
             addSelectedCalenderMonthFragment()
         }
+    }
+
+    private fun initRecyclerView() {
+        binding.rvCalendar.adapter = calendarAdapter
+        binding.rvHistory.adapter = historyAdapter
     }
 
     private fun initCalender() {
@@ -66,8 +77,15 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         }.commit()
     }
 
-    private fun initRecyclerView() {
-        binding.rvCalendar.adapter = calendarAdapter
-        binding.rvHistory.adapter = historyAdapter
+
+    companion object {
+        fun intent(context: Context): Intent {
+            return Intent(context, HistoryActivity::class.java)
+        }
+
+        fun start(context: Context, action: Intent.() -> Unit = {}) {
+            val intent = Intent(context, HistoryActivity::class.java).apply(action)
+            context.startActivity(intent)
+        }
     }
 }
