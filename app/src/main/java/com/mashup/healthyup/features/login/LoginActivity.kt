@@ -17,8 +17,7 @@ import com.google.android.gms.common.api.ApiException
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivityLoginBinding
-import com.mashup.healthyup.features.login.LoginViewModel.Action.ClickLogin
-import com.mashup.healthyup.features.login.LoginViewModel.Action.TokenSaved
+import com.mashup.healthyup.features.login.LoginViewModel.Action.*
 import com.mashup.healthyup.features.web.HealthyUpWebViewActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -50,6 +49,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                 .build()
         )
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -63,8 +63,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                             val intent = googleSignInClient.signInIntent
                             resultLauncher.launch(intent)
                         }
-                        is TokenSaved -> {
-                            startWebViewActivity()
+                        StartWebViewMain -> {
+                            startWebViewActivity("https://helltabus-dev.netlify.app/exercise-routine")
+                        }
+                        StartWebViewSurvey -> {
+                            startWebViewActivity("https://helltabus-dev.netlify.app/survey")
                         }
                     }
                 }
@@ -72,10 +75,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
         }
     }
 
-    private fun startWebViewActivity() {
+    private fun startWebViewActivity(url: String) {
         HealthyUpWebViewActivity.start(
             context = this,
-            loadUrl = "https://helltabus-dev.netlify.app/survey"
+            loadUrl = url
         )
     }
 }

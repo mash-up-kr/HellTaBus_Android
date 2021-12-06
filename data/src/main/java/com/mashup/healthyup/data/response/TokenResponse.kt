@@ -3,8 +3,8 @@
  */
 package com.mashup.healthyup.data.response
 
-import com.mashup.healthyup.data.request.IdToken
+import com.mashup.healthyup.domain.entity.AccessToken
 
 data class TokenResponse(
-    override val data: IdToken?
-) : BaseResponse<IdToken>()
+    override val data: AccessToken?
+) : BaseResponse<AccessToken>()

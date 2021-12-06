@@ -30,7 +30,7 @@ object WebAPIController {
             FunctionName.GET_SERVER_TOKEN -> {
                 extra.addProperty(
                     "accessToken",
-                    "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImVtYWlsIjoibGVvLmxlZUBkYWFuZ24uY29tIiwiaWF0IjoxNjM4NjQ5NjA3LCJleHAiOjE2NDcyODk2MDcsImlzcyI6ImhlbGx0YWJ1cyJ9.X5EKKAeXocZIQCz_MKF3_O5del0c5cQLLBe3NOx6jZWf4FcI2d5mto9Zs3bfJATrp3kNbBcEoOK8c0rC3NrXsg"
+                    preference.preference.getString("token", "")
                 )
                 returnMsg = makeReturnMsg(200, resultMsg = "Success", extra, transactionId = transactionId)
             }

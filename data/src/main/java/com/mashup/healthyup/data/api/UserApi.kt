@@ -7,6 +7,7 @@ import com.mashup.healthyup.data.request.IdToken
 import com.mashup.healthyup.data.request.UserRequest
 import com.mashup.healthyup.data.response.TokenResponse
 import com.mashup.healthyup.data.response.UserResponse
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
@@ -14,10 +15,10 @@ import retrofit2.http.POST
 interface UserApi {
 
     @POST("user")
-    suspend fun register(token: IdToken): TokenResponse
+    suspend fun register(@Body token: IdToken): TokenResponse
 
     @POST("user/login")
-    suspend fun signIn(token: IdToken): TokenResponse
+    suspend fun signIn(@Body token: IdToken): TokenResponse
 
     @GET("user/login-info")
     suspend fun getCurrentUser(): UserResponse
