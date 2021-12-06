@@ -5,5 +5,5 @@ package com.mashup.healthyup.domain.entity
 
 data class AccessToken(
     val accessToken: String,
-    val isPatched: Int
+    val isPatched: Int?
 )
