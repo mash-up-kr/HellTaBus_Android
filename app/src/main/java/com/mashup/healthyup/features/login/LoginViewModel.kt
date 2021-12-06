@@ -29,7 +29,7 @@ class LoginViewModel @Inject constructor(
     fun doOnGoogleLoginSuccess(idToken: String?) {
         viewModelScope.launch {
             val accessToken = getSignIn(idToken)
-            webPreference.apply("token", accessToken)
+            webPreference.apply("token", "Bearer $accessToken")
             channel.trySend(Action.TokenSaved(idToken))
         }
     }
