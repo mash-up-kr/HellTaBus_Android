@@ -9,7 +9,7 @@ class DefineCalendar(date: Date) {
         const val LOW_OF_CALENDAR = 6
     }
 
-    val calendar = Calendar.getInstance()
+    private val calendar: Calendar = Calendar.getInstance()
 
     var prevTail = 0
     var nextHead = 0
