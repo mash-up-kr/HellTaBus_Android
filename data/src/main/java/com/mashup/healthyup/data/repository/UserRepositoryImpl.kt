@@ -18,24 +18,26 @@ class UserRepositoryImpl @Inject constructor(
 
     override suspend fun register(idToken: String): AccessToken? {
         return try {
-            AccessToken(userApi.register(IdToken(idToken)).data?.accessToken ?: "", 0)
+            val response = userApi.register(IdToken(idToken))
+            response.data?.let { AccessToken(it.accessToken, 0) }
         } catch (e: Exception) {
             Log.e("Exception: ", e.toString())
-            null
+            AccessToken(e.toString(), 0)
         }
         // TODO: local 에 저장되어 있던 token (?) 을 가지고 와서 idToken 으로 만든후에 api 호출
         // TODO: local 에 토큰을 저장해야 한다면, preference 를 사용할 수 있지 않을까?
     }
 
     override suspend fun signIn(idToken: String): AccessToken? {
-        val response = userApi.signIn(IdToken(idToken))
-        try {
-            return response.data
+        return try {
+            val response = userApi.signIn(IdToken(idToken))
+            if (response.code in 200..201) {
+                response.data
+            } else register(idToken)
         } catch (e: Exception) {
             Log.e("Exception: ", e.toString())
             register(idToken)
         }
-        return null
         // TODO: local 에 저장되어 있던 token (?) 을 가지고 와서 idToken 으로 만든후에 api 호출
         // TODO: local 에 토큰을 저장해야 한다면, preference 를 사용할 수 있지 않을까?
     }

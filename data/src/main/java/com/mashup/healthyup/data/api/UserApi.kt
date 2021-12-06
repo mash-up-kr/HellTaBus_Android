@@ -6,7 +6,7 @@ package com.mashup.healthyup.data.api
 import com.mashup.healthyup.data.request.IdToken
 import com.mashup.healthyup.data.request.UserRequest
 import com.mashup.healthyup.data.response.TokenResponse
-import com.mashup.healthyup.data.response.UserResponse
+import com.mashup.healthyup.data.response.user.UserResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
