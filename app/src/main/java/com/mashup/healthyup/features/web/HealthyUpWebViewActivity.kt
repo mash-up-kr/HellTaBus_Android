@@ -44,7 +44,6 @@ class HealthyUpWebViewActivity :
         binding.viewModel = viewModel
         binding.healthyUpWebView.setJavaScriptInterface(webPreference)
         binding.healthyUpWebView.loadUrl(loadUrl)
-        //binding.healthyUpWebView.loadUrl("https://helltabus-dev.netlify.app/survey")
         observeWebRequest()
     }
 

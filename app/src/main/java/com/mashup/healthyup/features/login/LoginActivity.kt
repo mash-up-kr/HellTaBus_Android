@@ -19,6 +19,7 @@ import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivityLoginBinding
 import com.mashup.healthyup.features.login.LoginViewModel.Action.*
 import com.mashup.healthyup.features.web.HealthyUpWebViewActivity
+import com.mashup.healthyup.features.web.WebConstants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -63,11 +64,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                             val intent = googleSignInClient.signInIntent
                             resultLauncher.launch(intent)
                         }
-                        StartWebViewMain -> {
-                            startWebViewActivity("https://helltabus-dev.netlify.app/exercise-routine")
+                        StartWebViewHome -> {
+                            startWebViewActivity(WebConstants.URL.HOME)
                         }
                         StartWebViewSurvey -> {
-                            startWebViewActivity("https://helltabus-dev.netlify.app/survey")
+                            startWebViewActivity(WebConstants.URL.SURVEY)
                         }
                     }
                 }

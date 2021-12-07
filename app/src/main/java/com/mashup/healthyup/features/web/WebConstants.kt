@@ -11,4 +11,9 @@ object WebConstants {
         const val ANDROID = "android"
         const val WEB = "web"
     }
+
+    object URL {
+        const val HOME = "https://helltabus-dev.netlify.app/exercise-routine"
+        const val SURVEY = "https://helltabus-dev.netlify.app/survey"
+    }
 }

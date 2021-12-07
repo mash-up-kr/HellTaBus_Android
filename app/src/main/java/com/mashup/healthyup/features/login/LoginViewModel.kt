@@ -22,7 +22,7 @@ class LoginViewModel @Inject constructor(
     sealed class Action {
         object ClickLogin : Action()
         object StartWebViewSurvey : Action()
-        object StartWebViewMain : Action()
+        object StartWebViewHome : Action()
     }
 
     private val channel = Channel<Action>(Channel.BUFFERED)
@@ -38,7 +38,7 @@ class LoginViewModel @Inject constructor(
                 webPreference.apply(Key.TOKEN, "Bearer ${res.accessToken}")
                 when (res.isPatched) {
                     1 -> {
-                        channel.trySend(Action.StartWebViewMain)
+                        channel.trySend(Action.StartWebViewHome)
                     }
                     else -> {
                         channel.trySend(Action.StartWebViewSurvey)
