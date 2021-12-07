@@ -34,6 +34,7 @@
         <activity android:name=".features.setting.ChangeExplanationLengthActivity" />
         <activity android:name=".features.setting.SettingActivity" />
         <activity android:name=".features.summary.ExerciseSummaryActivity" />
+        <activity android:name=".features.exercise.ExerciseDashboardActivity" />
         <activity android:name=".features.web.HealthyUpWebViewActivity" />
 
     </application>
