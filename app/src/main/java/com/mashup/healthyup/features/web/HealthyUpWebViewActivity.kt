@@ -41,10 +41,14 @@ class HealthyUpWebViewActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        observeWebRequest()
+    }
+
+    override fun initViews() {
+        super.initViews()
         binding.viewModel = viewModel
         binding.healthyUpWebView.setJavaScriptInterface(webPreference)
         binding.healthyUpWebView.loadUrl(loadUrl)
-        observeWebRequest()
     }
 
     private fun observeWebRequest() {

@@ -66,6 +66,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                         }
                         StartWebViewHome -> {
                             startWebViewActivity(WebConstants.URL.HOME)
+                            overridePendingTransition(0, 0);
+                            finish()
                         }
                         StartWebViewSurvey -> {
                             startWebViewActivity(WebConstants.URL.SURVEY)
