@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.mashup.healthyup.Key
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
@@ -32,6 +33,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.google.gson.Gson
+import com.google.gson.JsonArray
+import com.mashup.healthyup.domain.entity.Exercise
+import android.R.array
+import com.google.gson.reflect.TypeToken
+
 
 @AndroidEntryPoint
 class HealthyUpWebViewActivity :
@@ -111,8 +118,9 @@ class HealthyUpWebViewActivity :
             }
             Target.EXERCISE -> {
                 // TODO: 웹으로부터 받은 데이터 저장 추가 필요
-                val exerciseArray = options.get("exerciseList").asJsonPrimitive
+                val exerciseArray: JsonArray = Gson().fromJson(options.get("exerciseList").asString, JsonArray::class.java)
                 Log.d("HealthyUpWebViewActivity", "exerciseArray: $exerciseArray")
+                val exerciseList: List<Exercise> = Gson().fromJson(exerciseArray, object : TypeToken<List<Exercise?>?>() {}.type)
                 ExerciseDashboardActivity.start(this) {
                     flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
                 }
