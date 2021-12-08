@@ -44,6 +44,9 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
                 ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             )
         }
+        binding.appbar.btnClose.setOnClickListener {
+            finish()
+        }
     }
 
     companion object {

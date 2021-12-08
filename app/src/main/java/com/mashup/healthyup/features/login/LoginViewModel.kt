@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val webPreference: WebPreference,
-    private val userUseCase: GetUserUseCase,
+    private val userUseCase: GetUserUseCase
 ) : BaseViewModel() {
 
     sealed class Action {

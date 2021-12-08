@@ -71,6 +71,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                         }
                         StartWebViewSurvey -> {
                             startWebViewActivity(WebConstants.URL.SURVEY)
+                            finish()
                         }
                     }
                 }

@@ -1,10 +1,7 @@
 package com.mashup.healthyup.features.launcher
 
 import androidx.lifecycle.viewModelScope
-import com.mashup.healthyup.Key
 import com.mashup.healthyup.base.BaseViewModel
-import com.mashup.healthyup.bridge.WebPreference
-import com.mashup.healthyup.domain.entity.AccessToken
 import com.mashup.healthyup.domain.entity.User
 import com.mashup.healthyup.domain.usecase.GetUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LauncherViewModel @Inject constructor(
-    private val webPreference: WebPreference,
     private val userUseCase: GetUserUseCase
 ) : BaseViewModel() {
 
@@ -37,12 +33,8 @@ class LauncherViewModel @Inject constructor(
     private fun checkUserSigned() {
         viewModelScope.launch {
             delay(1000L)
-            if (webPreference.preference.getString(Key.TOKEN, "") != "") {
-                if (hasUserInfo().isSuccess) {
-                    action.trySend(Action.StartHome)
-                } else {
-                    action.trySend(Action.StartLogin)
-                }
+            if (hasUserInfo().isSuccess) {
+                action.trySend(Action.StartHome)
             } else {
                 action.trySend(Action.StartLogin)
             }
