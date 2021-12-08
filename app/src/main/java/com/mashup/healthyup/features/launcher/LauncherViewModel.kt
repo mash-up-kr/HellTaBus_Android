@@ -4,6 +4,9 @@ import androidx.lifecycle.viewModelScope
 import com.mashup.healthyup.Key
 import com.mashup.healthyup.base.BaseViewModel
 import com.mashup.healthyup.bridge.WebPreference
+import com.mashup.healthyup.domain.entity.AccessToken
+import com.mashup.healthyup.domain.entity.User
+import com.mashup.healthyup.domain.usecase.GetUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
@@ -14,12 +17,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LauncherViewModel @Inject constructor(
-    private val webPreference: WebPreference
+    private val webPreference: WebPreference,
+    private val userUseCase: GetUserUseCase
 ) : BaseViewModel() {
 
     sealed class Action {
-        object StartLogin: Action()
-        object StartHome: Action()
+        object StartLogin : Action()
+        object StartHome : Action()
     }
 
     private val action = Channel<Action>(Channel.BUFFERED)
@@ -27,14 +31,25 @@ class LauncherViewModel @Inject constructor(
         get() = action.receiveAsFlow()
 
     init {
-        // TODO : 로그인 유무 체크, 로그인 되어 있으면, 홈화면으로 이동, 로그인 안되어 있으면, 로그인 화면으로 이동
+        checkUserSigned()
+    }
+
+    private fun checkUserSigned() {
         viewModelScope.launch {
             delay(1000L)
-            if(webPreference.preference.getString(Key.TOKEN, "") != "") {
-                action.trySend(Action.StartHome)
+            if (webPreference.preference.getString(Key.TOKEN, "") != "") {
+                if (hasUserInfo().isSuccess) {
+                    action.trySend(Action.StartHome)
+                } else {
+                    action.trySend(Action.StartLogin)
+                }
             } else {
                 action.trySend(Action.StartLogin)
             }
         }
+    }
+
+    private suspend fun hasUserInfo(): Result<User> {
+        return userUseCase.invoke()
     }
 }
