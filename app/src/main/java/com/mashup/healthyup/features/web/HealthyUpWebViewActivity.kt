@@ -4,15 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import com.google.gson.JsonParser
+import com.google.gson.reflect.TypeToken
 import com.mashup.healthyup.Key
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
@@ -23,21 +25,15 @@ import com.mashup.healthyup.bridge.WebAPIController.FunctionName
 import com.mashup.healthyup.bridge.WebPreference
 import com.mashup.healthyup.core.Empty
 import com.mashup.healthyup.databinding.ActivityHealthyUpWebViewBinding
+import com.mashup.healthyup.domain.entity.Exercise
 import com.mashup.healthyup.features.exercise.ExerciseDashboardActivity
 import com.mashup.healthyup.features.history.HistoryActivity
-import com.mashup.healthyup.features.launcher.LauncherViewModel
 import com.mashup.healthyup.features.setting.SettingActivity
 import com.mashup.healthyup.features.web.WebConstants.Target
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.google.gson.Gson
-import com.google.gson.JsonArray
-import com.mashup.healthyup.domain.entity.Exercise
-import android.R.array
-import com.google.gson.reflect.TypeToken
 
 
 @AndroidEntryPoint
@@ -128,13 +124,20 @@ class HealthyUpWebViewActivity :
         }
     }
 
+    var backKeyPressedTime: Long = 0
     override fun onBackPressed() {
         when (binding.viewModel?.backButtonReceiveTarget) {
             Target.ANDROID -> {
                 if (binding.healthyUpWebView.canGoBack()) {
                     binding.healthyUpWebView.goBack()
                 } else {
-                    super.onBackPressed()
+                    if (backKeyPressedTime + 2500 < System.currentTimeMillis()) {
+                        backKeyPressedTime = System.currentTimeMillis()
+                        Toast.makeText(this, R.string.back_button_finish_alert, Toast.LENGTH_SHORT).show()
+                        return
+                    } else {
+                        super.onBackPressed()
+                    }
                 }
             }
             Target.WEB -> {
