@@ -15,7 +15,10 @@ data class UserRequest(
     val healthStyle: HealthStyle, // 사용자 분할 선택
     val audioCoach: AudioCoach?, // 오디오 코치 선택
     val speed: Speed, // 어떤 속도로 운동
-    val explanation: Int // 설명 필요 여부
+    val explanation: Boolean, // 설명 필요 여부
+    val createAt: String,
+    val updateAt: String,
+    val deletedAt: String?
 ) : Request
 
 fun User.toRequest(): UserRequest {
@@ -28,6 +31,9 @@ fun User.toRequest(): UserRequest {
         healthStyle = healthStyle,
         audioCoach = audioCoach,
         speed = speed,
-        explanation = explanation
+        explanation = explanation,
+        createAt = createAt,
+        updateAt = updateAt,
+        deletedAt = deletedAt
     )
 }

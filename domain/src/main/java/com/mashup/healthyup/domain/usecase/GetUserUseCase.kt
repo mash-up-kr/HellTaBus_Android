@@ -14,7 +14,11 @@ class GetUserUseCase(
 ) : NoParamsUseCase<User>(dispatcher) {
 
     override suspend fun execute(): User {
-        return userRepository.getCurrentUser()
+        return userRepository.getCurrentUser("")
+    }
+
+    suspend fun getUserInfo(idToken: String): User {
+        return userRepository.getCurrentUser(idToken)
     }
 
     suspend fun signIn(idToken: String): AccessToken? {

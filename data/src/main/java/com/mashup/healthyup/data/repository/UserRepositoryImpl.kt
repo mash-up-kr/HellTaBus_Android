@@ -42,8 +42,17 @@ class UserRepositoryImpl @Inject constructor(
         // TODO: local 에 토큰을 저장해야 한다면, preference 를 사용할 수 있지 않을까?
     }
 
-    override suspend fun getCurrentUser(): User {
-        return userApi.getCurrentUser().data ?: User.EMPTY
+    override suspend fun getCurrentUser(idToken: String): User {
+        return try {
+            val response = userApi.getCurrentUser(idToken)
+            if (response.code in 200..201) {
+                response.data
+            } else {
+                User.EMPTY
+            }
+        } catch (e: Exception) {
+            User.EMPTY
+        }
     }
 
     override suspend fun patchBaseInformation(user: User): User {
