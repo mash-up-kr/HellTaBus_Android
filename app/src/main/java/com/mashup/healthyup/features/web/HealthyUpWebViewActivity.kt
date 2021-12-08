@@ -4,14 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.webkit.WebViewClient
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.bumptech.glide.Glide
 import com.google.gson.JsonObject
 import com.mashup.healthyup.Key
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
+import com.mashup.healthyup.bridge.HealthyUpWebViewClient
+import com.mashup.healthyup.bridge.HealthyUpWebViewClient.Action.RemoveLoadingView
 import com.mashup.healthyup.bridge.WebAPIController
 import com.mashup.healthyup.bridge.WebAPIController.FunctionName
 import com.mashup.healthyup.bridge.WebPreference
@@ -19,9 +24,11 @@ import com.mashup.healthyup.core.Empty
 import com.mashup.healthyup.databinding.ActivityHealthyUpWebViewBinding
 import com.mashup.healthyup.features.exercise.ExerciseDashboardActivity
 import com.mashup.healthyup.features.history.HistoryActivity
+import com.mashup.healthyup.features.launcher.LauncherViewModel
 import com.mashup.healthyup.features.setting.SettingActivity
 import com.mashup.healthyup.features.web.WebConstants.Target
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -41,6 +48,7 @@ class HealthyUpWebViewActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        observeWebViewEvent()
         observeWebRequest()
     }
 
@@ -48,7 +56,23 @@ class HealthyUpWebViewActivity :
         super.initViews()
         binding.viewModel = viewModel
         binding.healthyUpWebView.setJavaScriptInterface(webPreference)
+        Glide.with(this).load(R.raw.img_loading).into(binding.ivLoading)
         binding.healthyUpWebView.loadUrl(loadUrl)
+    }
+
+    private fun observeWebViewEvent() {
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                HealthyUpWebViewClient.actionFlow.collect { action ->
+                    when (action) {
+                        RemoveLoadingView -> {
+                            binding.cvLoading.isVisible = false
+                            binding.ivLoading.isVisible = false
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun observeWebRequest() {

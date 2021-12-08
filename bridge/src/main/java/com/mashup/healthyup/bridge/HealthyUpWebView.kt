@@ -47,6 +47,7 @@ class HealthyUpWebView : WebView {
     @SuppressLint("SetJavaScriptEnabled")
     private fun init() {
         webChromeClient = HealthyUpWebChromeClient()
+        webViewClient = HealthyUpWebViewClient()
         setWebContentsDebuggingEnabled(true)
         applySettings()
         setBackgroundColor(Color.argb(1, 0, 0, 0))
