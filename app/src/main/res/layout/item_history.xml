@@ -25,7 +25,7 @@
 
 			<androidx.appcompat.widget.AppCompatTextView
 				style="@style/Typography.Subtitle1.White"
-				intText="@{model.day}"
+				android:text="@{model.day}"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center"
@@ -34,7 +34,7 @@
 
 			<androidx.appcompat.widget.AppCompatTextView
 				style="@style/Typography.SmallBody1.White"
-				intText="@{model.day}"
+				android:text="@{model.dayOfWeek}"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="2dp"
@@ -58,7 +58,7 @@
 				style="@style/Typography.Button1.White"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="하체/어깨"
+				android:text="@{model.part}"
 				android:textColor="@color/color_on_background_variant_1" />
 
 			<androidx.appcompat.widget.AppCompatTextView
@@ -66,7 +66,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="3dp"
-				android:text="300KG을 번쩍!✨"
+				android:text="@{model.subtitle}"
 				android:textColor="@color/color_on_background_variant_2" />
 
 			<View

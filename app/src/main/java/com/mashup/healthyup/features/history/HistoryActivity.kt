@@ -42,7 +42,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
 
     override fun initObserves() {
         super.initObserves()
-        viewModel.exerciseList.observe(this) {
+        viewModel.exerciseHistoryList.observe(this) {
             historyAdapter.replaceAll(it)
             calendarAdapter.setWriteDayList(it)
         }

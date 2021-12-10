@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.healthyup.R
 import com.mashup.healthyup.databinding.ItemHistoryBinding
-import com.mashup.healthyup.features.history.model.ExerciseModel
+import com.mashup.healthyup.features.history.model.ExerciseHistoryModel
 import com.mashup.healthyup.features.history.model.HistoryItem
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryAdapter>() {
@@ -36,14 +36,22 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryAdapter>() {
     }
 
 
-    fun replaceAll(exerciseList: List<ExerciseModel>) {
-        val a = exerciseList.map {
+    fun replaceAll(exerciseHistoryList: List<ExerciseHistoryModel>) {
+        val subtitleWeight = exerciseHistoryList.map {
+            var a = 0
+            it.status.forEach { item ->
+                a += item.count * item.set * item.weight
+            }
             HistoryItem(
-                it.day, dayOfWeek = it.dayOfWeek, part = it.part, subtitle = it.subtitle, status =
+                it.getDay(),
+                dayOfWeek = it.getDayOfWeek() + "요일",
+                part = it.getPart(),
+                subtitle = it.getSubtitle(a),
+                status =
                 it.status
             )
         }
-        this.items = a
+        this.items = subtitleWeight
         notifyDataSetChanged()
     }
 

@@ -19,9 +19,12 @@ interface ExerciseHistoryApi {
 
     @GET("exercise-history")
     suspend fun getExerciseHistory(
-        @Query("exerciseIdList") exerciseIdList: String, // 1,2,3... required
-        @Query("duration") duration: String?, // recent
         @Query("from") from: String?, // 2021-10-22 13:32
         @Query("to") to: String? // 2021-10-24 13:32
+    ): GetExerciseHistoryResponse
+
+    @GET("exercise-history/resent")
+    suspend fun getExerciseHistoryResent(
+        @Query("exerciseIdList") exerciseIdList: String, // 1,2,3... required
     ): GetExerciseHistoryResponse
 }

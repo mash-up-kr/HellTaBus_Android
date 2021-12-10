@@ -20,7 +20,7 @@
 		<androidx.appcompat.widget.AppCompatTextView
 			android:id="@+id/tv_calender_days"
 			style="@style/Typography.SmallBody1.White"
-			intText="@{model.day}"
+			android:text="@{model.day}"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"

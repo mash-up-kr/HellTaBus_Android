@@ -45,6 +45,7 @@ class MonthFragment : BaseFragment<FragmentHistoryMonthBinding>(R.layout.fragmen
         binding.viewCalenderEmpty.setOnClickListener {
             closeFragment()
         }
+//        viewModel.loadHistory()
 
     }
 
