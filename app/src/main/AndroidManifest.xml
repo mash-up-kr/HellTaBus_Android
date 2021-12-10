@@ -28,10 +28,6 @@
         </activity>
         <activity android:name=".features.history.HistoryActivity" />
         <activity android:name=".features.login.LoginActivity" />
-        <activity android:name=".features.setting.ChangeProfileActivity" />
-        <activity android:name=".features.setting.ChangeCoachVoiceActivity" />
-        <activity android:name=".features.setting.ChangeExerciseSpeedActivity" />
-        <activity android:name=".features.setting.ChangeExplanationLengthActivity" />
         <activity android:name=".features.setting.SettingActivity" />
         <activity android:name=".features.summary.ExerciseSummaryActivity" />
         <activity android:name=".features.exercise.ExerciseDashboardActivity" />
