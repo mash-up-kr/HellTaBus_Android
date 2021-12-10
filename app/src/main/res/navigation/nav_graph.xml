@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/settingMainFragment">
+
+    <fragment
+        android:id="@+id/settingMainFragment"
+        android:name="com.mashup.healthyup.features.setting.SettingMainFragment"
+        android:label="SettingMainFragment">
+        <action
+            android:id="@+id/action_settingMainFragment_to_changeCoachVoiceFragment"
+            app:destination="@id/changeCoachVoiceFragment" />
+        <action
+            android:id="@+id/action_settingMainFragment_to_changeExerciseSpeedFragment"
+            app:destination="@id/changeExerciseSpeedFragment" />
+        <action
+            android:id="@+id/action_settingMainFragment_to_changeExplanationLengthFragment"
+            app:destination="@id/changeExplanationLengthFragment" />
+        <action
+            android:id="@+id/action_settingMainFragment_to_changeProfileFragment"
+            app:destination="@id/changeProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeCoachVoiceFragment"
+        android:name="com.mashup.healthyup.features.setting.ChangeCoachVoiceFragment"
+        android:label="ChangeCoachVoiceFragment" >
+        <action
+            android:id="@+id/action_changeCoachVoiceFragment_to_settingMainFragment"
+            app:destination="@id/settingMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeExerciseSpeedFragment"
+        android:name="com.mashup.healthyup.features.setting.ChangeExerciseSpeedFragment"
+        android:label="ChangeExerciseSpeedFragment" >
+        <action
+            android:id="@+id/action_changeExerciseSpeedFragment_to_settingMainFragment"
+            app:destination="@id/settingMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeExplanationLengthFragment"
+        android:name="com.mashup.healthyup.features.setting.ChangeExplanationLengthFragment"
+        android:label="ChangeExplanationLengthFragment" >
+        <action
+            android:id="@+id/action_changeExplanationLengthFragment_to_settingMainFragment"
+            app:destination="@id/settingMainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeProfileFragment"
+        android:name="com.mashup.healthyup.features.setting.ChangeProfileFragment"
+        android:label="ChangeProfileFragment" >
+        <action
+            android:id="@+id/action_changeProfileFragment_to_settingMainFragment"
+            app:destination="@id/settingMainFragment" />
+    </fragment>
+</navigation>
