@@ -28,6 +28,7 @@
             android:id="@+id/cv_loading"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
