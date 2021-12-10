@@ -47,7 +47,6 @@ object ApiModule {
         override fun intercept(chain: Interceptor.Chain): Response {
             var request: Request = chain.request()
             request = request.newBuilder()
-                .addHeader("Authorization", "Client-ID $clientId")
                 .build()
             return chain.proceed(request)
         }
