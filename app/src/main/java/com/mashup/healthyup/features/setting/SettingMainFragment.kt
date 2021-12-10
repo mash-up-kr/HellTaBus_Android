@@ -2,7 +2,9 @@ package com.mashup.healthyup.features.setting
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.mashup.healthyup.R
@@ -10,6 +12,8 @@ import com.mashup.healthyup.base.BaseFragment
 import com.mashup.healthyup.databinding.FragmentSettingMainBinding
 import com.mashup.healthyup.features.web.HealthyUpWebViewActivity
 import com.mashup.healthyup.features.web.WebConstants
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.util.*
 
 interface OnBackPressedListener {
@@ -20,7 +24,7 @@ class SettingMainFragment :
     BaseFragment<FragmentSettingMainBinding>(R.layout.fragment_setting_main),
     OnBackPressedListener {
 
-    private val viewModel by viewModels<SettingViewModel>()
+    private val viewModel by activityViewModels<SettingViewModel>()
     private lateinit var navController: NavController
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -59,6 +63,14 @@ class SettingMainFragment :
         }
         binding.appbar.btnClose.setOnClickListener {
             activity?.finish()
+        }
+    }
+
+    override fun initObserves() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.user.collect { user ->
+                binding.btnSplitSetting.text = user.splitType.value
+            }
         }
     }
 
