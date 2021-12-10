@@ -5,6 +5,12 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.mashup.healthyup.features.setting.SettingViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
