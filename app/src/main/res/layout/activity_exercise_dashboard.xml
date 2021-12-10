@@ -25,6 +25,7 @@
             app:navigationIcon="@drawable/ic_close_color_background">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -41,7 +42,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_current_exercise"
+                    android:id="@+id/tv_next_exercise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="벤치프레스"
@@ -73,8 +74,16 @@
             app:layout_constraintStart_toStartOf="@id/graph_view"
             app:layout_constraintTop_toTopOf="@id/graph_view"
             app:lottie_fileName="lottie_audio_wave.json"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true" />
+            app:lottie_autoPlay="true" />
+
+        <ImageView
+            android:id="@+id/iv_exercise_gif"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            app:layout_constraintBottom_toBottomOf="@id/graph_view"
+            app:layout_constraintEnd_toEndOf="@id/graph_view"
+            app:layout_constraintStart_toStartOf="@id/graph_view"
+            app:layout_constraintTop_toTopOf="@id/graph_view" />
 
         <TextView
             android:id="@+id/tv_exercise_index"
@@ -114,6 +123,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_pause"
+            android:onClick="@{() -> viewModel.onPauseClick()}"
             android:layout_width="54dp"
             android:layout_height="54dp"
             android:layout_marginStart="28dp"
@@ -132,7 +142,6 @@
             android:layout_marginEnd="40dp"
             android:background="@drawable/bg_primary_r30"
             android:gravity="center"
-            android:text="설명 스킵"
             android:textAppearance="@style/Typography.Body2.White"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_pause"

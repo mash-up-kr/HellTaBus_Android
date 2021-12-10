@@ -1,8 +1,27 @@
 <resources>
+    
+    <string-array name="translated_stage_index">
+        <item>첫번째운동</item>
+        <item>두번째운동</item>
+        <item>세번째운동</item>
+        <item>네번째운동</item>
+        <item>다섯번째운동</item>
+        <item>여섯번째운동</item>
+        <item>일곱번째운동</item>
+        <item>여덟번째운동</item>
+        <item>아홉번째운동</item>
+        <item>열번째운동</item>
+    </string-array>
+    
     <!-- Common -->
     <string name="confirm">확인</string>
     <string name="save">저장</string>
     <string name="back_button_finish_alert">뒤로 가기 버튼을 한 번 더 누르시면 종료됩니다.</string>
+
+    <!-- ExerciseDashboard (운동중) -->
+    <string name="exercise_dashboard_set_format">%dkg %d회</string>
+    <string name="exercise_dashboard_confirm_current_stage">%d세트 완료</string>
+    <string name="exercise_dashboard_skip_audio">설명 스킵</string>
 
     <!-- ExerciseSummary -->
     <string name="exercise_summary_title">고생하셨습니다\n오늘 루틴 끝!</string>
