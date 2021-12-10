@@ -4,18 +4,21 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.bumptech.glide.Glide
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
+import com.mashup.healthyup.core.visibleOrGone
 import com.mashup.healthyup.databinding.ActivityLoginBinding
 import com.mashup.healthyup.features.login.LoginViewModel.Action.*
 import com.mashup.healthyup.features.web.HealthyUpWebViewActivity
@@ -61,15 +64,18 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
                 viewModel.channelFlow.collect { action ->
                     when (action) {
                         ClickLogin -> {
+                            setLoadingIndicator(true)
                             val intent = googleSignInClient.signInIntent
                             resultLauncher.launch(intent)
                         }
                         StartWebViewHome -> {
+                            setLoadingIndicator(false)
                             startWebViewActivity(WebConstants.URL.HOME)
                             overridePendingTransition(0, 0);
                             finish()
                         }
                         StartWebViewSurvey -> {
+                            setLoadingIndicator(false)
                             startWebViewActivity(WebConstants.URL.SURVEY)
                             finish()
                         }
@@ -84,5 +90,16 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
             context = this,
             loadUrl = url
         )
+    }
+
+    private fun setLoadingIndicator(visible: Boolean) {
+        binding.cvLoading.visibleOrGone(visible)
+
+        if (visible) {
+            Glide.with(this)
+                .load(R.raw.img_loading)
+                .centerCrop()
+                .into(binding.ivLoading)
+        }
     }
 }

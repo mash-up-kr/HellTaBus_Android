@@ -41,5 +41,6 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop" />
         </androidx.cardview.widget.CardView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
