@@ -2,7 +2,7 @@ package com.mashup.healthyup.data.request
 
 import com.mashup.healthyup.domain.entity.AudioCoach
 import com.mashup.healthyup.domain.entity.Gender
-import com.mashup.healthyup.domain.entity.HealthStyle
+import com.mashup.healthyup.domain.entity.SplitType
 import com.mashup.healthyup.domain.entity.Speed
 import com.mashup.healthyup.domain.entity.User
 
@@ -12,7 +12,7 @@ data class UserRequest(
     val age: Int,
     val height: Int,
     val weight: Int, // 몸무게
-    val healthStyle: HealthStyle, // 사용자 분할 선택
+    val splitType: SplitType, // 사용자 분할 선택
     val audioCoach: AudioCoach?, // 오디오 코치 선택
     val speed: Speed, // 어떤 속도로 운동
     val explanation: Boolean, // 설명 필요 여부
@@ -28,7 +28,7 @@ fun User.toRequest(): UserRequest {
         age = age,
         height = height,
         weight = weight,
-        healthStyle = healthStyle,
+        splitType = splitType,
         audioCoach = audioCoach,
         speed = speed,
         explanation = explanation,

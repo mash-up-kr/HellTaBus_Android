@@ -129,6 +129,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/bg_variant4_r27"
+            android:clickable="false"
             android:padding="14dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_exercise_weight_and_count"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -97,12 +98,12 @@
                     android:paddingStart="24dp"
                     android:paddingEnd="17dp"
                     android:stateListAnimator="@null"
-                    android:text="무분할"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
                     android:textColor="@color/color_on_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_split_setting_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_split_setting_title"
+                    tools:text="무분할" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_exercise_audio_setting_title"

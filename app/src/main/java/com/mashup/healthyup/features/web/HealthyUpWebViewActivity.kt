@@ -31,7 +31,6 @@ import com.mashup.healthyup.features.setting.SettingActivity
 import com.mashup.healthyup.features.web.WebConstants.Target
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -87,9 +86,9 @@ class HealthyUpWebViewActivity :
                     when (jsonObject.get(WebConstants.FUNCTION_NAME).asString) {
                         FunctionName.START_ACTIVITY -> startActivityFromWeb(jsonObject)
                         FunctionName.SET_BACK_BUTTON_RECEIVE -> {
-                            val target = jsonObject.get("target").asString
-                            handleOnBackPressed(target)
-                            binding.viewModel?.backButtonReceiveTarget = target
+                            handleOnBackPressed(jsonObject)
+                            binding.viewModel?.backButtonReceiveTarget =
+                                jsonObject.get("target").asString
                         }
                     }
                 }
@@ -117,7 +116,8 @@ class HealthyUpWebViewActivity :
                 }
             }
             Target.EXERCISE -> {
-                val exerciseArray: JsonArray = Gson().fromJson(options.get("exerciseList").asString, JsonArray::class.java)
+                val exerciseArray: JsonArray =
+                    Gson().fromJson(options.get("exerciseList").asString, JsonArray::class.java)
                 Log.d("HealthyUpWebViewActivity", "exerciseArray: $exerciseArray")
 
                 val exerciseList: ArrayList<Exercise> = Gson().fromJson(
@@ -135,6 +135,18 @@ class HealthyUpWebViewActivity :
         handleOnBackPressed(binding.viewModel?.backButtonReceiveTarget ?: Target.ANDROID)
     }
 
+    private fun handleOnBackPressed(jsonObject: JsonObject) {
+        val target = jsonObject.get("target").asString
+        if (binding.healthyUpWebView.url == WebConstants.URL.SPLIT && jsonObject.has("isUpdated")) {
+            val isUpdated = jsonObject.get("isUpdated").asBoolean
+            if (isUpdated) {
+                finish()
+            }
+        } else {
+            handleOnBackPressed(target)
+        }
+    }
+
     private fun handleOnBackPressed(target: String) {
         when (target) {
             Target.ANDROID -> {
@@ -145,7 +157,8 @@ class HealthyUpWebViewActivity :
                 } else {
                     if (backKeyPressedTime + 2500 < System.currentTimeMillis()) {
                         backKeyPressedTime = System.currentTimeMillis()
-                        Toast.makeText(this, R.string.back_button_finish_alert, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, R.string.back_button_finish_alert, Toast.LENGTH_SHORT)
+                            .show()
                     } else {
                         super.onBackPressed()
                     }

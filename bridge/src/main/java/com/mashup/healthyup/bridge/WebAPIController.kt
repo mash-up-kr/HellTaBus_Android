@@ -56,6 +56,10 @@ object WebAPIController {
                     if (options.has("target")) {
                         requestData.addProperty("target", options.get("target").asString)
                     }
+
+                    if (options.has("isUpdated")) {
+                        requestData.addProperty("isUpdated", options.get("isUpdated").asBoolean)
+                    }
                 }
                 returnMsg = makeReturnMsg(resultMsg = "Request Success", extra = extra, transactionId = transactionId)
             }
