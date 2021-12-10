@@ -129,6 +129,8 @@ class HealthyUpWebViewActivity :
             Target.ANDROID -> {
                 if (binding.healthyUpWebView.canGoBack()) {
                     binding.healthyUpWebView.goBack()
+                } else if (binding.healthyUpWebView.url == WebConstants.URL.SPLIT) {
+                    finish()
                 } else {
                     if (backKeyPressedTime + 2500 < System.currentTimeMillis()) {
                         backKeyPressedTime = System.currentTimeMillis()
