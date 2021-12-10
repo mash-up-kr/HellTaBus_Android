@@ -9,9 +9,11 @@ import com.mashup.healthyup.databinding.ActivityHistoryBinding
 import com.mashup.healthyup.features.history.adapter.CalendarAdapter
 import com.mashup.healthyup.features.history.adapter.HistoryAdapter
 import com.mashup.healthyup.features.history.bottomsheet.MonthFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_history) {
     private val viewModel by viewModels<HistoryViewModel>()
     private lateinit var date: Calendar
@@ -69,6 +71,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         date.set(datetime[0].toInt(), (datetime[1].toInt() - 1), 1)
         binding.tvMonth.text = _datetime
         calendarAdapter.replaceAll(date)
+        viewModel.loadHistory()
     }
 
     private fun addSelectedCalenderMonthFragment() {
