@@ -112,11 +112,14 @@ class HealthyUpWebViewActivity :
                 }
             }
             Target.EXERCISE -> {
-                // TODO: 웹으로부터 받은 데이터 저장 추가 필요
                 val exerciseArray: JsonArray = Gson().fromJson(options.get("exerciseList").asString, JsonArray::class.java)
                 Log.d("HealthyUpWebViewActivity", "exerciseArray: $exerciseArray")
-                val exerciseList: List<Exercise> = Gson().fromJson(exerciseArray, object : TypeToken<List<Exercise?>?>() {}.type)
-                ExerciseDashboardActivity.start(this) {
+
+                val exerciseList: ArrayList<Exercise> = Gson().fromJson(
+                    exerciseArray,
+                    object : TypeToken<ArrayList<Exercise?>?>() {}.type
+                )
+                ExerciseDashboardActivity.start(this, exerciseList) {
                     flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
                 }
             }

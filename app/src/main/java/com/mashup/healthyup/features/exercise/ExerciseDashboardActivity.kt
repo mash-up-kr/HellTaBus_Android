@@ -10,10 +10,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.mashup.healthyup.Key
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivityExerciseDashboardBinding
 import com.mashup.healthyup.databinding.LayoutProgressBinding
+import com.mashup.healthyup.domain.entity.Exercise
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -56,8 +58,9 @@ class ExerciseDashboardActivity :
             return Intent(context, ExerciseDashboardActivity::class.java)
         }
 
-        fun start(context: Context, action: Intent.() -> Unit = {}) {
+        fun start(context: Context, exerciseList: ArrayList<Exercise>,  action: Intent.() -> Unit = {}) {
             val intent = Intent(context, ExerciseDashboardActivity::class.java).apply(action)
+            intent.putExtra(Key.EXERCISE_LIST, exerciseList)
             context.startActivity(intent)
         }
     }

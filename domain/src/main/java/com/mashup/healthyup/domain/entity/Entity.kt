@@ -3,4 +3,6 @@
  */
 package com.mashup.healthyup.domain.entity
 
-interface Entity
+import java.io.Serializable
+
+interface Entity : Serializable
