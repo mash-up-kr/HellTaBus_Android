@@ -93,13 +93,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(R.layout.activity_login
     }
 
     private fun setLoadingIndicator(visible: Boolean) {
-        binding.cvLoading.visibleOrGone(visible)
+        binding.indicator.cvLoading.visibleOrGone(visible)
 
         if (visible) {
             Glide.with(this)
                 .load(R.raw.img_loading)
                 .centerCrop()
-                .into(binding.ivLoading)
+                .into(binding.indicator.ivLoading)
         }
     }
 }

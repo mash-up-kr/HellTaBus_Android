@@ -15,5 +15,6 @@ object WebConstants {
     object URL {
         const val HOME = "https://helltabus-dev.netlify.app/exercise-routine"
         const val SURVEY = "https://helltabus-dev.netlify.app/survey"
+        const val SPLIT = "https://helltabus-dev.netlify.app/setting/split-type"
     }
 }

@@ -2,9 +2,13 @@ package com.mashup.healthyup.features.setting
 
 import android.content.Context
 import android.content.Intent
+import com.bumptech.glide.Glide
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
+import com.mashup.healthyup.core.visibleOrGone
 import com.mashup.healthyup.databinding.ActivitySettingBinding
+import com.mashup.healthyup.features.web.HealthyUpWebViewActivity
+import com.mashup.healthyup.features.web.WebConstants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +24,15 @@ class SettingActivity : BaseActivity<ActivitySettingBinding>(R.layout.activity_s
                 ).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             )
         }
+
+        binding.btnSplitSetting.setOnClickListener {
+            HealthyUpWebViewActivity.start(
+                context = this,
+                loadUrl = WebConstants.URL.SPLIT,
+                action = { flags = Intent.FLAG_ACTIVITY_SINGLE_TOP }
+            )
+        }
+
         binding.btnChangeCoachVoice.setOnClickListener {
             startActivity(
                 Intent(
