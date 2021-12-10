@@ -31,6 +31,7 @@ import com.mashup.healthyup.features.setting.SettingActivity
 import com.mashup.healthyup.features.web.WebConstants.Target
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -43,6 +44,7 @@ class HealthyUpWebViewActivity :
     lateinit var webPreference: WebPreference
 
     private val viewModel by viewModels<HealthyUpWebViewViewModel>()
+    private var backKeyPressedTime: Long = 0
 
     private val loadUrl by lazy {
         intent?.getStringExtra(Key.LOAD_URL) ?: String.Empty
@@ -52,6 +54,7 @@ class HealthyUpWebViewActivity :
         super.onCreate(savedInstanceState)
         observeWebViewEvent()
         observeWebRequest()
+
     }
 
     override fun initViews() {
@@ -84,7 +87,9 @@ class HealthyUpWebViewActivity :
                     when (jsonObject.get(WebConstants.FUNCTION_NAME).asString) {
                         FunctionName.START_ACTIVITY -> startActivityFromWeb(jsonObject)
                         FunctionName.SET_BACK_BUTTON_RECEIVE -> {
-                            binding.viewModel?.backButtonReceiveTarget = jsonObject.get("target").asString
+                            val target = jsonObject.get("target").asString
+                            handleOnBackPressed(target)
+                            binding.viewModel?.backButtonReceiveTarget = target
                         }
                     }
                 }
@@ -126,9 +131,12 @@ class HealthyUpWebViewActivity :
         }
     }
 
-    var backKeyPressedTime: Long = 0
     override fun onBackPressed() {
-        when (binding.viewModel?.backButtonReceiveTarget) {
+        handleOnBackPressed(binding.viewModel?.backButtonReceiveTarget ?: Target.ANDROID)
+    }
+
+    private fun handleOnBackPressed(target: String) {
+        when (target) {
             Target.ANDROID -> {
                 if (binding.healthyUpWebView.canGoBack()) {
                     binding.healthyUpWebView.goBack()
@@ -138,7 +146,6 @@ class HealthyUpWebViewActivity :
                     if (backKeyPressedTime + 2500 < System.currentTimeMillis()) {
                         backKeyPressedTime = System.currentTimeMillis()
                         Toast.makeText(this, R.string.back_button_finish_alert, Toast.LENGTH_SHORT).show()
-                        return
                     } else {
                         super.onBackPressed()
                     }
