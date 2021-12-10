@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
@@ -53,14 +54,13 @@ class HealthyUpWebViewActivity :
         super.onCreate(savedInstanceState)
         observeWebViewEvent()
         observeWebRequest()
-
     }
 
     override fun initViews() {
         super.initViews()
         binding.viewModel = viewModel
         binding.healthyUpWebView.setJavaScriptInterface(webPreference)
-        //Glide.with(this).load(R.raw.img_loading).into(binding.ivLoading)
+        Glide.with(this).load(R.raw.img_loading).into(binding.ivLoading)
         binding.healthyUpWebView.loadUrl(loadUrl)
     }
 
@@ -90,6 +90,7 @@ class HealthyUpWebViewActivity :
                             binding.viewModel?.backButtonReceiveTarget =
                                 jsonObject.get("target").asString
                         }
+                        FunctionName.CLOSE_WEB_VIEW -> finish()
                     }
                 }
             }

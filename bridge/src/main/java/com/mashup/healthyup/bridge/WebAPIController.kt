@@ -63,6 +63,9 @@ object WebAPIController {
                 }
                 returnMsg = makeReturnMsg(resultMsg = "Request Success", extra = extra, transactionId = transactionId)
             }
+            FunctionName.CLOSE_WEB_VIEW -> {
+                returnMsg = makeReturnMsg(resultMsg = "Request Success", extra = extra, transactionId = transactionId)
+            }
         }
         channel.trySend(requestData)
         jsInterface.onJavaScriptResponse(returnMsg)
@@ -83,6 +86,7 @@ object WebAPIController {
         const val START_ACTIVITY = "startActivity"
         const val SET_BACK_BUTTON_RECEIVE = "setBackButtonReceive"
         const val ON_BACK_BUTTON_PRESSED = "onBackButtonPressed"
+        const val CLOSE_WEB_VIEW = "closeWebView"
     }
 
     /** Web 에게 전달할 callback 생성 **/
