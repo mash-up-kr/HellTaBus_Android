@@ -13,6 +13,10 @@ class GetExerciseHistoryCase(
 ) : ParameterizedUseCase<List<String>,List<ExerciseHistory>>(dispatcher) {
 
     override suspend fun execute(date:List<String>): List<ExerciseHistory> {
-        return exerciseHistoryRepository.getExerciseHistory(date[0],date[1])
+//        return exerciseHistoryRepository.getExerciseHistory( idToken = idToken,.date[0],date[1])
+        return listOf<ExerciseHistory>()
+    }
+    suspend fun getHistory(date:List<String>,accessToken:String): List<ExerciseHistory> {
+        return exerciseHistoryRepository.getExerciseHistory( accessToken,date[0],date[1])
     }
 }

@@ -7,5 +7,5 @@ import com.mashup.healthyup.domain.entity.ExerciseHistory
 
 interface ExerciseHistoryRepository : Repository {
     suspend fun postExerciseHistory(history: ExerciseHistory): ExerciseHistory
-    suspend fun getExerciseHistory(from: String?, to: String?): List<ExerciseHistory>
+    suspend fun getExerciseHistory( idToken:String,from: String?, to: String?): List<ExerciseHistory>
 }

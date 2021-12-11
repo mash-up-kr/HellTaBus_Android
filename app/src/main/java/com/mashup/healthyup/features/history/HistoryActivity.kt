@@ -40,6 +40,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         binding.viewModel = viewModel
         initRecyclerView()
         initCalender()
+
     }
 
     override fun initObserves() {
@@ -62,8 +63,19 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
     private fun initCalender() {
         date = Calendar.getInstance()
         val datetime = SimpleDateFormat("yyyy.MM", Locale.KOREA).format(date.time)
+
         binding.tvMonth.text = datetime
         calendarAdapter.replaceAll(date)
+
+        viewModel.loadHistory(getDate())
+    }
+
+    private fun getDate(): List<String> {
+        val month = SimpleDateFormat("yyyy-MM", Locale.KOREA).format(date.time)
+        return listOf(
+            "$month-1",
+            "$month-${date.getActualMaximum(Calendar.DAY_OF_MONTH)}"
+        )
     }
 
     fun selectMonthCalender(_datetime: String) {
@@ -71,7 +83,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         date.set(datetime[0].toInt(), (datetime[1].toInt() - 1), 1)
         binding.tvMonth.text = _datetime
         calendarAdapter.replaceAll(date)
-        viewModel.loadHistory()
+        viewModel.loadHistory(getDate())
     }
 
     private fun addSelectedCalenderMonthFragment() {

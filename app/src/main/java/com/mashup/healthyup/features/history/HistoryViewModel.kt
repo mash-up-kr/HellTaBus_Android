@@ -5,7 +5,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.mashup.healthyup.Config
+import com.mashup.healthyup.Key
 import com.mashup.healthyup.base.BaseViewModel
+import com.mashup.healthyup.bridge.WebPreference
 import com.mashup.healthyup.domain.entity.ExerciseHistory
 import com.mashup.healthyup.domain.usecase.GetExerciseHistoryCase
 import com.mashup.healthyup.features.history.model.ExerciseHistoryModel
@@ -18,7 +21,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HistoryViewModel @Inject constructor(
-    private val exerciseHistoryCase: GetExerciseHistoryCase
+    private val exerciseHistoryCase: GetExerciseHistoryCase,
+    private val webPreference: WebPreference
+
 ) : BaseViewModel() {
     private val _exerciseList = MutableLiveData<List<ExerciseHistoryModel>>()
     val exerciseHistoryList: LiveData<List<ExerciseHistoryModel>> = _exerciseList
@@ -40,15 +45,20 @@ class HistoryViewModel @Inject constructor(
         _onClickMonth.value = Unit
     }
 
-    private suspend fun getExerciseHistory(): Result<List<ExerciseHistory>> {
-        val a = listOf<String>("2021-10-01", "2021-11-01")
-        return exerciseHistoryCase.invoke(a)
+    private suspend fun getExerciseHistory(date: List<String>): List<ExerciseHistory> {
+
+        val idToken = webPreference.preference.getString(Key.TOKEN, "").toString()
+        Log.e("access_key", Config.access_key)
+        Log.e("idToken", idToken)
+        Log.e("date", date.toString())
+
+        return exerciseHistoryCase.getHistory(date, idToken)
     }
 
     @SuppressLint("SimpleDateFormat")
     fun getDate(startTime: String): String {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-        val outputFormat = SimpleDateFormat("yyyy-MM-dd.-EEE.", Locale.KOREAN)
+        val outputFormat = SimpleDateFormat("yyyy-MM-dd-EEE", Locale.KOREAN)
         val date: Date = inputFormat.parse(startTime)
         return outputFormat.format(date)
     }
@@ -63,36 +73,47 @@ class HistoryViewModel @Inject constructor(
     }
 
 
-    fun loadHistory() {
+    fun loadHistory(date: List<String>) {
+
         viewModelScope.launch {
-            val response = getExerciseHistory()
-            if (response.isSuccess) {
-                val a = mutableListOf<ExerciseHistoryModel>()
-                response.getOrNull()?.forEach { it ->
-                    val formattedDate: String = getDate(it.startTime)
+            val response = getExerciseHistory(date)
+            val a = mutableListOf<ExerciseHistoryModel>()
+            response.forEachIndexed { index, it ->
+                val formattedDate: String = getDate(it.startTime)
+                var chack = true
+                if (index == 0) {
+                    a += ExerciseHistoryModel(
+                        formattedDate,
+                        listOf(),
+                        0,
+                        listOf(
+                            getHistoryExerciseItem(it)
+                        )
+                    )
+                } else {
                     for (i in 0 until a.size) {
                         if (i != 0 && a[i].date == formattedDate) {
                             a[i].status += (
                                 getHistoryExerciseItem(it)
-
                                 )
-                        } else {
-                            a += ExerciseHistoryModel(
-                                formattedDate,
-                                listOf(),
-                                0,
-                                listOf(
-                                    getHistoryExerciseItem(it)
-                                )
-                            )
+                            chack = false
                         }
                     }
+                    if (chack) {
+                        a += ExerciseHistoryModel(
+                            formattedDate,
+                            listOf(),
+                            0,
+                            listOf(
+                                getHistoryExerciseItem(it)
+                            )
+                        )
+                    }
                 }
-                _exerciseList.value = a
-            } else {
-                _exerciseList.value = listOf()
-
             }
+            Log.e("a", a.toString())
+
+            _exerciseList.value = a
         }
     }
 

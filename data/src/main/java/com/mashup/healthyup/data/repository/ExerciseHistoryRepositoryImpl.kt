@@ -20,10 +20,12 @@ class ExerciseHistoryRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getExerciseHistory(
+        idToken: String,
         from: String?,
         to: String?
     ): List<ExerciseHistory> {
         val response = historyApi.getExerciseHistory(
+            idToken = idToken,
             from = from,
             to = to
         )
