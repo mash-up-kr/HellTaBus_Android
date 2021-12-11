@@ -1,7 +1,6 @@
 package com.mashup.healthyup.di
 
 import android.content.Context
-import com.google.gson.Gson
 import com.mashup.healthyup.BuildConfig
 import com.mashup.healthyup.ExecutorProvider
 import com.mashup.healthyup.bridge.WebPreference
@@ -11,6 +10,7 @@ import com.mashup.healthyup.data.repository.UserRepositoryImpl
 import com.mashup.healthyup.domain.repository.ExerciseHistoryRepository
 import com.mashup.healthyup.domain.repository.ExerciseRepository
 import com.mashup.healthyup.domain.repository.UserRepository
+import com.mashup.healthyup.domain.usecase.GetExerciseHistoryCase
 import com.mashup.healthyup.domain.usecase.GetUserUseCase
 import com.mashup.healthyup.features.web.WebPreferenceImpl
 import dagger.Binds
@@ -68,6 +68,14 @@ abstract class AppModule {
             executorProvider: ExecutorProvider
         ): GetUserUseCase {
             return GetUserUseCase(userRepository, executorProvider.io())
+        }
+
+        @Provides
+        fun provideGetExerciseHistoryCase(
+            exerciseHistoryRepository: ExerciseHistoryRepository,
+            executorProvider: ExecutorProvider
+        ): GetExerciseHistoryCase {
+            return GetExerciseHistoryCase(exerciseHistoryRepository, executorProvider.io())
         }
 
         @Singleton

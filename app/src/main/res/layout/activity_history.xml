@@ -5,6 +5,8 @@
 
 	<data>
 
+		<import type="android.view.View" />
+
 		<variable
 			name="viewModel"
 			type="com.mashup.healthyup.features.history.HistoryViewModel" />
@@ -109,7 +111,7 @@
 
 			<androidx.appcompat.widget.LinearLayoutCompat
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+				android:layout_height="match_parent"
 				android:background="@drawable/bg_white_half_round_30"
 				android:fitsSystemWindows="true"
 				android:orientation="vertical"
@@ -125,10 +127,51 @@
 					android:text="이달의 운동 기록"
 					android:textColor="@color/color_on_surface" />
 
+
+				<androidx.appcompat.widget.LinearLayoutCompat
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginTop="62dp"
+					android:orientation="vertical"
+					android:visibility="@{viewModel.historyListVisible ? View.GONE : View.VISIBLE, default=gone}">
+
+					<androidx.appcompat.widget.AppCompatTextView
+						style="@style/Typography.HeadLine3.White"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:text="운동기록이 없어요"
+						android:textColor="@color/black" />
+
+					<androidx.appcompat.widget.AppCompatTextView
+						style="@style/Typography.Body1.White"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="6dp"
+						android:text="운동을 하시면 여기에 쏙쏙 들어와요"
+						android:textColor="@color/black" />
+
+					<androidx.appcompat.widget.AppCompatTextView
+						style="@style/Typography.Caption.White"
+						android:layout_width="264dp"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="30dp"
+						android:background="@drawable/bg_round_8"
+						android:backgroundTint="@color/color_background"
+						android:gravity="center"
+						android:padding="12dp"
+						android:text="@{viewModel.historyNone}"
+						android:textColor="@color/black"
+						tools:text="운동할 때 힘이 든 것은 몸이 아닌 마음\n - 김종국 -" />
+				</androidx.appcompat.widget.LinearLayoutCompat>
+
 				<androidx.recyclerview.widget.RecyclerView
 					android:id="@+id/rv_history"
+
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:visibility="@{viewModel.historyListVisible ? View.VISIBLE : View.GONE, default=visible}"
 					android:layout_marginTop="26dp"
 					app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 					app:layout_behavior="@string/appbar_scrolling_view_behavior"

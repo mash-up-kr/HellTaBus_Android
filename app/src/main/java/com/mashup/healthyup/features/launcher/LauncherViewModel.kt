@@ -1,6 +1,8 @@
 package com.mashup.healthyup.features.launcher
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.mashup.healthyup.Config
 import com.mashup.healthyup.Key
 import com.mashup.healthyup.base.BaseViewModel
 import com.mashup.healthyup.bridge.WebPreference
@@ -47,6 +49,7 @@ class LauncherViewModel @Inject constructor(
 
     private suspend fun hasUserInfo(): User {
         val idToken = webPreference.preference.getString(Key.TOKEN, "").toString()
+        Config.access_key = idToken
         return userUseCase.getUserInfo(idToken)
     }
 }

@@ -22,4 +22,5 @@ abstract class BaseViewModel : ViewModel() {
     fun hideLoading() {
         _isLoading.value = false
     }
+
 }

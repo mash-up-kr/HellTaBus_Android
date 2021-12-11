@@ -14,7 +14,9 @@ data class Exercise(
     val changeWeight: Int,
     val setBreakTime: Int,
     val breakTime: Int,
-    val imageLink: String
+    val imageLink: String,
+    val placeHolderImage: String,
+    val description: String,
 ) : Entity {
 
     companion object {
@@ -29,7 +31,9 @@ data class Exercise(
             changeWeight = 0,
             setBreakTime = 0,
             breakTime = 0,
-            imageLink = ""
+            imageLink = "",
+            placeHolderImage = "",
+            description = ""
         )
     }
 }

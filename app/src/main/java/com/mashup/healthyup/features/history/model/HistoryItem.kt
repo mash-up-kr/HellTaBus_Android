@@ -3,7 +3,7 @@ package com.mashup.healthyup.features.history.model
 import com.mashup.healthyup.R
 
 data class HistoryItem(
-    val day: Int,
+    val day: String,
     val dayOfWeek: String = "화요일",
     val part: String = "하체/어깨",
     val subtitle: String = "300KG을 번쩍!✨",

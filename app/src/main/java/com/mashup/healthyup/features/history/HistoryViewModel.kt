@@ -1,40 +1,127 @@
 package com.mashup.healthyup.features.history
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.mashup.healthyup.Config
+import com.mashup.healthyup.Key
 import com.mashup.healthyup.base.BaseViewModel
-import com.mashup.healthyup.features.history.model.ExerciseModel
-import com.mashup.healthyup.features.history.model.ExercisePart
+import com.mashup.healthyup.bridge.WebPreference
+import com.mashup.healthyup.domain.entity.ExerciseHistory
+import com.mashup.healthyup.domain.usecase.GetExerciseHistoryCase
+import com.mashup.healthyup.features.history.model.ExerciseHistoryModel
 import com.mashup.healthyup.features.history.model.HistoryExerciseItem
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
-class HistoryViewModel @Inject constructor() : BaseViewModel() {
-    private val _exerciseList = MutableLiveData<List<ExerciseModel>>()
-    val exerciseList: LiveData<List<ExerciseModel>> = _exerciseList
+class HistoryViewModel @Inject constructor(
+    private val exerciseHistoryCase: GetExerciseHistoryCase,
+    private val webPreference: WebPreference
+
+) : BaseViewModel() {
+    private val _exerciseList = MutableLiveData<List<ExerciseHistoryModel>>()
+    val exerciseHistoryList: LiveData<List<ExerciseHistoryModel>> = _exerciseList
 
     private val _onClickMonth = MutableLiveData<Unit>()
     val onClickMonth: LiveData<Unit> = _onClickMonth
 
-    init {
-        val a = HistoryExerciseItem(ExercisePart.LEG, 2, 15, "10kg")
-        val a2 = HistoryExerciseItem(ExercisePart.ARM, 2, 15, "10kg")
-        val a3 = HistoryExerciseItem(ExercisePart.BACK, 2, 15, "10kg")
-        val a4 = HistoryExerciseItem(ExercisePart.CHERT, 2, 15, "10kg")
-        val a5 = HistoryExerciseItem(ExercisePart.SHOULDER, 2, 15, "10kg")
-        _exerciseList.value = listOf(
-            ExerciseModel(2, "화요일", "하체/어깨", "300KG을 번쩍!✨", listOf(a, a3, a3)),
-            ExerciseModel(6, "화요일", "하체/어깨", "300KG을 번쩍!✨", listOf(a, a3)),
-            ExerciseModel(12, "화요일", "하체/어깨", "300KG을 번쩍!✨", listOf(a, a, a, a3)),
-            ExerciseModel(22, "화요일", "하체/어깨", "300KG을 번쩍!✨", listOf(a, a3, a3, a)),
-            ExerciseModel(9, "화요일", "하체/어깨", "300KG을 번쩍!✨", listOf(a, a3, a5, a)),
-            ExerciseModel(21, "화요일", "하체/어깨", "300KG을 번쩍!✨", listOf(a, a2, a3, a4, a5)),
-            ExerciseModel(3, "화요일", "하체/어깨", "300KG을 번쩍!✨", listOf(a, a2, a3, a4, a5)),
-        )
+    val historyListVisible = MutableLiveData(false)
+    val historyNone = MutableLiveData<String>()
+
+    private val historyNoneList = listOf(
+        "운동할 때 힘이 든 것은 몸이 아닌 마음\n - 김종국 -",
+        "운동의 고통은 통증일 뿐 힘든 것이 아니다\n - 김종국 -",
+        "운동은 먹는 것까지가 운동이다\n - 김종국 -",
+        "운동은 새로운 삶의 시작\n - 김종국 -",
+        "헬스클럽은 클럽보다 더 즐거운곳\n - 김종국 -"
+    )
+
+    private fun getHistoryNoneItem() {
+        val random = Random()
+        historyNone.value = historyNoneList[random.nextInt(5)]
     }
 
     fun onClickSelectedCalenderMonth() {
         _onClickMonth.value = Unit
     }
+
+    private suspend fun getExerciseHistory(date: List<String>): List<ExerciseHistory> {
+
+        val idToken = webPreference.preference.getString(Key.TOKEN, "").toString()
+        return exerciseHistoryCase.getHistory(date, idToken)
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun getDate(startTime: String): String {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("yyyy-MM-dd-EEE", Locale.KOREAN)
+        val date: Date = inputFormat.parse(startTime)
+        return outputFormat.format(date)
+    }
+
+    private fun getHistoryExerciseItem(it: ExerciseHistory): HistoryExerciseItem {
+        return HistoryExerciseItem(
+            it.exercise.name,
+            it.exercise.part,
+            it.exercise.setCount,
+            it.exercise.baseCount,
+            (it.exercise.startWeight + it.exercise.changeWeight)
+        )
+    }
+
+
+    fun loadHistory(date: List<String>) {
+
+        viewModelScope.launch {
+            val response = getExerciseHistory(date)
+            val a = mutableListOf<ExerciseHistoryModel>()
+            response.forEachIndexed { index, it ->
+                val formattedDate: String = getDate(it.startTime)
+                var chack = true
+                it.exercise.part
+                if (index == 0) {
+                    a += ExerciseHistoryModel(
+                        formattedDate,
+                        listOf(it.exercise.part),
+                        0,
+                        listOf(
+                            getHistoryExerciseItem(it)
+                        )
+                    )
+                } else {
+                    for (i in 0 until a.size) {
+                        if (i != 0 && a[i].date == formattedDate) {
+                            a[i].status += (
+                                getHistoryExerciseItem(it)
+                                )
+
+                            a[i].part = a[i].part + it.exercise.part
+                            chack = false
+                        }
+                    }
+                    if (chack) {
+                        a += ExerciseHistoryModel(
+                            formattedDate,
+                            listOf(it.exercise.part),
+                            0,
+                            listOf(
+                                getHistoryExerciseItem(it)
+                            )
+                        )
+                    }
+                }
+            }
+
+            getHistoryNoneItem()
+            historyListVisible.value = a.isNotEmpty()
+            _exerciseList.value = a
+        }
+    }
+
 }

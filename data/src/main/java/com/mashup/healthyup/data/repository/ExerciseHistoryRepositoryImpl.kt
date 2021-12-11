@@ -16,23 +16,22 @@ class ExerciseHistoryRepositoryImpl @Inject constructor(
     override suspend fun postExerciseHistory(history: ExerciseHistory): ExerciseHistory {
         val request = history.toRequest()
         val response = historyApi.postExerciseHistory(request)
-
         return response.data ?: ExerciseHistory.EMPTY
     }
 
     override suspend fun getExerciseHistory(
-        ids: List<Long>,
-        duration: String?,
+        idToken: String,
         from: String?,
         to: String?
     ): List<ExerciseHistory> {
         val response = historyApi.getExerciseHistory(
-            exerciseIdList = ids.joinToString(separator = ","),
-            duration = duration,
+            idToken = idToken,
             from = from,
             to = to
         )
 
         return response.data.filterNotNull()
     }
+
+
 }

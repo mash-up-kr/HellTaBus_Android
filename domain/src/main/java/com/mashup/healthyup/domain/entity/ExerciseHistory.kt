@@ -8,16 +8,17 @@ data class ExerciseHistory(
     val userId: Long,
     val exerciseId: Long,
     val startTime: String,
-    val finishTime: String
+    val finishTime: String,
+    val exercise: Exercise
 ) : Entity {
-
     companion object {
         val EMPTY = ExerciseHistory(
             id = 0,
             userId = 0,
             exerciseId = 0,
             startTime = "",
-            finishTime = ""
+            finishTime = "",
+            exercise = Exercise.EMPTY,
         )
     }
 }

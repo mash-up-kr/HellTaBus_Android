@@ -7,6 +7,7 @@ import com.mashup.healthyup.base.BaseFragment
 import com.mashup.healthyup.databinding.FragmentHistoryMonthBinding
 import com.mashup.healthyup.features.history.HistoryActivity
 import com.mashup.healthyup.features.history.HistoryViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -14,6 +15,7 @@ interface OnBackPressedListener {
     fun onBackPressed()
 }
 
+@AndroidEntryPoint
 class MonthFragment : BaseFragment<FragmentHistoryMonthBinding>(R.layout.fragment_history_month),
     OnBackPressedListener {
 
@@ -45,6 +47,7 @@ class MonthFragment : BaseFragment<FragmentHistoryMonthBinding>(R.layout.fragmen
         binding.viewCalenderEmpty.setOnClickListener {
             closeFragment()
         }
+//        viewModel.loadHistory()
 
     }
 

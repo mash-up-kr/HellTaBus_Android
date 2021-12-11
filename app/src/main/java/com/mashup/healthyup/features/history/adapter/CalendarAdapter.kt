@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.healthyup.R
 import com.mashup.healthyup.databinding.ItemCalendarBinding
-import com.mashup.healthyup.features.history.model.ExerciseModel
+import com.mashup.healthyup.features.history.model.ExerciseHistoryModel
 import com.mashup.healthyup.features.history.model.HistoryItem
 import java.util.*
 
@@ -50,13 +50,22 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>
         }
     }
 
-    fun setWriteDayList(exerciseList: List<ExerciseModel>) {
+    fun setWriteDayList(exerciseHistoryList: List<ExerciseHistoryModel>) {
         val item = items.toMutableList()
         item.forEachIndexed { index, model ->
             if (index in firstDateIndex..lastDateIndex) {
-                exerciseList.lastOrNull { it.day == model.day }?.let {
+                exerciseHistoryList.lastOrNull { it.getDay() == model.day }?.let {
+                    var a = 0
+                    it.status.forEach { item ->
+                        a += item.count * item.set * item.weight
+                    }
                     item[index] = HistoryItem(
-                        it.day, it.dayOfWeek, it.part, it.subtitle, it.status
+                        it.getDay(),
+                        dayOfWeek = it.getDayOfWeek() + "일요",
+                        part = it.getPart(),
+                        subtitle = it.getSubtitle(a),
+                        status =
+                        it.status
                     )
                 }
             }
@@ -71,7 +80,7 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>
         defineCalendar.initBaseCalendar()
         this.dateList = defineCalendar.dateList
         this.items = dateList.map {
-            HistoryItem(it, "", "", "", null)
+            HistoryItem(it.toString(), "", "", "", null)
         }
         firstDateIndex = defineCalendar.prevTail
         lastDateIndex = dateList.size - defineCalendar.nextHead - 1
