@@ -86,9 +86,7 @@ class HealthyUpWebViewActivity :
                     when (jsonObject.get(WebConstants.FUNCTION_NAME).asString) {
                         FunctionName.START_ACTIVITY -> startActivityFromWeb(jsonObject)
                         FunctionName.SET_BACK_BUTTON_RECEIVE -> {
-                            handleOnBackPressed(jsonObject)
-                            binding.viewModel?.backButtonReceiveTarget =
-                                jsonObject.get("target").asString
+                            binding.viewModel?.backButtonReceiveTarget = jsonObject.get("target").asString
                         }
                         FunctionName.CLOSE_WEB_VIEW -> finish()
                     }
@@ -134,18 +132,6 @@ class HealthyUpWebViewActivity :
 
     override fun onBackPressed() {
         handleOnBackPressed(binding.viewModel?.backButtonReceiveTarget ?: Target.ANDROID)
-    }
-
-    private fun handleOnBackPressed(jsonObject: JsonObject) {
-        val target = jsonObject.get("target").asString
-        if (binding.healthyUpWebView.url == WebConstants.URL.SPLIT && jsonObject.has("isUpdated")) {
-            val isUpdated = jsonObject.get("isUpdated").asBoolean
-            if (isUpdated) {
-                finish()
-            }
-        } else {
-            handleOnBackPressed(target)
-        }
     }
 
     private fun handleOnBackPressed(target: String) {
