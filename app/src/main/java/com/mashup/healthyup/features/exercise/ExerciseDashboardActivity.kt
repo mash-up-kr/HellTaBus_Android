@@ -9,9 +9,11 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -103,6 +105,15 @@ class ExerciseDashboardActivity :
                 binding.ivPause.setImageResource(ivPauseRes)
                 binding.tvDate.text = state.todayDate
             }
+        }
+    }
+
+    override fun initViews() {
+        super.initViews()
+
+        window?.apply {
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = ContextCompat.getColor(this@ExerciseDashboardActivity, R.color.white)
         }
     }
 

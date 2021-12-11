@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -58,10 +60,23 @@ class HealthyUpWebViewActivity :
 
     override fun initViews() {
         super.initViews()
+        setStatusBarColor()
         binding.viewModel = viewModel
         binding.healthyUpWebView.setJavaScriptInterface(webPreference)
         Glide.with(this).load(R.raw.img_loading).into(binding.ivLoading)
         binding.healthyUpWebView.loadUrl(loadUrl)
+    }
+
+    private fun setStatusBarColor() {
+        val colorResId = when (loadUrl) {
+            WebConstants.URL.HOME ->  R.color.color_primary_variant1 // #F9F7FC
+            else -> R.color.color_background // #F8F8F8
+        }
+
+        window?.apply {
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor = ContextCompat.getColor(this@HealthyUpWebViewActivity, colorResId)
+        }
     }
 
     private fun observeWebViewEvent() {
