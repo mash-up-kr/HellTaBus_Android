@@ -2,7 +2,9 @@ package com.mashup.healthyup.features.history
 
 import android.content.Context
 import android.content.Intent
+import android.view.WindowManager
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.databinding.ActivityHistoryBinding
@@ -40,7 +42,15 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         binding.viewModel = viewModel
         initRecyclerView()
         initCalender()
+        setStatusBarColor()
+    }
 
+    private fun setStatusBarColor() {
+        window?.apply {
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            statusBarColor =
+                ContextCompat.getColor(this@HistoryActivity, R.color.color_background)
+        }
     }
 
     override fun initObserves() {
