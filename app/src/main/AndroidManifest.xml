@@ -20,14 +20,13 @@
         android:theme="@style/Theme.HealthyUp"
         android:usesCleartextTraffic="true">
         <activity android:name=".features.launcher.LauncherActivity">
-        </activity>
-        <activity android:name=".features.history.HistoryActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".features.history.HistoryActivity" />
         <activity android:name=".features.login.LoginActivity" />
         <activity android:name=".features.setting.SettingActivity" />
         <activity android:name=".features.summary.ExerciseSummaryActivity" />
