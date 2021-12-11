@@ -44,7 +44,6 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         initRecyclerView()
         initCalender()
         setStatusBarColor()
-        setToolbar()
     }
 
     private fun setStatusBarColor() {
@@ -53,13 +52,6 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
             statusBarColor =
                 ContextCompat.getColor(this@HistoryActivity, R.color.color_background)
         }
-    }
-
-    private fun setToolbar() {
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
