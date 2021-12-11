@@ -21,7 +21,7 @@ data class ExerciseHistoryModel(
 
     fun getPart(): String {
         var parts = ""
-        part.forEach { parts += "${getPartName(it)}/" }
+        part.toSet().forEach { parts += "${getPartName(it)}/" }
         return parts.dropLast(1)
     }
 

@@ -6,9 +6,36 @@ data class HistoryItem(
     val day: String,
     val dayOfWeek: String = "화요일",
     val part: String = "하체/어깨",
-    val subtitle: String = "300KG을 번쩍!✨",
+    val weightSum: Int,
     val status: List<HistoryExerciseItem>?
 ) {
+    companion object {
+        val EMPTY = HistoryItem(
+            day = "1",
+            dayOfWeek = "화요일",
+            part = "하체/어깨",
+            weightSum = 100,
+            status = listOf(HistoryExerciseItem.EMPTY),
+        )
+    }
+
+    fun getWeightIcon(): String {
+        return when {
+            weightSum > 300 -> {
+                "🐷"
+            }
+            weightSum > 200 -> {
+                "\uD83D\uDC34"
+            }
+            weightSum > 100 -> {
+                "\uD83D\uDC3C"
+            }
+            else -> ""
+        }
+    }
+
+    val getSubtitle = "${weightSum}KG을 번쩍!✨"
+
     fun getColorId(position: Int): Int {
         var res = R.color.color_error
         status?.let {

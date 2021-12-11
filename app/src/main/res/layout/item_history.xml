@@ -38,8 +38,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="2dp"
-				android:textColor="@color/color_item_calender_week"
-				tools:text="화요일" />
+				android:textColor="@color/color_item_calender_week" />
 		</LinearLayout>
 
 		<androidx.appcompat.widget.LinearLayoutCompat
@@ -53,24 +52,48 @@
 			android:paddingEnd="20dp"
 			android:paddingBottom="16dp">
 
-
-			<androidx.appcompat.widget.AppCompatTextView
-				style="@style/Typography.Button1.White"
-				android:layout_width="wrap_content"
+			<LinearLayout
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@{model.part}"
-				android:textColor="@color/color_on_background_variant_1" />
+				android:orientation="horizontal">
 
-			<androidx.appcompat.widget.AppCompatTextView
-				style="@style/Typography.Body1.White"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="3dp"
-				android:text="@{model.subtitle}"
-				android:textColor="@color/color_on_background_variant_2" />
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+
+					<androidx.appcompat.widget.AppCompatTextView
+						style="@style/Typography.Button1.White"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@{model.part}"
+						android:textColor="@color/color_on_background_variant_1" />
+
+					<androidx.appcompat.widget.AppCompatTextView
+						style="@style/Typography.Body1.White"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="3dp"
+						android:text="@{model.getSubtitle}"
+						android:textColor="@color/color_on_background_variant_2" />
+
+				</LinearLayout>
+
+				<androidx.appcompat.widget.AppCompatTextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="end"
+					android:layout_weight="1"
+					android:gravity="end"
+					android:text="@{model.getWeightIcon()}"
+					android:textSize="40dp"
+					tools:text="🙉" />
+
+			</LinearLayout>
 
 			<View
 				android:layout_width="match_parent"
+				android:background="@color/color_line"
 				android:layout_height="1dp"
 				android:layout_marginTop="8dp"
 				android:layout_marginBottom="8dp" />

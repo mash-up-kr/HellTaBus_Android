@@ -12,6 +12,7 @@
 
 	<androidx.appcompat.widget.LinearLayoutCompat
 		android:layout_width="match_parent"
+		android:layout_marginTop="@dimen/space_4"
 		android:layout_height="@dimen/history_calender_item_height"
 		android:orientation="horizontal">
 

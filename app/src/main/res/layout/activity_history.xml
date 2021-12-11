@@ -102,6 +102,7 @@
 							android:layout_width="40dp"
 							android:layout_height="56dp"
 							android:layout_marginEnd="16dp"
+							android:onClick="@{() -> viewModel.onClickBack()}"
 							android:background="@color/color_background"
 							android:src="@drawable/ic_back" />
 					</androidx.appcompat.widget.Toolbar>

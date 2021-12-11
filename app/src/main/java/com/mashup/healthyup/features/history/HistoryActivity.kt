@@ -53,6 +53,9 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         viewModel.onClickMonth.observe(this) {
             addSelectedCalenderMonthFragment()
         }
+        viewModel.onClickBack.observe(this) {
+            finish()
+        }
     }
 
     private fun initRecyclerView() {

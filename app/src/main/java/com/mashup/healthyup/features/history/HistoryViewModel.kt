@@ -1,11 +1,9 @@
 package com.mashup.healthyup.features.history
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.mashup.healthyup.Config
 import com.mashup.healthyup.Key
 import com.mashup.healthyup.base.BaseViewModel
 import com.mashup.healthyup.bridge.WebPreference
@@ -31,6 +29,9 @@ class HistoryViewModel @Inject constructor(
     private val _onClickMonth = MutableLiveData<Unit>()
     val onClickMonth: LiveData<Unit> = _onClickMonth
 
+    private val _onClickBack = MutableLiveData<Unit>()
+    val onClickBack: LiveData<Unit> = _onClickBack
+
     val historyListVisible = MutableLiveData(false)
     val historyNone = MutableLiveData<String>()
 
@@ -49,6 +50,10 @@ class HistoryViewModel @Inject constructor(
 
     fun onClickSelectedCalenderMonth() {
         _onClickMonth.value = Unit
+    }
+
+    fun onClickBack() {
+        _onClickBack.value = Unit
     }
 
     private suspend fun getExerciseHistory(date: List<String>): List<ExerciseHistory> {

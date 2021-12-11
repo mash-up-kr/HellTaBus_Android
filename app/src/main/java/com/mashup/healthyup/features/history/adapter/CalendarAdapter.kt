@@ -55,15 +55,11 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>
         item.forEachIndexed { index, model ->
             if (index in firstDateIndex..lastDateIndex) {
                 exerciseHistoryList.lastOrNull { it.getDay() == model.day }?.let {
-                    var a = 0
-                    it.status.forEach { item ->
-                        a += item.count * item.set * item.weight
-                    }
                     item[index] = HistoryItem(
                         it.getDay(),
-                        dayOfWeek = it.getDayOfWeek() + "일요",
+                        dayOfWeek = it.getDayOfWeek() + "요일",
                         part = it.getPart(),
-                        subtitle = it.getSubtitle(a),
+                        weightSum = 0,
                         status =
                         it.status
                     )
@@ -80,7 +76,7 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>
         defineCalendar.initBaseCalendar()
         this.dateList = defineCalendar.dateList
         this.items = dateList.map {
-            HistoryItem(it.toString(), "", "", "", null)
+            HistoryItem(it.toString(), "", "", 0, null)
         }
         firstDateIndex = defineCalendar.prevTail
         lastDateIndex = dateList.size - defineCalendar.nextHead - 1
