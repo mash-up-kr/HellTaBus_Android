@@ -86,7 +86,7 @@ class HistoryViewModel @Inject constructor(
         viewModelScope.launch {
             val response = getExerciseHistory(date)
             val a = mutableListOf<ExerciseHistoryModel>()
-            response.forEachIndexed { index, it ->
+            response.sortedBy { it.startTime }.forEachIndexed { index, it ->
                 val formattedDate: String = getDate(it.startTime)
                 var chack = true
                 it.exercise.part
