@@ -14,24 +14,24 @@ import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
-import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.CustomViewTarget
-import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.mashup.healthyup.Key
 import com.mashup.healthyup.R
 import com.mashup.healthyup.base.BaseActivity
 import com.mashup.healthyup.core.AbstractAnimatorListener
+import com.mashup.healthyup.core.dp10
+import com.mashup.healthyup.core.dp5
 import com.mashup.healthyup.core.visibleOrGone
 import com.mashup.healthyup.databinding.ActivityExerciseDashboardBinding
+import com.mashup.healthyup.databinding.LayoutDotBinding
 import com.mashup.healthyup.databinding.LayoutProgressBinding
 import com.mashup.healthyup.domain.entity.Exercise
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ExerciseDashboardActivity :
@@ -57,19 +57,30 @@ class ExerciseDashboardActivity :
                 val index = state.index
                 val stage = state.stage
 
+                if (state.isInitialLoad) {
+                    // load when first state emitted
+                    addProgressViews(exerciseList)
+                }
+
                 if (state.index != state.exerciseList.count() - 1) {
                     binding.layoutNext.visibleOrGone(true)
                     binding.tvNextExercise.text = exerciseList[index + 1].name
                 }
 
-                binding.tvExerciseIndex.text = resources.getStringArray(R.array.translated_stage_index)[index]
+                binding.tvExerciseIndex.text =
+                    resources.getStringArray(R.array.translated_stage_index)[index]
                 binding.tvExerciseTitle.text = stage.name
-                binding.tvExerciseWeightAndCount.text = getString(R.string.exercise_dashboard_set_format, stage.startWeight, stage.baseCount)
+                binding.tvExerciseWeightAndCount.text = getString(
+                    R.string.exercise_dashboard_set_format,
+                    stage.startWeight,
+                    stage.baseCount
+                )
 
                 binding.ivAudioWave.visibleOrGone(state.onAudioPlaying)
                 binding.ivExerciseGif.visibleOrGone(!state.onAudioPlaying)
                 if (!state.onAudioPlaying) {
                     loadExerciseGif(state.stage.imageLink)
+                    setExerciseGraph()
                 }
 
                 binding.tvConfirmStage.text = if (state.onAudioPlaying) {
@@ -92,15 +103,13 @@ class ExerciseDashboardActivity :
                 binding.ivPause.setImageResource(ivPauseRes)
                 binding.tvDate.text = state.todayDate
             }
-
-            // TODO: 홈(웹뷰) 에서 넘겨받은 운동정보 리스트를 가지고, Graph 설정
-            //binding.graphView.setCueList()
         }
     }
 
-    override fun initViews() {
-        // TODO : TODO: 홈(웹뷰) 에서 넘겨받은 운동정보 리스트를 가지고, 필요한 만큼 layout_progress 동적으로 addView
-        addProgressViews()
+    private fun setExerciseGraph() {
+        lifecycleScope.launch {
+            binding.graphView.setCueList()
+        }
     }
 
     private fun loadExerciseGif(url: String) {
@@ -129,17 +138,33 @@ class ExerciseDashboardActivity :
             })
     }
 
-    private fun addProgressViews() {
+    private fun addProgressViews(exerciseList: List<Exercise>) {
+        exerciseList.forEachIndexed { index, exercise ->
+            // - * - * - * - 형태, 마지막이면, dot을 붙이지 않음!
+            val progressBar = LayoutProgressBinding.inflate(layoutInflater).root
+            val dot = LayoutDotBinding.inflate(layoutInflater).root
+
+            binding.layoutProgress.addView(progressBar, getWeightedLayoutParams(1f))
+            if (index != exerciseList.size - 1) {
+                binding.layoutProgress.addView(
+                    dot,
+                    LinearLayout.LayoutParams(dp10, dp10).apply {
+                        marginStart = dp5
+                        marginEnd = dp5
+                    }
+                )
+            }
+
+        }
+    }
+
+    private fun getWeightedLayoutParams(weight: Float): LinearLayout.LayoutParams {
         val params = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT
         )
-        params.weight = 1f
-
-        listOf(0, 1, 2).forEach { _ ->
-            val progressView = LayoutProgressBinding.inflate(layoutInflater).root
-            binding.layoutProgress.addView(progressView, params)
-        }
+        params.weight = weight
+        return params
     }
 
     companion object {

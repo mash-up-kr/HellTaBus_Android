@@ -25,7 +25,8 @@ class ExerciseDashboardViewModel @Inject constructor(
         val todayDate: String,
         val onAudioPlaying: Boolean = true,
         val index: Int = 0, // 현재 몇 세트 인지
-        val isPaused: Boolean = false
+        val isPaused: Boolean = false,
+        val isInitialLoad: Boolean = true
     ) {
         val stage: Exercise
             get() = exerciseList[index]
@@ -44,7 +45,7 @@ class ExerciseDashboardViewModel @Inject constructor(
         viewModelScope.launch {
             delay(250L)
             val currentState = _state.value
-            _state.emit(currentState.copy(onAudioPlaying = false))
+            _state.emit(currentState.copy(onAudioPlaying = false, isInitialLoad = false))
         }
     }
 
