@@ -2,6 +2,7 @@ package com.mashup.healthyup.features.history
 
 import android.content.Context
 import android.content.Intent
+import android.view.MenuItem
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -43,6 +44,7 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
         initRecyclerView()
         initCalender()
         setStatusBarColor()
+        setToolbar()
     }
 
     private fun setStatusBarColor() {
@@ -51,6 +53,22 @@ class HistoryActivity : BaseActivity<ActivityHistoryBinding>(R.layout.activity_h
             statusBarColor =
                 ContextCompat.getColor(this@HistoryActivity, R.color.color_background)
         }
+    }
+
+    private fun setToolbar() {
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun initObserves() {
