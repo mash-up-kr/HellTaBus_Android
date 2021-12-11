@@ -25,11 +25,11 @@ class ChangeProfileFragment :
     override fun initListeners() {
         super.initListeners()
         binding.appbar.btnBack.setOnClickListener {
-            navController.navigate(R.id.action_changeProfileFragment_to_settingMainFragment)
+            onBackPressed()
         }
     }
 
     override fun onBackPressed() {
-        navController.navigate(R.id.action_changeProfileFragment_to_settingMainFragment)
+        navController.popBackStack()
     }
 }

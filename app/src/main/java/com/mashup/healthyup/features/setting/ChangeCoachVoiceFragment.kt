@@ -25,7 +25,7 @@ class ChangeCoachVoiceFragment :
     override fun initViews() {
         super.initViews()
         with(binding) {
-            binding.radioGroup.check(binding.btnRadio1.id)
+            radioGroup.check(binding.btnRadio1.id)
             btnSave.isEnabled = false
         }
     }
@@ -33,11 +33,11 @@ class ChangeCoachVoiceFragment :
     override fun initListeners() {
         super.initListeners()
         binding.appbar.btnBack.setOnClickListener {
-            navController.navigate(R.id.action_changeCoachVoiceFragment_to_settingMainFragment)
+            onBackPressed()
         }
     }
 
     override fun onBackPressed() {
-        navController.navigate(R.id.action_changeCoachVoiceFragment_to_settingMainFragment)
+        navController.popBackStack()
     }
 }
