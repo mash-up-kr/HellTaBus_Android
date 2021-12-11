@@ -36,6 +36,7 @@
     <string name="exercise_feedback_easy">쉬웠어요</string>
     <string name="exercise_feedback_normal">적당했어요</string>
     <string name="exercise_feedback_hard">어려웠어요</string>
+    <string name="exercise_feedback_subscribe_format">%s는 어땠나요?</string>
 
     <!-- SettingActivity -->
     <string name="setting_title_my_info">내 정보</string>

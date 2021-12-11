@@ -24,4 +24,13 @@
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/spoqa_han_sans_neo_medium</item>
     </style>
+
+    <style name="ExerciseBottomSheetTheme" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">30dp</item>
+        <item name="cornerSizeTopLeft">30dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
 </resources>

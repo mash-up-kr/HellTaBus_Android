@@ -3,12 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_white_round_30"
         android:paddingTop="40dp"
         app:behavior_hideable="true"
         app:layout_behavior="@string/bottom_sheet_behavior">
@@ -83,7 +80,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonSubmit"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:height="54dp"
@@ -92,6 +89,8 @@
             android:text="@string/confirm"
             android:textAppearance="@style/Typography.Button1.White"
             android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup"
             tools:enabled="true" />
 

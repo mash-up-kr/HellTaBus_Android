@@ -14,7 +14,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.gif.GifDrawable
@@ -31,6 +33,8 @@ import com.mashup.healthyup.databinding.ActivityExerciseDashboardBinding
 import com.mashup.healthyup.databinding.LayoutDotBinding
 import com.mashup.healthyup.databinding.LayoutProgressBinding
 import com.mashup.healthyup.domain.entity.Exercise
+import com.mashup.healthyup.features.exercise.ExerciseDashboardViewModel.Action.OnExerciseDoneClicked
+import com.mashup.healthyup.features.summary.ExerciseSummaryActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
@@ -38,7 +42,8 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ExerciseDashboardActivity :
-    BaseActivity<ActivityExerciseDashboardBinding>(R.layout.activity_exercise_dashboard) {
+    BaseActivity<ActivityExerciseDashboardBinding>(R.layout.activity_exercise_dashboard),
+    ExerciseFeedbackBottomSheet.ClickListener {
 
     private val viewModel by viewModels<ExerciseDashboardViewModel>()
     private var gifDrawable: GifDrawable? = null
@@ -84,6 +89,9 @@ class ExerciseDashboardActivity :
                 if (!state.onAudioPlaying) {
                     loadExerciseGif(state.stage.imageLink)
                     setExerciseGraph()
+                    binding.tvConfirmStage.setOnClickListener {
+                        viewModel.onExerciseDoneClick()
+                    }
                 }
 
                 binding.tvConfirmStage.text = if (state.onAudioPlaying) {
@@ -107,6 +115,22 @@ class ExerciseDashboardActivity :
                 binding.tvDate.text = state.todayDate
             }
         }
+
+        lifecycleScope.launchWhenStarted {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.actionFlow.collect { action ->
+                    when (action) {
+                        is OnExerciseDoneClicked -> {
+                            ExerciseFeedbackBottomSheet.show(
+                                supportFragmentManager,
+                                action.exercise,
+                                action.index
+                            )
+                        }
+                    }
+                }
+            }
+        }
     }
 
     override fun initViews() {
@@ -116,6 +140,12 @@ class ExerciseDashboardActivity :
             addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             statusBarColor = ContextCompat.getColor(this@ExerciseDashboardActivity, R.color.white)
         }
+    }
+
+    override fun onFeedbackSubmitClick() {
+        // TODO : 운동요약 화면으로 이동
+        ExerciseSummaryActivity.start(this)
+        finish()
     }
 
     private fun setExerciseGraph() {

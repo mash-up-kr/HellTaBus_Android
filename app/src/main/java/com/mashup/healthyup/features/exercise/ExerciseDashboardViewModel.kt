@@ -7,9 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.mashup.healthyup.base.BaseViewModel
 import com.mashup.healthyup.domain.entity.Exercise
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,9 +35,17 @@ class ExerciseDashboardViewModel @Inject constructor(
             get() = exerciseList[index]
     }
 
+    sealed class Action {
+        data class OnExerciseDoneClicked(val exercise: Exercise, val index: Int) : Action()
+    }
+
     private val _state = MutableStateFlow(State(params.exerciseList, params.todayDate))
     val state: StateFlow<State>
         get() = _state
+
+    private val _action = Channel<Action>(Channel.BUFFERED)
+    val actionFlow: Flow<Action>
+        get() = _action.receiveAsFlow()
 
     init {
         if (params.exerciseList.isEmpty())
@@ -54,5 +65,10 @@ class ExerciseDashboardViewModel @Inject constructor(
             val currentState = _state.value
             _state.emit(currentState.copy(isPaused = !currentState.isPaused))
         }
+    }
+
+    fun onExerciseDoneClick() {
+        val action = Action.OnExerciseDoneClicked(_state.value.stage, _state.value.index)
+        _action.trySend(action)
     }
 }

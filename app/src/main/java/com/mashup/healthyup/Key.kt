@@ -5,4 +5,5 @@ object Key {
     const val TOKEN = "token"
     const val EXERCISE = "exercise"
     const val EXERCISE_LIST = "exerciseList"
+    const val INDEX = "index"
 }
