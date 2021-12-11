@@ -32,6 +32,7 @@ import com.mashup.healthyup.databinding.LayoutDotBinding
 import com.mashup.healthyup.databinding.LayoutProgressBinding
 import com.mashup.healthyup.domain.entity.Exercise
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -150,12 +151,26 @@ class ExerciseDashboardActivity :
     }
 
     private fun addProgressViews(exerciseList: List<Exercise>) {
-        exerciseList.forEachIndexed { index, exercise ->
-            // - * - * - * - 형태, 마지막이면, dot을 붙이지 않음!
-            val progressBar = LayoutProgressBinding.inflate(layoutInflater).root
+        exerciseList.forEachIndexed { index, _ ->
+            // - * - * - * - 형태, 마지막이면, dot 을 붙이지 않음!
+            val progressBar = LayoutProgressBinding.inflate(layoutInflater)
             val dot = LayoutDotBinding.inflate(layoutInflater).root
 
-            binding.layoutProgress.addView(progressBar, getWeightedLayoutParams(1f))
+            binding.layoutProgress.addView(progressBar.root, getWeightedLayoutParams(1f))
+            // 임의로 첫번째 progress 만 진행되도록 처리.
+            if (index == 0) {
+                lifecycleScope.launch {
+                    fun getCurrentProgress(): Int {
+                        return progressBar.progressBar.progress
+                    }
+
+                    while (getCurrentProgress() != 100) {
+                        progressBar.progressBar.progress = getCurrentProgress() + 5
+                        delay(1000L)
+                    }
+                }
+            }
+
             if (index != exerciseList.size - 1) {
                 binding.layoutProgress.addView(
                     dot,

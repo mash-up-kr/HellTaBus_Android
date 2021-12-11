@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:progressDrawable="@drawable/drawable_progressbar"
+        android:progress="0"
         android:max="100"
         tools:progress="50" />
 

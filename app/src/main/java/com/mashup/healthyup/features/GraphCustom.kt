@@ -133,7 +133,7 @@ class GraphCustom : View {
     }
 
     private suspend fun cycle() {
-        for (i in 0..540) {
+        for (i in 0..1000) {
             coroutineScope {
                 delay(20)
                 delayDegree += 0.4f
