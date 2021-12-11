@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageView
@@ -50,7 +51,7 @@ class ExerciseDashboardActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setToolbar()
         binding.viewModel = viewModel
 
         binding.ivAudioWave.addAnimatorListener(object : AbstractAnimatorListener() {
@@ -133,6 +134,23 @@ class ExerciseDashboardActivity :
         }
     }
 
+    private fun setToolbar() {
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                // TODO : `운동을 그만두시겠어요?` 다이얼로그가 노출되어야함.
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun initViews() {
         super.initViews()
 
@@ -143,7 +161,6 @@ class ExerciseDashboardActivity :
     }
 
     override fun onFeedbackSubmitClick() {
-        // TODO : 운동요약 화면으로 이동
         ExerciseSummaryActivity.start(this)
         finish()
     }
