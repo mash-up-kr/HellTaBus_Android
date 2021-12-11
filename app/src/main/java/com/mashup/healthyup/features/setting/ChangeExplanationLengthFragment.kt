@@ -1,6 +1,7 @@
 package com.mashup.healthyup.features.setting
 
 import android.os.Bundle
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -12,7 +13,7 @@ class ChangeExplanationLengthFragment :
     BaseFragment<FragmentChangeExplanationLengthBinding>(R.layout.fragment_change_explanation_length),
     OnBackPressedListener {
 
-    private val viewModel by viewModels<SettingViewModel>()
+    private val viewModel by activityViewModels<SettingViewModel>()
     private lateinit var navController: NavController
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
