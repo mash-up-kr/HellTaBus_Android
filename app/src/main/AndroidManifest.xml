@@ -20,7 +20,6 @@
         android:theme="@style/Theme.HealthyUp"
         android:usesCleartextTraffic="true">
         <activity android:name=".features.launcher.LauncherActivity">
-
         </activity>
         <activity android:name=".features.history.HistoryActivity" >
             <intent-filter>
