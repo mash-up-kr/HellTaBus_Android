@@ -47,8 +47,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryAdapter>() {
                 dayOfWeek = it.getDayOfWeek() + "요일",
                 part = it.getPart(),
                 subtitle = it.getSubtitle(a),
-                status =
-                it.status
+                status = it.status
             )
         }
         this.items = subtitleWeight

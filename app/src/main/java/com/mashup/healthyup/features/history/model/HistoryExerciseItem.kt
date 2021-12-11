@@ -3,13 +3,14 @@ package com.mashup.healthyup.features.history.model
 import com.mashup.healthyup.R
 
 data class HistoryExerciseItem(
+    val name: String,
     val part: String,
     val set: Int,
     val count: Int,
     val weight: Int
 ) {
-    fun getColorText(): String {
-        return "랫풀다운 3세트 | 20kg 20회"
+    fun getNameSetWeight(): String {
+        return "$name ${set}세트 | ${weight}kg ${count}회"
     }
 
     fun getColorId(): Int {
@@ -38,6 +39,7 @@ data class HistoryExerciseItem(
 
     companion object {
         val EMPTY = HistoryExerciseItem(
+            name = "런지",
             part = "LOWER",
             set = 3,
             count = 15,

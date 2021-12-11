@@ -2,7 +2,7 @@ package com.mashup.healthyup.features.history.model
 
 data class ExerciseHistoryModel(
     val date: String,
-    val part: List<String>,
+    var part: List<String>,
     val subtitle: Int = 0,
     var status: List<HistoryExerciseItem>
 ) {
@@ -15,17 +15,30 @@ data class ExerciseHistoryModel(
         return date.split("-")[2]
     }
 
-    fun getDayOfWeek():String{
+    fun getDayOfWeek(): String {
         return date.split("-")[3]
     }
 
     fun getPart(): String {
         var parts = ""
-        part.forEach { parts += "$it/" }
+        part.forEach { parts += "${getPartName(it)}/" }
         return parts.dropLast(1)
     }
 
-    fun getSubtitle(sum: Int):String = "${sum}KG을 번쩍!✨"
+    private fun getPartName(part: String): String {
+        return when (part) {
+            "LOWER" -> "하체"
+            "ARM" -> "팔"
+            "BICEPS" -> "팔"
+            "TRICEPS" -> "팔"
+            "SHOULDER" -> "어깨"
+            "CHEST" -> "가슴"
+            "BACK" -> "등"
+            else -> "팔"
+        }
+    }
+
+    fun getSubtitle(sum: Int): String = "${sum}KG을 번쩍!✨"
 
     companion object {
         val EMPTY = ExerciseHistoryModel(

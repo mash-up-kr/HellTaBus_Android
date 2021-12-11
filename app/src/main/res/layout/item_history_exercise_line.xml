@@ -29,7 +29,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
-			android:text="@{model.getColorText()}"
+			android:text="@{model.getNameSetWeight()}"
 			android:textColor="@color/color_on_background_variant_1" />
 	</androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
