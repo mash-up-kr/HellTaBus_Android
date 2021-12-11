@@ -1,5 +1,9 @@
 package com.mashup.healthyup.di
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerCollector
+import com.chuckerteam.chucker.api.ChuckerInterceptor
+import com.chuckerteam.chucker.api.RetentionManager
 import com.mashup.healthyup.Config
 import com.mashup.healthyup.Config.BASE_URL
 import com.mashup.healthyup.data.api.ExerciseApi
@@ -9,6 +13,7 @@ import com.mashup.healthyup.data.response.wrapper.ResponseConverterWrapperFactor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -26,10 +31,15 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideOkHttpClient(
+        interceptor: HttpLoggingInterceptor,
+        chuckerInterceptor: ChuckerInterceptor
+    ): OkHttpClient {
         val okHttpBuilder = OkHttpClient.Builder()
         okHttpBuilder.addInterceptor(HeaderInterceptor(Config.access_key)).build()
         okHttpBuilder.addInterceptor(interceptor)
+        okHttpBuilder.addInterceptor(chuckerInterceptor)
+
         return okHttpBuilder.build()
     }
 
@@ -41,6 +51,19 @@ object ApiModule {
         return interceptor
     }
 
+    @Provides
+    @Singleton
+    fun provideChuckerInterceptor(@ApplicationContext context: Context): ChuckerInterceptor {
+        val collector = ChuckerCollector(
+            context = context,
+            retentionPeriod = RetentionManager.Period.ONE_HOUR
+        )
+
+        return ChuckerInterceptor.Builder(context)
+            .collector(collector)
+            .alwaysReadResponseBody(true)
+            .build()
+    }
 
     class HeaderInterceptor(private val clientId: String) : Interceptor {
         @Throws(IOException::class)

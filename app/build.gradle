@@ -90,6 +90,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
     implementation 'com.airbnb.android:lottie:4.2.1'
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 
     // Hilt
     implementation 'com.google.dagger:hilt-android:2.39.1'
